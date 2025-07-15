@@ -11,6 +11,31 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
+  width: 100%;
+  display: flex;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(1.75rem, 1rem + 2vw, 2.5rem);
+}
+
+h2 {
+  font-size: clamp(1.375rem, 0.875rem + 1.5vw, 2.25rem);
+}
+
+p {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+a, a:visited, a:active {
+  text-decoration: none;
 }
 
 aside {
@@ -18,6 +43,10 @@ aside {
   height: 100vh;
   border-right: 0.0625rem solid #D9D9D9;
   position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
 }
 
 .logo {
@@ -79,9 +108,10 @@ aside {
   gap: 0.75rem;
   width: 100%;
   padding: 0.25rem 0;
+  font-size: 0.875rem;
 }
 .nav-links a i {
-  font-size: 1rem;
+  font-size: 0.875rem;
   width: 1.25rem;
   height: 1.25rem;
   display: flex;
@@ -98,6 +128,16 @@ aside {
 .nav-links a:hover {
   color: #333;
 }
+.nav-links .active {
+  background-color: #000;
+  color: #fff;
+}
+.nav-links .active i {
+  color: #fff;
+}
+.nav-links .active span {
+  color: #fff;
+}
 
 .logout-container {
   position: absolute;
@@ -108,6 +148,7 @@ aside {
   align-items: center;
   justify-content: center;
   border-top: 1px solid #D9D9D9;
+  font-size: 0.875rem;
 }
 .logout-container a {
   text-decoration: none;
@@ -152,4 +193,93 @@ aside {
   padding: 0 0.3125rem;
   color: #737373;
   display: block;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 55%;
+  margin-left: 15.625rem;
+}
+main .dashboard-header {
+  padding: 1.875rem 1.25rem 1.25rem 0;
+  border-bottom: 0.0625rem solid #dee2e6;
+}
+main .dashboard-header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 400;
+}
+main .dashboard-header p {
+  font-size: 0.75rem;
+  color: #6c757d;
+  margin: 0.25rem 0;
+}
+main .dashboard-cards {
+  display: flex;
+  align-items: center;
+}
+main .dashboard-cards .card, main .dashboard-cards .card--totalExpense, main .dashboard-cards .card--revenue {
+  background-color: #E8F9FF;
+  width: 15rem;
+  height: 9.375rem;
+  margin-right: 1.25rem;
+  margin-top: 1.25rem;
+  border-radius: 0.625rem;
+}
+main .dashboard-cards .card .contents, main .dashboard-cards .card--totalExpense .contents, main .dashboard-cards .card--revenue .contents {
+  margin: 1.25rem;
+}
+main .dashboard-cards .card h2, main .dashboard-cards .card--totalExpense h2, main .dashboard-cards .card--revenue h2 {
+  font-size: 2rem;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+main .dashboard-cards .card p, main .dashboard-cards .card--totalExpense p, main .dashboard-cards .card--revenue p {
+  font-size: 0.625rem;
+  margin: 0.5rem 0;
+}
+main .dashboard-cards .card h4, main .dashboard-cards .card--totalExpense h4, main .dashboard-cards .card--revenue h4 {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 500;
+}
+main .dashboard-cards .card--revenue {
+  background-color: #D7FFD7;
+}
+main .dashboard-cards .card--totalExpense {
+  background-color: #DBE8FC;
+  margin-right: 0;
+}
+main .chart-container {
+  margin: 1.25rem auto;
+  height: 12.5rem;
+  background-color: rgb(183, 191, 255);
+  width: 100%;
+  border-radius: 0.625rem;
+}
+main table {
+  margin: 1.25rem auto;
+  width: 100%;
+  border-radius: 0.625rem;
+}
+main table th {
+  color: #686868;
+}
+main table th, main table td {
+  padding: 0.625rem;
+  text-align: center;
+  border-bottom: 1px solid #dee2e6;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+main table .table-image {
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-color: #6c757d;
+  margin: 0 auto;
 }/*# sourceMappingURL=styles.css.map */

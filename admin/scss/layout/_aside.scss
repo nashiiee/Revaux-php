@@ -5,6 +5,10 @@ aside {
   height: 100vh;
   border-right: u.rem(1) solid #D9D9D9;
   position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
 }
 
 .logo {
@@ -70,9 +74,10 @@ aside {
     gap: 0.75rem;
     width: 100%;
     padding: 0.25rem 0;
+    font-size: u.rem(14);
 
     & i {
-      font-size: u.rem(16);
+      font-size: u.rem(14);
       width: u.rem(20);
       height: u.rem(20);
       display: flex;
@@ -92,6 +97,19 @@ aside {
       color: #333;
     }
   }
+
+  & .active {
+    background-color: #000;
+    color: #fff;
+
+    & i {
+      color: #fff;
+    }
+
+    & span {
+      color: #fff;
+    }
+  }
 }
 
 .logout-container {
@@ -103,6 +121,7 @@ aside {
   align-items: center;
   justify-content: center;
   border-top: 1px solid #D9D9D9;
+  font-size: u.rem(14);
 
   & a {
     text-decoration: none;

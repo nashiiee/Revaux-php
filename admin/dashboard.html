@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="../dist/styles.css">
   <!-- Font Awesome Free CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <aside>
@@ -25,7 +27,7 @@
     </div>
     <div class="links">
       <ul class="nav-links">
-        <li>
+        <li class="active">
           <a href="dashboard.html">
             <i class="fa-solid fa-house"></i>
             <span>Dashboard</span>
@@ -79,5 +81,97 @@
       </a>
     </div>
   </aside>
+  <main>
+    <div class="dashboard-header">
+      <h1>Welcome Back, Admin!</h1>
+      <p>Here&#39;s what happening with your store today</p>
+    </div>
+    <div class="dashboard-cards">
+      <div class="card">
+        <div class="contents">
+          <h2>$3.32K</h2>
+          <p>New Orders</p>
+          <h4>+20%</h4>
+          <p>This month</p>
+        </div>
+      </div>
+      <div class="card--revenue">
+        <div class="contents">
+          <h2>$30.22K</h2>
+          <p>Total Revenue</p>
+          <h4>-12%</h4>
+          <p>This month</p>
+        </div>
+      </div>
+      <div class="card--totalExpense">
+        <div class="contents">
+          <h2>$20.21K</h2>
+          <p>Total Expense</p>
+          <h4>+23%</h4>
+          <p>This month</p>
+        </div>
+      </div>
+    </div>
+    <div class="chart-container">
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Stock</th>
+          <th>Total Sales</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="table-image"></div></td>
+          <td>Denim Jacket</td>
+          <td>Men's Top</td>
+          <td>In Stock</td>
+          <td>1.22k</td>
+        </tr>
+        <tr>
+          <td><div class="table-image"></div></td>
+          <td>Denim Jacket</td>
+          <td>Men's Top</td>
+          <td>In Stock</td>
+          <td>1.22k</td>
+        </tr>
+        <tr>
+          <td><div class="table-image"></div></td>
+          <td>Denim Jacket</td>
+          <td>Men's Top</td>
+          <td>In Stock</td>
+          <td>1.22k</td>
+        </tr>
+        <tr>
+          <td><div class="table-image"></div></td>
+          <td>Denim Jacket</td>
+          <td>Men's Top</td>
+          <td>In Stock</td>
+          <td>1.22k</td>
+        </tr>
+        <tr>
+          <td><div class="table-image"></div></td>
+          <td>Denim Jacket</td>
+          <td>Men's Top</td>
+          <td>In Stock</td>
+          <td>1.22k</td>
+        </tr>
+        <tr>
+          <td><div class="table-image"></div></td>
+          <td>Denim Jacket</td>
+          <td>Men's Top</td>
+          <td>In Stock</td>
+          <td>1.22k</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="right-section-sidebar">
+      
+    </div>
+  </main>
 </body> 
 </html>
