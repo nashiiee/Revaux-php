@@ -1,0 +1,155 @@
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+aside {
+  width: 13.75rem;
+  height: 100vh;
+  border-right: 0.0625rem solid #D9D9D9;
+  position: relative;
+}
+
+.logo {
+  border-bottom: 1px solid #D9D9D9;
+  width: 100%;
+  height: 6.25rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo img {
+  width: 4.375rem;
+  height: 4.375rem;
+  margin-left: -2rem;
+}
+.logo span {
+  font-size: 2rem;
+  font-family: "Playfair Display", serif;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+.nav-links li {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem 0;
+  border-radius: 0.625rem;
+  transition: background-color 0.3s ease;
+}
+.nav-links li:hover {
+  background-color: #000;
+}
+.nav-links li:hover i {
+  color: #fff;
+}
+.nav-links li:hover span {
+  color: #fff;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #737373;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.25rem 0;
+}
+.nav-links a i {
+  font-size: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.nav-links a span {
+  font-weight: 400;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+}
+.nav-links a:hover {
+  color: #333;
+}
+
+.logout-container {
+  position: absolute;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #D9D9D9;
+}
+.logout-container a {
+  text-decoration: none;
+  color: #737373;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  width: 90%;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem 0;
+  border-radius: 0.625rem;
+  transition: background-color 0.3s ease;
+}
+.logout-container a span {
+  font-weight: 400;
+  line-height: 1.2;
+}
+.logout-container a i {
+  font-size: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.logout-container a:hover {
+  background-color: #000;
+  color: #fff;
+}
+.logout-container a:hover i {
+  color: #fff;
+}
+.logout-container a:hover span {
+  color: #fff;
+}
+
+.tools-description {
+  margin-top: 1.5625rem;
+  font-size: 0.875rem;
+  padding: 0 0.3125rem;
+  color: #737373;
+  display: block;
+}/*# sourceMappingURL=styles.css.map */
