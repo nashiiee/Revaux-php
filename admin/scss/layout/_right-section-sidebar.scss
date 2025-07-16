@@ -1,1 +1,143 @@
 @use '../utils/' as u;
+
+
+.right-section-sidebar {
+  width: 100%;
+  margin-left: u.rem(40);
+
+  & .profile {
+    width: 100%;
+    height: u.rem(100);
+    display: flex;
+    align-items: center;
+    padding: u.rem(30);
+    justify-content: space-between;
+
+    & .img-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      & #round {
+        width: u.rem(30);
+        height: u.rem(30);
+        background-color: #D9D9D9;
+        border-radius: 50%;
+        margin-right: u.rem(10);
+      }
+
+      & span {
+        font-size: u.rem(14);
+        color: #737373;
+      }
+
+      & i {
+        font-size: u.rem(12);
+        color: #737373;
+        margin-left: u.rem(10);
+      }
+    }
+
+    & .icon-container {
+      font-size: u.rem(18);
+      color: #737373;
+    }
+  }
+
+  & .top-customers, .recent-orders {
+    width: 100%;
+    padding: u.rem(30);
+
+
+    & .header-container, .orders-header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #D9D9D9;
+      padding: u.rem(10) 0;
+
+
+      & .top-customer-container, .h2-container {
+
+        & h2 {
+          font-size: u.rem(16);
+          font-weight: 400;
+          margin: 0;
+        }
+      }
+
+      & .see-all {
+        font-size: u.rem(10);
+        color: #737373;
+      }
+    } 
+
+    & .customers-list, .recent-orders-list {
+      width: 100%;
+      margin-top: u.rem(20);
+      display: flex;
+      flex-direction: column;
+
+      & .customer, .customer-orders-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: u.rem(10) 0;
+        margin-top: u.rem(-8);
+        min-height: u.rem(40);
+
+        & .customer-image-details, .customer-order-image-details {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start; 
+          gap: u.rem(10);
+          flex: 1;
+
+          & .customer-image, .order-image {
+            width: u.rem(30);
+            height: u.rem(30);
+            background-color: #D9D9D9;
+            border-radius: 50%;
+            display: block;
+            flex-shrink: 0;
+          }
+
+          // Add a wrapper for name and purchase
+          & .customer-info, .order-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            line-height: 1;
+
+            & .name, .product-name {
+              font-size: u.rem(14);
+              display: block;
+              margin-bottom: u.rem(4);
+              line-height: 1.2;
+              margin: 0;
+              margin-bottom: u.rem(2);
+            }
+
+            & .purchase, .category {
+              font-size: u.rem(10);
+              margin: 0;
+              line-height: 1.2;
+              color: #737373;
+            }
+          }
+        }
+
+        .customer-spent, .price { 
+          font-size: u.rem(14);
+          flex-shrink: 0;
+          text-align: right;
+          min-width: u.rem(60);
+        }
+      }
+    }
+  }
+
+  & .recent-orders {
+    margin-top:u.rem(-30);
+  }
+}

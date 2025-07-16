@@ -12,15 +12,12 @@ aside {
 }
 
 .logo {
-  border-bottom: 1px solid #D9D9D9;
-  width: 100%;
-  height: u.rem(100);
-}
-
-.logo {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid #D9D9D9;
+  width: 100%;
+  height: u.rem(100);
   
   & img {
     width: u.rem(70);
