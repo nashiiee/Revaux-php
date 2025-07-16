@@ -9,6 +9,7 @@ aside {
   top: 0;
   left: 0;
   bottom: 0;
+  background-color: #fff;
 
   @include u.breakpoint-down(small) {
     width: u.rem(100);

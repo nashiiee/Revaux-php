@@ -47,6 +47,7 @@ aside {
   top: 0;
   left: 0;
   bottom: 0;
+  background-color: #fff;
 }
 @media (max-width: 43.74875em) {
   aside {
@@ -222,10 +223,14 @@ aside {
   display: block;
 }
 
+.transactions-page {
+  background-color: #F4F8FA;
+}
+
 main {
   display: flex;
   flex-direction: column;
-  margin-left: 17.5rem;
+  margin-left: 15.625rem;
   margin-top: 6.25rem;
   width: calc(100% - 17.5rem);
   min-height: calc(100vh - 6.25rem);
@@ -311,17 +316,66 @@ main .main-section-container .transactions-card .card--pending .contents .icon-c
 main .main-section-container .transactions-card .card--pending .contents .icon-container i {
   color: #3B82F6;
 }
+main table {
+  width: calc(100% - 3.125rem);
+  margin: 1.5625rem auto;
+  background-color: #FFFFFF;
+  border-radius: 0.625rem;
+  display: block;
+  height: 21.875rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+main table thead {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  position: sticky;
+  top: 0;
+  background-color: #FFFFFF;
+  z-index: 10;
+}
+main table tbody {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+main table tr {
+  display: table-row;
+  width: 100%;
+}
+main table th, main table td {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 0.625rem;
+  border-bottom: 1px solid #e2e2e2;
+  display: table-cell;
+}
+main table th:last-child, main table td:last-child {
+  text-align: right;
+}
+main table th:last-child i, main table td:last-child i {
+  text-align: right;
+  font-size: 1.125rem;
+}
+main table th {
+  font-weight: 500;
+  border-bottom: 1px solid #e2e2e2;
+}
 
 header {
   display: flex;
   align-items: center;
-  margin-left: 17.5rem;
+  margin-left: 15.625rem;
   width: calc(100% - 17.5rem);
   height: 6.25rem;
   justify-content: space-between;
   padding: 0 1.25rem;
   position: fixed;
   top: 0;
+  background-color: #fff;
+  border-radius: 0.625rem;
   z-index: 100;
 }
 header input {

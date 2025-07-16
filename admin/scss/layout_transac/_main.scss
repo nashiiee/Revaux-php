@@ -1,9 +1,13 @@
 @use '../utils/' as u;
 
+.transactions-page {
+  background-color: #F4F8FA
+}
+
 main {
   display: flex;
   flex-direction: column;
-  margin-left: u.rem(280);
+  margin-left: u.rem(250);
   margin-top: u.rem(100); // Account for fixed header height
   width: calc(100% - u.rem(280));
   min-height: calc(100vh - u.rem(100)); // Full viewport height minus header
@@ -115,6 +119,61 @@ main {
         }
       }
 
+    }
+  }
+
+  & table {
+    width: calc(100% - u.rem(50));
+    margin: u.rem(25) auto;
+    background-color: #FFFFFF;
+    border-radius: u.rem(10);
+    display: block;
+    height: u.rem(350);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    & thead {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+      position: sticky;
+      top: 0;
+      background-color: #FFFFFF;
+      z-index: 10;
+    }
+
+    & tbody {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    & tr {
+      display: table-row;
+      width: 100%;
+    }
+
+    & th, & td {
+      font-size: u.rem(14);
+      font-weight: 500;
+      text-align: center;
+      padding: u.rem(10);
+      border-bottom: 1px solid #e2e2e2;
+      display: table-cell;
+
+      &:last-child {
+        text-align: right;
+        
+        & i {
+          text-align: right;
+          font-size: u.rem(18);
+        }
+      }
+    }
+
+    & th {
+      font-weight: 500;
+      border-bottom: 1px solid #e2e2e2;
     }
   }
 }

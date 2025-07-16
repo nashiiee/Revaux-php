@@ -3,13 +3,15 @@
 header {
   display: flex;
   align-items: center;
-  margin-left: u.rem(280);
+  margin-left: u.rem(250);
   width: calc(100% - u.rem(280));
   height: u.rem(100);
   justify-content: space-between;
   padding: 0 u.rem(20);
   position: fixed;
   top: 0;
+  background-color: #fff;
+  border-radius: u.rem(10);;
   z-index: 100;
 
   & input {
