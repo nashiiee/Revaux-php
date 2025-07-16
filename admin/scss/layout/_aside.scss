@@ -9,6 +9,55 @@ aside {
   top: 0;
   left: 0;
   bottom: 0;
+
+  @include u.breakpoint-down(small) {
+    width: u.rem(100);
+    .logo {
+
+      & img {
+        width: u.rem(50);
+        height: u.rem(50);
+        margin-left: 0;
+      }
+
+      & span {
+        display: none;
+      }
+    }
+
+    .nav-links{
+      & li {
+        & a {
+          & i {
+            font-size: u.rem(16);
+            margin: 0 auto;
+          }
+          & span {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .logout-container {
+      & a {
+        & i {
+          font-size: u.rem(16);
+          margin: 0 auto;
+        }
+        & span {
+          display: none;
+        }
+      }
+    }
+
+    .links {
+
+      & .tools-description {
+        font-size: u.rem(14);
+      }
+    }
+  }
 }
 
 .logo {

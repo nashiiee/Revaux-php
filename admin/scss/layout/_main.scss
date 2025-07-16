@@ -8,14 +8,32 @@ main {
   margin-left: u.rem(250);
   // background-color: aqua;
 
+  @include u.breakpoint-down(small) {
+    width: calc(100% - u.rem(100));
+    margin-left: u.rem(100);
+    padding: 0 u.rem(10);
+  }
+
   & .dashboard-header {
     padding: u.rem(30) u.rem(20) u.rem(20) 0;
     border-bottom: u.rem(1) solid #dee2e6;
+
+    @include u.breakpoint-down(small) {
+      padding: u.rem(20) u.rem(10) u.rem(15) 0;
+    }
 
     & h1 {
       font-size: u.rem(24);
       margin: 0;
       font-weight: 400;
+
+      @include u.breakpoint-down(medium) {
+        font-size: u.rem(20);
+      }
+
+      @include u.breakpoint-down(small) {
+        font-size: u.rem(18);
+      }
       
     }
 
@@ -23,12 +41,25 @@ main {
       font-size: u.rem(12);
       color: #6c757d;
       margin: u.rem(4) 0;
+
+      @include u.breakpoint-down(small) {
+        font-size: u.rem(11);
+      }
     }
   }
 
   & .dashboard-cards {
     display: flex;
     align-items: center;
+
+    @include u.breakpoint-down(medium) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    @include u.breakpoint-down(small) {
+      gap: u.rem(10);
+    }
 
     & .card {
       background-color: #E8F9FF;
@@ -38,25 +69,57 @@ main {
       margin-top: u.rem(20);
       border-radius: u.rem(10);
 
+      @include u.breakpoint-down(medium) {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: u.rem(10);
+      }
+
+      @include u.breakpoint-down(small) {
+        height: u.rem(120);
+        margin-top: u.rem(10);
+        margin-bottom: u.rem(-10);
+      }
+
       & .contents {
         margin: u.rem(20);
+
+        @include u.breakpoint-down(small) {
+          margin: u.rem(15);
+        }
       }
 
       & h2 {
         font-size: u.rem(32);
         font-weight: 400;
         margin-bottom: 0;
+
+        @include u.breakpoint-down(medium) {
+          font-size: u.rem(28);
+        }
+
+        @include u.breakpoint-down(small) {
+          font-size: u.rem(24);
+        }
       }
 
       & p {
         font-size: u.rem(10);
         margin: u.rem(8) 0;
+
+        @include u.breakpoint-down(small) {
+          font-size: u.rem(9);
+        }
       }
 
       & h4 {
         font-size: u.rem(16);
         margin: 0;
         font-weight: 500;
+
+        @include u.breakpoint-down(small) {
+          font-size: u.rem(14);
+        }
       }
 
       &--revenue {
@@ -68,6 +131,13 @@ main {
         @extend .card;
         background-color: #DBE8FC;
         margin-right: 0;
+
+        @include u.breakpoint-down(medium) {
+          margin-right: 0;
+        }
+        @include u.breakpoint-down(small) {
+          margin-bottom: u.rem(5);
+        }
       }
     } 
   }
@@ -75,16 +145,26 @@ main {
 
   & .chart-container {
     margin: u.rem(20) auto;
-    height: u.rem(200);
+    height: u.rem(400);
     background-color: rgb(183, 191, 255);
     width: 100%;
     border-radius: u.rem(10);
+
+    @include u.breakpoint-down(small) {
+      margin: u.rem(15) auto;
+      height: u.rem(150);
+    }
   }
 
   & table {
     margin: u.rem(20) auto;
     width: 100%;
     border-radius: u.rem(10);
+
+    @include u.breakpoint-down(small) {
+      margin: u.rem(15) auto;
+      font-size: u.rem(10);
+    }
 
     & th {
      
@@ -96,6 +176,11 @@ main {
       border-bottom: 1px solid #dee2e6;
       font-size: u.rem(12);
       font-weight: 400;
+
+      @include u.breakpoint-down(small) {
+        padding: u.rem(8);
+        font-size: u.rem(10);
+      }
     }
 
     & .table-image {
@@ -105,6 +190,13 @@ main {
       object-fit: cover;
       background-color: #6c757d;
       margin: 0 auto;
+
+      @include u.breakpoint-down(small) {
+        width: u.rem(25);
+        height: u.rem(25);
+      }
     }
   }
+
+
 }
