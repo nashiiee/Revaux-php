@@ -233,12 +233,83 @@ main {
   margin-right: 1.25rem;
 }
 main .main-section-container {
-  background-color: #f4f4f4;
+  background-color: #FCFCFC;
   border-radius: 1.25rem;
   width: 100%;
   height: 31.25rem;
   display: block;
   flex: 1;
+}
+main .main-section-container h2 {
+  font-size: 1.5rem;
+  padding: 1.25rem 1.875rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+main .main-section-container .transactions-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
+}
+main .main-section-container .transactions-card .card, main .main-section-container .transactions-card .card--pending, main .main-section-container .transactions-card .card--refunds, main .main-section-container .transactions-card .card--successful {
+  width: 13.125rem;
+  height: 6.25rem;
+  background-color: #fff;
+  border-radius: 1.25rem;
+  box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.25);
+}
+main .main-section-container .transactions-card .card .contents, main .main-section-container .transactions-card .card--pending .contents, main .main-section-container .transactions-card .card--refunds .contents, main .main-section-container .transactions-card .card--successful .contents {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  height: 100%;
+  padding-left: 0.75rem;
+}
+main .main-section-container .transactions-card .card .contents .icon-container, main .main-section-container .transactions-card .card--pending .contents .icon-container, main .main-section-container .transactions-card .card--refunds .contents .icon-container, main .main-section-container .transactions-card .card--successful .contents .icon-container {
+  width: 3.125rem;
+  height: 3.125rem;
+  background-color: #F7F7F7;
+  border-radius: 0.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main .main-section-container .transactions-card .card .contents .icon-container i, main .main-section-container .transactions-card .card--pending .contents .icon-container i, main .main-section-container .transactions-card .card--refunds .contents .icon-container i, main .main-section-container .transactions-card .card--successful .contents .icon-container i {
+  font-size: 1.5rem;
+}
+main .main-section-container .transactions-card .card .contents .text-container, main .main-section-container .transactions-card .card--pending .contents .text-container, main .main-section-container .transactions-card .card--refunds .contents .text-container, main .main-section-container .transactions-card .card--successful .contents .text-container {
+  margin-left: 0.625rem;
+}
+main .main-section-container .transactions-card .card .contents .text-container h5, main .main-section-container .transactions-card .card--pending .contents .text-container h5, main .main-section-container .transactions-card .card--refunds .contents .text-container h5, main .main-section-container .transactions-card .card--successful .contents .text-container h5 {
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin: 0;
+  padding: 0.3125rem 0;
+}
+main .main-section-container .transactions-card .card .contents .text-container p, main .main-section-container .transactions-card .card--pending .contents .text-container p, main .main-section-container .transactions-card .card--refunds .contents .text-container p, main .main-section-container .transactions-card .card--successful .contents .text-container p {
+  font-size: 0.875rem;
+  color: #737373;
+  margin: 0;
+}
+main .main-section-container .transactions-card .card--successful .contents .icon-container {
+  background-color: #E6FFF7;
+}
+main .main-section-container .transactions-card .card--successful .contents .icon-container i {
+  color: #10B981;
+}
+main .main-section-container .transactions-card .card--refunds .contents .icon-container {
+  background-color: #FFF5F5;
+}
+main .main-section-container .transactions-card .card--refunds .contents .icon-container i {
+  color: #EF4444;
+}
+main .main-section-container .transactions-card .card--pending .contents .icon-container {
+  background-color: #E6EFFE;
+}
+main .main-section-container .transactions-card .card--pending .contents .icon-container i {
+  color: #3B82F6;
 }
 
 header {
