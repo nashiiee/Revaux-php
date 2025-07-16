@@ -1,0 +1,65 @@
+@use '../utils/' as u;
+
+header {
+  display: flex;
+  align-items: center;
+  margin-left: u.rem(280);
+  width: calc(100% - u.rem(280));
+  height: u.rem(100);
+  justify-content: space-between;
+  padding: 0 u.rem(20);
+  position: fixed;
+  top: 0;
+  z-index: 100;
+
+  & input {
+    flex: 1;
+    max-width: 700px;
+    height: u.rem(40);
+    border-radius: u.rem(20);
+    padding: 0 u.rem(20);
+    border: none;
+    background-color: #F3F3F3;
+    font-size: u.rem(16);
+    color: #495057;
+
+    &::placeholder {
+      color: #6c757d;
+      font-size: u.rem(14);
+    }
+  }
+
+  & .admin-header-side {
+    display: flex;
+    align-items: center;
+    gap: u.rem(10);
+    padding: 0 u.rem(20);
+
+    & .image-container {
+      width: u.rem(30);
+      height: u.rem(30);
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #d9d9d9;
+
+      // & img {
+      //   width: 100%;
+      //   height: 100%;
+      //   object-fit: cover;
+      // }
+    }
+
+    & span {
+      font-size: u.rem(14);
+    }
+
+    & i {
+      font-size: u.rem(12);
+    }
+  }
+
+
+}
