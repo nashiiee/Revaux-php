@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Footwear | Revaux</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/web-app-2433/Revaux-php-main/Revaux-php/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">Revaux</div>
+        <input type="text" placeholder="Search Here..." class="search-bar">
+        <div class="nav-icons">
+            <span>🔔 Notifications</span>
+            <span>❓ FAQs</span>
+            <span>🤍 Wishlist</span>
+            <span>🛒 Cart</span>
+            <span>👤 Russo</span>
+        </div>
+    </header>
+
+    <div class="breadcrumb-bar">
+        <a href="/web-app-2433/Revaux-php-main/Revaux-php/index.html" class="breadcrumb-link">Home</a>
+        <span class="breadcrumb-separator">&gt;</span>
+        <a href="headwear.html" class="breadcrumb-link">Footwear</a>
+    </div>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h2>CATEGORY</h2>
+            <div class="category-dropdown">
+                <div class="dropdown-row">
+                    <a class="dropdown-link" href="headwear.html">Headwear</a>
+                    <span class="arrow" tabindex="0" aria-label="Toggle submenu">▶</span>
+                </div>
+                <ul class="submenu">
+                    <li>Caps</li>
+                    <li>Beanies</li>
+                    <li>Outdoors</li>
+                    <li>Formal</li>
+                    <li>Sports</li>
+                    <li>Protection</li>
+                    <li>Cultural</li>
+                </ul>
+            </div>
+            <div class="category-dropdown">
+                <div class="dropdown-row">
+                    <a class="dropdown-link" href="top.html">Tops</a>
+                    <span class="arrow" tabindex="0" aria-label="Toggle submenu">▶</span>
+                </div>
+                <ul class="submenu">
+                    <li>Shirts</li>
+                    <li>Formal</li>
+                    <li>Polos</li>
+                    <li>Hoodies</li>
+                    <li>Sports</li>
+                    <li>Sleeveless</li>
+                    <li>Cultural</li>
+                </ul>
+            </div>
+            <div class="category-dropdown">
+                <div class="dropdown-row">
+                    <a class="dropdown-link" href="bottom.html">Bottoms</a>
+                    <span class="arrow" tabindex="0" aria-label="Toggle submenu">▶</span>
+                </div>
+                <ul class="submenu">
+                    <li>Jeans</li>
+                    <li>Pants</li>
+                    <li>Shorts</li>
+                    <li>Sleepwear</li>
+                    <li>Sports</li>
+                    <li>Cargo</li>
+                    <li>Cultural</li>
+                </ul>
+            </div>
+            <div class="category-dropdown active">
+                <div class="dropdown-row">
+                    <a class="dropdown-link" href="footwear.html">Footwear</a>
+                    <span class="arrow" tabindex="0" aria-label="Toggle submenu">▶</span>
+                </div>
+                <ul class="submenu">
+                    <li>Sports</li>
+                    <li>Formal</li>
+                    <li>Boots</li>
+                    <li>Sandals</li>
+                    <li>Sneakers</li>
+                    <li>Utility</li>
+                    <li>Cultural</li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="products-section">
+            <div class="products-container">
+                <div class="products-header">
+                    <h2>Footwear</h2>
+                    <div class="custom-dropdown" id="sort-dropdown">
+                        <div class="custom-dropdown-selected" tabindex="0">Sort by: 
+                            <span id="sort-selected-text"> Default</span>
+                            <span class="custom-arrow">▼</span>
+                        </div>
+                        <ul class="custom-dropdown-list">
+                            <li data-value="default" class="active">Default</li>
+                            <li data-value="price-asc">Price: Low to High</li>
+                            <li data-value="price-desc">Price: High to Low</li>
+                            <li data-value="popularity">Popularity</li>
+                            <li data-value="newest">Newest</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/footwear1.png" alt="Footwear 1">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Classic White Sneakers</p>
+                            <div class="product-meta">
+                                <p class="price">₱2,199.00</p>
+                                <p class="product-sold">6.5k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/footwear2.png" alt="Footwear 2">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Leather Oxford Shoes</p>
+                            <div class="product-meta">
+                                <p class="price">₱3,499.00</p>
+                                <p class="product-sold">2.3k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/footwear3.png" alt="Footwear 3">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Slip-On Canvas Loafers</p>
+                            <div class="product-meta">
+                                <p class="price">₱1,299.00</p>
+                                <p class="product-sold">4.8k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/footwear4.png" alt="Footwear 4">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Outdoor Hiking Boots</p>
+                            <div class="product-meta">
+                                <p class="price">₱2,850.00</p>
+                                <p class="product-sold">1.9k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/footwear5.png" alt="Footwear 5">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Lightweight Running Shoes</p>
+                            <div class="product-meta">
+                                <p class="price">₱1,799.00</p>
+                                <p class="product-sold">5.2k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/footwear6.png" alt="Footwear 6">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Classic Brown Sandals</p>
+                            <div class="product-meta">
+                                <p class="price">₱950.00</p>
+                                <p class="product-sold">3.7k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/footwear7.png" alt="Footwear 7">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Formal Derby Shoes</p>
+                            <div class="product-meta">
+                                <p class="price">₱2,999.00</p>
+                                <p class="product-sold">1.5k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/footwear8.png" alt="Footwear 8">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">High-Top Basketball Shoes</p>
+                            <div class="product-meta">
+                                <p class="price">₱2,450.00</p>
+                                <p class="product-sold">2.8k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/footwear9.png" alt="Footwear 9">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Slip-Resistant Work Boots</p>
+                            <div class="product-meta">
+                                <p class="price">₱2,200.00</p>
+                                <p class="product-sold">1.2k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/footwear10.png" alt="Footwear 10">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Classic Flip-Flops</p>
+                            <div class="product-meta">
+                                <p class="price">₱350.00</p>
+                                <p class="product-sold">6.9k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/footwear11.png" alt="Footwear 11">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Premium Leather Boots</p>
+                            <div class="product-meta">
+                                <p class="price">₱3,800.00</p>
+                                <p class="product-sold">1.3k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/footwear12.png" alt="Footwear 12">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Utility Safety Shoes</p>
+                            <div class="product-meta">
+                                <p class="price">₱1,650.00</p>
+                                <p class="product-sold">2.4k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        document.querySelectorAll('.category-dropdown .arrow').forEach(arrow => {
+            arrow.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const parent = this.closest('.category-dropdown');
+                parent.classList.toggle('active');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+  const dropdown = document.getElementById('sort-dropdown');
+  const selected = dropdown.querySelector('.custom-dropdown-selected');
+  const list = dropdown.querySelector('.custom-dropdown-list');
+  const options = dropdown.querySelectorAll('.custom-dropdown-list li');
+  const selectedText = document.getElementById('sort-selected-text');
+
+  // Toggle dropdown open/close
+  selected.addEventListener('click', function(e) {
+    dropdown.classList.toggle('open');
+  });
+
+  // Option click
+  options.forEach(option => {
+    option.addEventListener('click', function(e) {
+      options.forEach(opt => opt.classList.remove('active'));
+      this.classList.add('active');
+      selectedText.textContent = this.textContent;
+      dropdown.classList.remove('open');
+      // You can trigger your sort logic here using this.dataset.value
+    });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove('open');
+    }
+  });
+
+  // Keyboard accessibility
+  selected.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      dropdown.classList.toggle('open');
+    }
+    if (e.key === 'Escape') {
+      dropdown.classList.remove('open');
+    }
+  });
+});
+    </script>
+</body>
+</html>
