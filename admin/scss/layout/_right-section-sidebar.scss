@@ -15,8 +15,9 @@
     margin-top: u.rem(20);
   }
 
-  @include u.breakpoint-down(small) {
+  @include u.breakpoint-down(xsmall) {
     padding: 0 u.rem(10);
+    display: none;
   }
 
   & .profile {
