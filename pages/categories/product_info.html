@@ -67,7 +67,7 @@
                     <div class="pd-quantity">
                         <label>Quantity:</label>
                         <button class="qty-btn-minus">–</button>
-                        <input type="text" value="1" readonly>
+                        <input type="text" class="qty-input" value="1" min="1">
                         <button class="qty-btn-plus">+</button>
                     </div>
 
@@ -146,6 +146,7 @@
             });
         });
     </script>
+    <!-- JS for the zoom effect -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const mainImg      = document.querySelector('.pd-main-image img');
@@ -179,26 +180,53 @@
             });
         });
     </script>
+    <!-- JS for the "Read More" toggle -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-        const wrapper = document.querySelector('.pd-about-wrapper');
-        const toggle  = document.querySelector('.pd-about-toggle');
+            const wrapper = document.querySelector('.pd-about-wrapper');
+            const toggle  = document.querySelector('.pd-about-toggle');
 
-        // Only show toggle if content is taller than limit(10 lines)
-        const lineHeight = parseFloat(getComputedStyle(wrapper).lineHeight);
-        const maxH = lineHeight * 10;
-        if (wrapper.scrollHeight <= maxH) {
-            toggle.style.display = 'none';
-            return;
-        }
+            // Only show toggle if content is taller than limit(10 lines)
+            const lineHeight = parseFloat(getComputedStyle(wrapper).lineHeight);
+            const maxH = lineHeight * 10;
+            if (wrapper.scrollHeight <= maxH) {
+                toggle.style.display = 'none';
+                return;
+            }
 
-        // On click, toggle expanded class + change button text
-        toggle.addEventListener('click', () => {
-            const expanded = wrapper.classList.toggle('expanded');
-            toggle.textContent = expanded
-            ? '▲ See less'
-            : '▼ See more';
+            // On click, toggle expanded class + change button text
+            toggle.addEventListener('click', () => {
+                const expanded = wrapper.classList.toggle('expanded');
+                toggle.textContent = expanded
+                ? '▲ See less'
+                : '▼ See more';
+            });
         });
+    </script>
+    <!-- JS for the quantity input -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const minusBtn = document.querySelector('.qty-btn-minus');
+            const plusBtn = document.querySelector('.qty-btn-plus');
+            const qtyInput = document.querySelector('.qty-input');
+
+            minusBtn.addEventListener('click', () => {
+                let currentValue = parseInt(qtyInput.value);
+                if (currentValue > 1) {
+                qtyInput.value = currentValue - 1;
+                }
+            });
+
+            plusBtn.addEventListener('click', () => {
+                let currentValue = parseInt(qtyInput.value);
+                qtyInput.value = currentValue + 1;
+            });
+
+            qtyInput.addEventListener('input', () => {
+                if (qtyInput.value < 1 || isNaN(qtyInput.value)) {
+                qtyInput.value = 1;
+                }
+            });
         });
     </script>
 
