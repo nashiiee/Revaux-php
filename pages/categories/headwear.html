@@ -5,7 +5,7 @@
     <title>Headwear | Revaux</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- make sure to change this path -->
-    <link rel="stylesheet" href="/web-app-2433/Revaux-php-main/Revaux-php/css/style.css">
+    <link rel="stylesheet" href="/web-app-2433/Revaux-php-main/Revaux-php/css/categories.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -107,14 +107,15 @@
                 <div class="products-header">
                     <h2>Headwear</h2>
                     <div class="custom-dropdown" id="sort-dropdown">
-                        <div class="custom-dropdown-selected" tabindex="0"> Sort by:
+                        <div class="custom-dropdown-selected" tabindex="0"> 
+                            <span class="sort-label">Sort by: </span>
                             <span id="sort-selected-text">Default</span>
                             <span class="custom-arrow">▼</span>
                         </div>
                         <ul class="custom-dropdown-list">
                             <li data-value="default" class="active">Default</li>
-                            <li data-value="price-asc">Price: Low to High</li>
-                            <li data-value="price-desc">Price: High to Low</li>
+                            <li data-value="price-asc">Price (Low to High)</li>
+                            <li data-value="price-desc">Price (High to Low)</li>
                             <li data-value="popularity">Popularity</li>
                             <li data-value="newest">Newest</li>
                         </ul>
