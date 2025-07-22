@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Revaux - Log In</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/authentication.css"> 
+</head>
+<body>
+  
+  <main>
+    <section>
+      <div class="logo-container">
+        <a href="../../index.html" class="logo">
+          <img src="../../images/revaux-dark.png" alt="Revaux">
+        </a>
+        <a href="../../index.html" class="brand-name">Revaux</a> 
+      </div>
+
+      <h2>Welcome Back, Gentleman</h2>
+
+      <form method="POST" action="login.php" class="login-form">
+        <label for="username">Email or Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <p class="forgot-password">
+          <a href="">Forgot Password?</a>
+        </p>
+
+        <button type="submit">Log In</button>
+      </form>
+
+      <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+
+      <p class="or-text">────────────── or ──────────────</p>
+
+      <button type="button" class="facebook">
+        <img src="../../images/facebook-icon.png" alt="Facebook">
+        Continue with Facebook
+      </button>
+
+      <button type="button" class="google">
+        <img src="../../images/google-icon.png" alt="Google">
+        Continue with Google
+      </button>
+
+      <small>
+        By creating your account or signing in, you agree to our <br>
+        <a href="../terms-guest.html">Terms & Conditions</a> and
+        <a href="../privacy-guest.html">Privacy Policy</a>
+      </small>
+    </section>
+  </main>
+
+</body>
+</html>

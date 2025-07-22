@@ -1,0 +1,207 @@
+/* Header Styling */
+header {
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  background-color: #111111;
+  padding: 0 40px; 
+  width: 100%;
+  box-sizing: border-box;
+  height: 120px; 
+  gap: 180px;
+}
+
+/* Logo and Brand Name Container */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 30px;
+  transition: filter 0.3s ease;
+}
+
+/* Logo Styling */
+.logo {
+  width: 50px;
+  height: 50px;
+  transition: filter 0.3s ease;
+}
+
+/* Logo Image */
+.logo img {
+  width: 100%;
+  height: auto;
+  transition: filter 0.3s ease;
+}
+
+/* Hover Effect on Logo */
+.logo-container:hover .logo img {
+  filter: grayscale(100%) brightness(60%);
+}
+
+.logo-container:hover .brand-name {
+  color: #777777;
+}
+
+/* Brand Name Styling */
+.brand-name {
+  color: #FFFFFF;
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  text-decoration: none;
+  display: inline-block;
+  align-self: center;
+  transition: color 0.3s ease;
+}
+
+/* Search Bar Styling */
+.search-bar {
+  position: relative;
+  display: flex;
+}
+
+.search-bar input {
+  padding: 12px 15px;
+  border: 1px solid #D9D9D9;
+  background-color: #D9D9D9;
+  color: #111111;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 5px;
+  width: 700px;
+  font-size: 16px;
+}
+
+/* Placeholder Text Styling for Input Fields */
+.search-bar input::placeholder {
+  color: #111111;
+  opacity: 1;
+}
+
+/* Search Button Styling */
+.search-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #111111;
+}
+
+.search-btn i {
+  font-size: 22px;
+}
+
+/* CTA (Call to Action) Buttons Container */
+.cta-buttons {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+/* Download Button Styling */
+.download-btn {
+  background-color: #A8A8A8;
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px;
+  margin-right: 30px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+/* Hover Effect for Download Button */
+.download-btn:hover {
+  background-color: #777777;
+  border-color: #777777;
+}
+
+/* Log In Button Styling */
+.auth-btn {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  margin-left: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+  white-space: nowrap; 
+}
+
+/* Hover Effect for Log In Button */
+.auth-btn:hover {
+  color: #777777;
+}
+
+/* Separator between buttons */
+.separator {
+  color: #FFFFFF;
+  margin: 0 10px;
+}
+
+/* Responsive Design for desktop and large screens */
+@media (min-width: 1200px) {
+  header {
+    padding: 35px 40px;
+    height: 120px;
+  }
+
+  .search-bar input {
+    width: 700px;
+  }
+
+  .download-btn {
+    font-size: 17px;
+    padding: 10px 20px;
+  }
+
+  .auth-btn {
+    font-size: 16px;
+  }
+
+  .brand-name {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 20px;
+  }
+
+  .logo-container {
+    margin-left: 0;
+    margin-bottom: 15px;
+  }
+
+  .search-bar {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .search-bar input {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .download-btn,
+  .auth-btn {
+    width: 100%;
+    text-align: center;
+    margin: 5px 0;
+  }
+
+  .separator {
+    display: none;
+  }
+}
