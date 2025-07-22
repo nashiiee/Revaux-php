@@ -1,0 +1,326 @@
+/* Body Background and Container Styling */
+body {
+    background-image: url('../images/auth.png');
+    background-size: cover;
+    background-position: center;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh; 
+    margin: 0;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+
+/* Content Container for Body */
+section {
+    background-color: #D9D9D9;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo and Brand Name Container */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: filter 0.3s ease;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    transition: filter 0.3s ease;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+    transition: filter 0.3s ease;
+}
+
+.logo-container:hover .logo img {
+    filter: invert(50%) saturate(150%) brightness(0.8);
+}
+
+.brand-name {
+    color: #000000;
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    text-decoration: none;
+    display: inline-block;
+    align-self: center;
+    transition: color 0.3s ease;
+}
+
+.logo-container:hover .brand-name {
+    color: #555555;
+}
+
+/* Heading Styling */
+h2 {
+    text-align: center;
+    font-size: clamp(20px, 2.5vw, 24px); 
+    margin-bottom: 20px;
+}
+
+/* Global Form Styling for Both Login and Signup */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #111111;
+    outline: none;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #006EFF;
+    box-shadow: 0 0 3px #006EFF;
+}
+
+/* Message Text for Username and Password */
+.input-message {
+    display: none;
+    font-size: 12px;
+    color: #575757;
+    margin-top: 5px;
+}
+
+input[type="text"]:focus + #username-message,
+input[type="password"]:focus + #password-message {
+    display: block;
+}
+
+/* Specific Adjustments for Login Form */
+.login-form input[type="text"],
+.login-form input[type="email or username"] {
+    margin-bottom: 5px;
+}
+
+/* Specific Adjustments for Sign-Up Form */
+.signup-form input[type="text"],
+.signup-form input[type="password"] {
+    margin-bottom: 5px;
+}
+
+.signup-form button[type="submit"] {
+    margin-top: 5px;
+}
+
+button[type="submit"] {
+    background-color: #4495FF;
+    color: #FFFFFF;
+    font-size: 16px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 5px;
+}
+
+button[type="submit"]:hover {
+    background-color: #006EFF;
+}
+
+button[type="submit"]:focus {
+    outline: 2px solid #006EFF;
+}
+
+/* Already Have an Account (Link) */
+p {
+    text-align: center;
+    color: #575757;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+p a {
+    color: #006EFF;
+    text-decoration: none;
+}
+
+p a:hover {
+    color: #333333;
+    text-decoration: underline;
+}
+
+/* "OR" Text */
+p.or-text {
+    text-align: center;
+    color: #575757;
+    margin: 5px 0;
+}
+
+/* Forgot Password Link */
+p.forgot-password {
+    text-align: right;
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+}
+
+p.forgot-password a {
+    color: #006EFF;
+    text-decoration: none;
+}
+
+p.forgot-password a:hover {
+    color: #333333;
+    text-decoration: underline;
+}
+
+/* Social Media Buttons */
+button[type="button"] {
+    background-color: #949393;
+    color: #FFFFFF;
+    font-size: 16px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+button[type="button"]:hover {
+    background-color: #777777;
+}
+
+button[type="button"]:focus {
+    outline: 2px solid #555555;
+}
+
+/* Facebook Icon Styling */
+button.facebook img {
+    width: 26px;
+    height: 24px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* Google Icon Styling */
+button.google img {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* Terms and Conditions & Privacy Policy */
+small {
+    display: block;
+    text-align: center;
+    color: #575757;
+    font-size: 12px;
+}
+
+small a {
+    color: #575757;
+    text-decoration: none;
+}
+
+small a:hover {
+    color: #333333;
+    text-decoration: underline;
+}
+
+/* Responsive Design for desktop and large screens */
+@media (min-width: 1200px) {
+  section {
+    max-width: 400px;
+    padding: 40px;
+  }
+
+  .brand-name {
+    font-size: 34px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  button[type="submit"],
+  button[type="button"] {
+    font-size: 18px;
+    padding: 14px;
+  }
+}
+
+/* Responsive Design for tablets and mobile screens */
+@media (max-width: 768px) {
+  body {
+    background-size: cover;
+    background-position: top center;
+    padding: 0 10px;
+  }
+
+  main {
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+
+  section {
+    padding: 20px;
+    margin-top: 50px;
+  }
+
+  .brand-name {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  button[type="submit"],
+  button[type="button"] {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  p,
+  small {
+    font-size: 12px;
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo-container {
+    gap: 3px;
+    margin-bottom: 15px;
+  }
+}

@@ -1,0 +1,225 @@
+/* Header Styling */
+header {
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  background-color: #111111;
+  padding: 0 40px; 
+  width: 100%;
+  box-sizing: border-box;
+  height: 120px; 
+  gap: 180px;
+}
+
+/* Logo and Brand Name Container */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 30px;
+  transition: filter 0.3s ease;
+}
+
+/* Logo Styling */
+.logo {
+  width: 50px;
+  height: 50px;
+  transition: filter 0.3s ease;
+}
+
+/* Logo Image */
+.logo img {
+  width: 100%;
+  height: auto;
+  transition: filter 0.3s ease;
+}
+
+/* Hover Effect on Logo */
+.logo-container:hover .logo img {
+  filter: grayscale(100%) brightness(60%);
+}
+
+.logo-container:hover .brand-name {
+  color: #777777;
+}
+
+/* Brand Name Styling */
+.brand-name {
+  color: #FFFFFF;
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  text-decoration: none;
+  display: inline-block;
+  align-self: center;
+  transition: color 0.3s ease;
+}
+
+/* Search Bar Styling */
+.search-bar {
+  position: relative;
+  display: flex;
+  flex: 1;
+  max-width: 700px;
+}
+
+.search-bar input {
+  padding: 12px 15px;
+  border: 1px solid #D9D9D9;
+  background-color: #D9D9D9;
+  color: #111111;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 16px;
+}
+
+.search-bar input::placeholder {
+  color: #111111;
+  opacity: 1;
+}
+
+/* Search Button Styling */
+.search-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #111111;
+}
+
+.search-btn i {
+  font-size: 22px;
+}
+
+/* CTA (Call to Action) Buttons Container */
+.cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  left: -20px;
+}
+
+/* Top Buttons Styling */
+.top-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: center;
+  margin-left: -100px;
+}
+
+.top-buttons button {
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.top-buttons button span.material-icons-outlined {
+  font-size: 18px;
+}
+
+/* Bottom Buttons Styling */
+.bottom-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: center;
+}
+
+.bottom-buttons button {
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.bottom-buttons button span.material-icons-outlined {
+  font-size: 24px;
+}
+
+/* CTA Buttons Common Styling */
+.cta-buttons button {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.cta-buttons button:hover {
+  color: #777777;
+}
+
+.cta-buttons button:hover i {
+  color: #777777;
+}
+
+/* Responsive Design for desktop and large screens */
+@media (min-width: 1200px) {
+  header {
+    padding: 35px 40px;
+  }
+
+  .brand-name {
+    font-size: 30px;
+  }
+
+  .search-bar {
+    max-width: 700px;
+  }
+
+  .top-buttons,
+  .bottom-buttons {
+    gap: 40px;
+  }
+}
+
+/* For tablets and mobile screens */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    height: auto;
+  }
+
+  .logo-container {
+    margin-left: 0;
+    margin-bottom: 15px;
+  }
+
+  .search-bar {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .cta-buttons {
+    position: static;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .top-buttons,
+  .bottom-buttons {
+    flex-direction: column;
+    gap: 15px;
+    margin-left: 0;
+  }
+
+  .top-buttons button,
+  .bottom-buttons button {
+    width: 100%;
+    justify-content: flex-start;
+    font-size: 16px;
+  }
+
+  .search-bar input {
+    width: 100%;
+    font-size: 14px;
+  }
+}
