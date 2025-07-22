@@ -48,6 +48,7 @@ aside {
   left: 0;
   bottom: 0;
   background-color: #fff;
+  max-width: 13.75rem;
 }
 @media (max-width: 43.74875em) {
   aside {
