@@ -163,7 +163,7 @@ body {
   padding-right: 0.5rem;
 }
 
-.products-section::-webkit-scrollbar {
+/* .products-section::-webkit-scrollbar {
   width: 6px;
 }
 .products-section::-webkit-scrollbar-thumb {
@@ -172,7 +172,7 @@ body {
 }
 .products-section::-webkit-scrollbar-track {
   background-color: transparent;
-}
+} */
 
 .products-container {
   width: 992px;
