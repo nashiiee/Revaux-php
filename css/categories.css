@@ -72,21 +72,9 @@ body {
 .sidebar {
   width: 250px;
   max-height: 100%;
-  overflow-y: auto;
   padding-right: 0.5rem;
   border-right: 1px solid #ddd;
   flex-shrink: 0;
-}
-
-.sidebar::-webkit-scrollbar {
-  width: 6px;
-}
-.sidebar::-webkit-scrollbar-thumb {
-  background-color: #999;
-  border-radius: 3px;
-}
-.sidebar::-webkit-scrollbar-track {
-  background-color: transparent;
 }
 
 .sidebar h2 {
@@ -158,20 +146,8 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
   height: 100%;
   padding-right: 0.5rem;
-}
-
-.products-section::-webkit-scrollbar {
-  width: 6px;
-}
-.products-section::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  border-radius: 3px;
-}
-.products-section::-webkit-scrollbar-track {
-  background-color: transparent;
 }
 
 .products-container {
