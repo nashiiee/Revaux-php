@@ -4,7 +4,7 @@ footer {
   color: #ffffff;
   font-family: 'Poppins', sans-serif;
   padding: 20px 0;
-  margin-top: auto;
+  box-sizing: border-box;
 }
 
 .footer-container {
