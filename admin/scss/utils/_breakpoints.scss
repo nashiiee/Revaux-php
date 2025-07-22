@@ -9,6 +9,7 @@ $breakpoints-up: (
 
 // 699.98px, 899.98px, 1439.98px
 $breakpoints-down: (
+  'xsmall': f.em(499.98),
   'small': f.em(699.98),
   'medium': f.em(899.98),
   'large': f.em(1439.98),

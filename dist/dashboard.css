@@ -439,9 +439,10 @@ main table .table-image {
     margin-top: 1.25rem;
   }
 }
-@media (max-width: 43.74875em) {
+@media (max-width: 31.24875em) {
   .right-section-sidebar {
     padding: 0 0.625rem;
+    display: none;
   }
 }
 .right-section-sidebar .profile {
