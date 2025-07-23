@@ -34,7 +34,7 @@
     <div class="breadcrumb-bar">
         <a href="../../../index.html" class="breadcrumb-link">Home</a>
         <span class="breadcrumb-separator">&gt;</span>
-        <a href="headwear.html" class="breadcrumb-link">Headwear</a>
+        <a href="../categories/headwear.html" class="breadcrumb-link">Headwear</a>
         <span class="breadcrumb-separator">&gt;</span>
         <span class="breadcrumb-current">Product Details</span>
     </div>
@@ -63,14 +63,16 @@
 
                     <div class="pd-pricing">
                         <p class="pd-price">₱249.99</p>
-                        <p class="pd-discount">‑50% <span class="pd-original-price">₱500.00</span></p>
+                        <p class="pd-discount">–50% <span class="pd-original-price">₱500.00</span></p>
                     </div>
 
                     <div class="pd-quantity">
                         <label>Quantity:</label>
-                        <button class="qty-btn-minus">–</button>
-                        <input type="text" class="qty-input" value="1" min="1">
-                        <button class="qty-btn-plus">+</button>
+                        <span>
+                            <button class="qty-btn-minus">–</button>
+                            <input type="text" class="qty-input" value="1" min="1">
+                            <button class="qty-btn-plus">+</button>
+                        </span>
                     </div>
 
                     <div class="pd-actions">
@@ -211,26 +213,83 @@
             const minusBtn = document.querySelector('.qty-btn-minus');
             const plusBtn = document.querySelector('.qty-btn-plus');
             const qtyInput = document.querySelector('.qty-input');
+            const minQty = 1;
 
-            minusBtn.addEventListener('click', () => {
+            let holdTimeout;
+            let holdInterval;
+            let holdSpeed = 300; // initial repeat speed in ms
+            let speedStep = 25;  // how much faster each step gets
+            let minSpeed = 50;   // fastest allowed speed
+
+            function updateMinusBtnState() {
+                const currentValue = parseInt(qtyInput.value);
+                minusBtn.disabled = currentValue <= minQty;
+            }
+
+            function changeQty(amount) {
                 let currentValue = parseInt(qtyInput.value);
-                if (currentValue > 1) {
-                qtyInput.value = currentValue - 1;
+                if (isNaN(currentValue)) currentValue = minQty;
+                let newValue = currentValue + amount;
+                if (newValue < minQty) newValue = minQty;
+                qtyInput.value = newValue;
+                updateMinusBtnState();
+            }
+
+            function startHold(amount) {
+                // First click
+                changeQty(amount);
+
+                // Wait 0.5s before repeating
+                holdTimeout = setTimeout(() => {
+                    let speed = holdSpeed;
+                    function repeat() {
+                        changeQty(amount);
+                        speed = Math.max(minSpeed, speed - speedStep);
+                        holdInterval = setTimeout(repeat, speed);
+                    }
+                    repeat();
+                }, 500);// <-- this is the delay before auto increment starts
+            }
+
+            function stopHold() {
+                clearTimeout(holdTimeout);
+                clearTimeout(holdInterval);
+            }
+
+            // Button events
+            minusBtn.addEventListener('mousedown', () => startHold(-1));
+            plusBtn.addEventListener('mousedown', () => startHold(1));
+            document.addEventListener('mouseup', stopHold);
+            document.addEventListener('mouseleave', stopHold);
+
+            // Touch support (optional)
+            minusBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                startHold(-1);
+            }, { passive: false });
+
+            plusBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                startHold(1);
+            }, { passive: false });
+
+            document.addEventListener('touchend', stopHold);
+
+            // Manual input fix
+            qtyInput.addEventListener('blur', () => {
+                const value = parseInt(qtyInput.value);
+                if (isNaN(value) || value < minQty) {
+                    qtyInput.value = minQty;
                 }
+                updateMinusBtnState();
             });
 
-            plusBtn.addEventListener('click', () => {
-                let currentValue = parseInt(qtyInput.value);
-                qtyInput.value = currentValue + 1;
-            });
-
-            qtyInput.addEventListener('input', () => {
-                if (qtyInput.value < 1 || isNaN(qtyInput.value)) {
-                qtyInput.value = 1;
-                }
-            });
+            updateMinusBtnState();
         });
     </script>
+
+
+
 
 </body>
 </html>
