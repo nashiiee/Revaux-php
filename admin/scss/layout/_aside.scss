@@ -14,6 +14,7 @@ aside {
 
   @include u.breakpoint-down(small) {
     width: u.rem(100);
+    
     .logo {
 
       & img {

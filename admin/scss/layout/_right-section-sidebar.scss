@@ -2,16 +2,29 @@
 
 
 .right-section-sidebar {
-  width: 100%;
-  margin-left: u.rem(40);
-
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: u.rem(360);
+  max-width: u.rem(360);
+  
+  // At 1280px and above, maintain 360px width
+  @media (min-width: 1280px) {
+    width: u.rem(306);
+    max-width: u.rem(306);
+  }
+  
   @include u.breakpoint-down(large) {
-    margin-left: u.rem(20);
+    width: u.rem(280);
+    max-width: u.rem(280);
   }
 
   @include u.breakpoint-down(medium) {
+    position: relative;
     width: 100%;
-    margin-left: 0;
+    max-width: none;
+    right: auto;
+    top: auto;
     margin-top: u.rem(20);
   }
 
