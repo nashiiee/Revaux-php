@@ -65,7 +65,8 @@ main {
   & .dashboard-cards {
     display: flex;
     align-items: center;
-
+    flex-wrap: wrap;
+    
     @include u.breakpoint-down(medium) {
       flex-direction: column;
       align-items: stretch;

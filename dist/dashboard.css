@@ -291,6 +291,7 @@ main .dashboard-header p {
 main .dashboard-cards {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 @media (max-width: 56.24875em) {
   main .dashboard-cards {
