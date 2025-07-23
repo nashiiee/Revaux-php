@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../../images/revaux-light.png" />
+  <title>Account Management | Revaux</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/account_management.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <div class="header-container">
+      <!-- Logo -->
+      <div class="logo-container">
+        <img src="../../images/revaux-light.png" alt="Revaux Logo" class="logo" />
+        <span class="brand-name">Revaux</span>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <input type="text" placeholder="Search Here" />
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+          <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+        </svg>
+      </div>
+
+      <!-- Navigation Icons -->
+      <nav class="nav-icons">
+        <!-- Top Row -->
+        <div class="nav-row top-row">
+          <a href="#" class="vertical-icon notification-icon">
+            <span class="material-icons">notifications</span>
+            <span class="icon-badge">2</span>
+            <span>Notification</span>
+          </a>
+          <a href="#" class="vertical-icon">
+            <span class="material-icons">help_outline</span>
+            <span>FAQS</span>
+          </a>
+        </div>
+
+        <!-- Bottom Row -->
+        <div class="nav-row bottom-row">
+          <a href="#" class="vertical-icon">
+            <span class="material-icons">favorite_border</span>
+            <span>Wishlist</span>
+          </a>
+          <a href="#" class="vertical-icon">
+            <span class="material-icons">shopping_cart</span>
+            <span>Cart</span>
+          </a>
+          <a href="#" class="vertical-icon">
+            <span class="material-icons">person</span>
+            <span>Russo</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <div class="profile-section">
+      <div class="profile-circle"></div>
+      <div class="profile-actions">
+        <button class="btn-upload">Upload New</button>
+        <button class="btn-delete">Delete Avatar</button>
+      </div>
+    </div>
+
+    <div class="spacing"></div>
+
+    <form class="profile-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="Username">Username: </label>
+          <input type="text" id="Username" class="form-input" />
+        </div>
+        <div class="form-group">
+          <label for="FirstName">First Name: </label>
+          <input type="text" id="FirstName" class="form-input" />
+        </div>
+        <div class="form-group">
+          <label for="LastName">Last Name: </label>
+          <input type="text" id="LastName" class="form-input" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email: </label>
+          <input type="email" id="email" class="form-input" />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number: </label>
+          <input type="tel" id="phone" class="form-input" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="Address">Address: </label>
+          <input type="text" id="Address" class="form-input" />
+        </div>
+      </div>
+      
+      <div class="save-container">
+        <button type="submit" class="save-btn">Save Changes</button>
+      </div>
+
+    </form>
+  </main>
+</body>
+</html>
