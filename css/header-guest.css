@@ -20,21 +20,18 @@ header {
   transition: filter 0.3s ease;
 }
 
-/* Logo Styling */
 .logo {
   width: 50px;
   height: 50px;
   transition: filter 0.3s ease;
 }
 
-/* Logo Image */
 .logo img {
   width: 100%;
   height: auto;
   transition: filter 0.3s ease;
 }
 
-/* Hover Effect on Logo */
 .logo-container:hover .logo img {
   filter: grayscale(100%) brightness(60%);
 }
@@ -71,7 +68,6 @@ header {
   font-size: 16px;
 }
 
-/* Placeholder Text Styling for Input Fields */
 .search-bar input::placeholder {
   color: #111111;
   opacity: 1;
@@ -112,7 +108,6 @@ header {
   font-size: 17px;
 }
 
-/* Hover Effect for Download Button */
 .download-btn:hover {
   background-color: #777777;
   border-color: #777777;
@@ -129,26 +124,28 @@ header {
   white-space: nowrap; 
 }
 
-/* Hover Effect for Log In Button */
 .auth-btn:hover {
   color: #777777;
 }
 
-/* Separator between buttons */
+/* Separator */
 .separator {
   color: #FFFFFF;
   margin: 0 10px;
 }
 
-/* Responsive Design for desktop and large screens */
+/* Desktop: ≥1200px */
 @media (min-width: 1200px) {
   header {
     padding: 35px 40px;
     height: 120px;
+    flex-direction: row;
+    gap: 180px;
   }
 
   .search-bar input {
     width: 700px;
+    font-size: 16px;
   }
 
   .download-btn {
@@ -165,7 +162,48 @@ header {
   }
 }
 
-@media (max-width: 768px) {
+/* Tablet: 768px–1199px */
+@media (min-width: 768px) and (max-width: 1199px) {
+  header {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 25px;
+    gap: 20px;
+  }
+
+  .logo-container {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  .search-bar {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .search-bar input {
+    width: 100%;
+    font-size: 15px;
+  }
+
+  .cta-buttons {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .download-btn,
+  .auth-btn {
+    font-size: 15px;
+    padding: 8px 16px;
+  }
+}
+
+/* Mobile: ≤767px */
+@media (max-width: 767px) {
   header {
     flex-direction: column;
     align-items: flex-start;
@@ -199,6 +237,7 @@ header {
     width: 100%;
     text-align: center;
     margin: 5px 0;
+    font-size: 14px;
   }
 
   .separator {
