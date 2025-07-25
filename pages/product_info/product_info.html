@@ -10,6 +10,13 @@
     <link rel="stylesheet" href="../../css/product_info.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        #cart {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <!-- temporary header(pretty bad)-->
@@ -26,7 +33,7 @@
         <span>🔔 Notifications</span>
         <span>❓ FAQs</span>
         <span>🤍 Wishlist</span>
-        <span>🛒 Cart</span>
+        <a href="../view_cart/view_cart.html" id="cart">🛒 Cart</a>
         <span>👤 Russo</span>
         </div>
     </header>
@@ -287,9 +294,5 @@
             updateMinusBtnState();
         });
     </script>
-
-
-
-
 </body>
 </html>
