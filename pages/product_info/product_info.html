@@ -5,10 +5,18 @@
     <title>Product | Revaux</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- make sure to change this path -->
+    <link rel="icon" type="image/png" href="../../images/revaux-light.png">
     <link rel="stylesheet" href="../../css/categories.css">
     <link rel="stylesheet" href="../../css/product_info.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        #cart {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <!-- temporary header(pretty bad)-->
@@ -25,7 +33,7 @@
         <span>🔔 Notifications</span>
         <span>❓ FAQs</span>
         <span>🤍 Wishlist</span>
-        <span>🛒 Cart</span>
+        <a href="../view_cart/view_cart.html" id="cart">🛒 Cart</a>
         <span>👤 Russo</span>
         </div>
     </header>
@@ -33,7 +41,7 @@
     <div class="breadcrumb-bar">
         <a href="../../../index.html" class="breadcrumb-link">Home</a>
         <span class="breadcrumb-separator">&gt;</span>
-        <a href="headwear.html" class="breadcrumb-link">Headwear</a>
+        <a href="../categories/headwear.html" class="breadcrumb-link">Headwear</a>
         <span class="breadcrumb-separator">&gt;</span>
         <span class="breadcrumb-current">Product Details</span>
     </div>
@@ -62,14 +70,16 @@
 
                     <div class="pd-pricing">
                         <p class="pd-price">₱249.99</p>
-                        <p class="pd-discount">‑50% <span class="pd-original-price">₱500.00</span></p>
+                        <p class="pd-discount">–50% <span class="pd-original-price">₱500.00</span></p>
                     </div>
 
                     <div class="pd-quantity">
                         <label>Quantity:</label>
-                        <button class="qty-btn-minus">–</button>
-                        <input type="text" class="qty-input" value="1" min="1">
-                        <button class="qty-btn-plus">+</button>
+                        <span>
+                            <button class="qty-btn-minus">–</button>
+                            <input type="text" class="qty-input" value="1" min="1">
+                            <button class="qty-btn-plus">+</button>
+                        </span>
                     </div>
 
                     <div class="pd-actions">
@@ -117,119 +127,8 @@
             </section>
         </main>
     </div>
-    <!-- JS for the thumbnails -->
-    <script>
-        // Wait until the DOM is ready
-        document.addEventListener('DOMContentLoaded', () => {
-            const mainImg = document.querySelector('.pd-main-image img');
-            const thumbs = document.querySelectorAll('.pd-thumbnails .thumb');
-            const colorEl  = document.querySelector('.pd-color');
-
-            thumbs.forEach(thumb => {
-                thumb.addEventListener('click', () => {
-                    // Get the <img> inside the clicked thumbnail
-                    const img = thumb.querySelector('img');
-                    if (!img) return;
-
-                    // Swap main image src
-                    mainImg.src = img.src;
-
-                    // Remove .active from all thumbs, then add to the clicked one
-                    thumbs.forEach(t => t.classList.remove('active'));
-                    thumb.classList.add('active');
-
-                    // Update colour text
-                    const newColor = thumb.dataset.color;
-                    if (newColor && colorEl) {
-                        colorEl.textContent = newColor;
-                    }
-                });
-            });
-        });
-    </script>
-    <!-- JS for the zoom effect -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const mainImg      = document.querySelector('.pd-main-image img');
-            const zoomWindow   = document.querySelector('.pd-zoom-window');
-            const detailPane   = document.querySelector('.product-info-page');
-
-            detailPane.style.position = 'relative';
-
-            // When mouse enters main image, show zoom pane and set its background
-            mainImg.addEventListener('mouseenter', () => {
-            zoomWindow.style.display = 'block';
-            zoomWindow.style.backgroundImage = `url("${mainImg.src}")`;
-            });
-
-            // When mouse moves over main image, adjust zoom pane background position
-            mainImg.addEventListener('mousemove', e => {
-            const rect = mainImg.getBoundingClientRect();
-
-            // Calculate cursor position as a percentage of the image
-            const xPct = (e.clientX - rect.left) / rect.width * 100;
-            const yPct = (e.clientY - rect.top) / rect.height * 100;
-
-            // Move background so zoom window shows the correct area
-            zoomWindow.style.backgroundPosition = 
-                `${xPct}% ${yPct}%`;
-            });
-
-            // On mouse leave, hide the zoom pane
-            mainImg.addEventListener('mouseleave', () => {
-            zoomWindow.style.display = 'none';
-            });
-        });
-    </script>
-    <!-- JS for the "Read More" toggle -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const wrapper = document.querySelector('.pd-about-wrapper');
-            const toggle  = document.querySelector('.pd-about-toggle');
-
-            // Only show toggle if content is taller than limit(10 lines)
-            const lineHeight = parseFloat(getComputedStyle(wrapper).lineHeight);
-            const maxH = lineHeight * 10;
-            if (wrapper.scrollHeight <= maxH) {
-                toggle.style.display = 'none';
-                return;
-            }
-
-            // On click, toggle expanded class + change button text
-            toggle.addEventListener('click', () => {
-                const expanded = wrapper.classList.toggle('expanded');
-                toggle.textContent = expanded
-                ? '▲ See less'
-                : '▼ See more';
-            });
-        });
-    </script>
-    <!-- JS for the quantity input -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const minusBtn = document.querySelector('.qty-btn-minus');
-            const plusBtn = document.querySelector('.qty-btn-plus');
-            const qtyInput = document.querySelector('.qty-input');
-
-            minusBtn.addEventListener('click', () => {
-                let currentValue = parseInt(qtyInput.value);
-                if (currentValue > 1) {
-                qtyInput.value = currentValue - 1;
-                }
-            });
-
-            plusBtn.addEventListener('click', () => {
-                let currentValue = parseInt(qtyInput.value);
-                qtyInput.value = currentValue + 1;
-            });
-
-            qtyInput.addEventListener('input', () => {
-                if (qtyInput.value < 1 || isNaN(qtyInput.value)) {
-                qtyInput.value = 1;
-                }
-            });
-        });
-    </script>
+    <!-- JS -->
+    <script type="module" src="../../scripts/main.js"></script>
 
 </body>
 </html>
