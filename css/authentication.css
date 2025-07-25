@@ -255,7 +255,7 @@ small a:hover {
     text-decoration: underline;
 }
 
-/* Responsive Design for desktop and large screens */
+/* ✅ Desktop and large screens: ≥1200px */
 @media (min-width: 1200px) {
   section {
     max-width: 400px;
@@ -277,8 +277,58 @@ small a:hover {
   }
 }
 
-/* Responsive Design for tablets and mobile screens */
-@media (max-width: 768px) {
+/* ✅ Tablets: 768px–1199px */
+@media (min-width: 768px) and (max-width: 1199px) {
+  body {
+    background-size: cover;
+    background-position: center top;
+    padding: 0 20px;
+  }
+
+  main {
+    align-items: center;
+    padding-top: 60px;
+    height: auto;
+  }
+
+  section {
+    max-width: 480px;
+    padding: 30px;
+    margin-top: 40px;
+  }
+
+  .brand-name {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  button[type="submit"],
+  button[type="button"] {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  p,
+  small {
+    font-size: 13px;
+  }
+
+  .logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  .logo-container {
+    gap: 4px;
+    margin-bottom: 18px;
+  }
+}
+
+/* ✅ Mobile: ≤767px */
+@media (max-width: 767px) {
   body {
     background-size: cover;
     background-position: top center;

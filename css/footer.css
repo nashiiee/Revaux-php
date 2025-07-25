@@ -3,15 +3,15 @@ footer {
   background-color: #111111;
   color: #ffffff;
   font-family: 'Poppins', sans-serif;
-  padding: 20px 0;
-  box-sizing: border-box;
+  padding: 10px 0;
+  margin-top: auto;
 }
 
 .footer-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 0 20px;
+  padding: 0 10px;
   margin-bottom: 20px;
   box-sizing: border-box;
 }
@@ -64,16 +64,12 @@ footer {
   margin-top: 20px;
 }
 
-.footer-bottom p {
-  margin: 0;
-  font-size: 16px;
-  color: #ffffff;
-}
-
+.footer-bottom p,
 .footer-bottom a {
+  font-size: 16px; /* ✅ Unified font size for paragraph and links */
   color: #ffffff;
+  margin: 0;
   text-decoration: none;
-  margin: 0 5px;
   transition: color 0.3s ease;
 }
 
@@ -86,25 +82,8 @@ footer {
   margin-right: 10px;
 }
 
-/* Responsive Design for desktop and large screens */
-@media (min-width: 1200px) {
-  .footer-container {
-    padding: 0 40px;
-    gap: 40px;
-  }
-
-  .footer-section,
-  .footer-business {
-    width: 30%;
-  }
-
-  .footer-bottom p {
-    font-size: 14px;
-  }
-}
-
-/* Responsive Design for tablets and mobile screens */
-@media (max-width: 768px) {
+/* Mobile: 0–767px */
+@media (max-width: 767px) {
   .footer-container {
     flex-direction: column;
     padding: 0 20px;
@@ -120,7 +99,45 @@ footer {
     padding: 15px 0;
   }
 
-  .footer-bottom p {
-    font-size: 12px;
+  .footer-bottom p,
+  .footer-bottom a {
+    font-size: 14px;
   }
 }
+
+/* Tablet: 768px–1199px */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .footer-container {
+    padding: 0 30px;
+    gap: 30px;
+  }
+
+  .footer-section,
+  .footer-business {
+    width: 45%;
+  }
+
+  .footer-bottom p,
+  .footer-bottom a {
+    font-size: 15px;
+  }
+}
+
+/* Desktop: 1200px and up */
+@media (min-width: 1200px) {
+  .footer-container {
+    padding: 0 40px;
+    gap: 40px;
+  }
+
+  .footer-section,
+  .footer-business {
+    width: 30%;
+  }
+
+  .footer-bottom p,
+  .footer-bottom a {
+    font-size: 16px;
+  }
+}
+
