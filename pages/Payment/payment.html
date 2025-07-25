@@ -176,16 +176,7 @@
 
     <button class="checkout-btn" style="margin-top: 16px;">Place Order Now</button>
   </aside>
-
-  <script>
-    const options = document.querySelectorAll('.payment-option');
-    options.forEach(option => {
-      option.addEventListener('click', () => {
-        options.forEach(opt => opt.classList.remove('selected'));
-        option.classList.add('selected');
-        option.querySelector('input').checked = true;
-      });
-    });
-  </script>
+  <!-- JS -->
+  <script type="module" src="../../scripts/main.js"></script>
 </body>
 </html>
