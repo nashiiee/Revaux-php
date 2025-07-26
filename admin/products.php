@@ -164,15 +164,22 @@
       filterProducts();
     });
 
+    // Price filtering functionality
+    document.getElementById('price').addEventListener('change', function() {
+      filterProducts();
+    });
+
     // Combined filter function
     function filterProducts() {
       const selectedCategory = document.getElementById('category').value;
       const selectedStatus = document.getElementById('status').value;
+      const selectedPrice = document.getElementById('price').value;
       const tableRows = document.querySelectorAll('tbody tr');
       
       // Add loading state
       document.getElementById('category').classList.add('loading');
       document.getElementById('status').classList.add('loading');
+      document.getElementById('price').classList.add('loading');
       
       // First phase: Fade out all rows
       tableRows.forEach(row => {
@@ -185,10 +192,36 @@
         
         tableRows.forEach(row => {
           const categoryCell = row.cells[2]; // Category is the 3rd column (index 2)
+          const priceCell = row.cells[1]; // Price is the 2nd column (index 1)
           const statusCell = row.cells[5]; // Status is the 6th column (index 5)
           
           // Check category filter - compare with category_id from database
           const categoryMatch = selectedCategory === 'all' || categoryCell.textContent.trim() === selectedCategory;
+          
+          // Check price filter
+          let priceMatch = true;
+          if (selectedPrice !== 'all') {
+            const priceText = priceCell.textContent.trim();
+            // Remove ₱ symbol and convert to number
+            const price = parseFloat(priceText.replace('₱', '').replace(',', ''));
+            
+            switch (selectedPrice) {
+              case '0-500':
+                priceMatch = price >= 0 && price <= 500;
+                break;
+              case '501-1000':
+                priceMatch = price >= 501 && price <= 1000;
+                break;
+              case '1001-2000':
+                priceMatch = price >= 1001 && price <= 2000;
+                break;
+              case '2001+':
+                priceMatch = price >= 2001;
+                break;
+              default:
+                priceMatch = true;
+            }
+          }
           
           // Check status filter - look inside the span element
           let statusMatch = true;
@@ -200,7 +233,7 @@
             statusMatch = statusSpan && statusSpan.textContent.trim().toLowerCase() === 'inactive';
           }
           
-          if (categoryMatch && statusMatch) {
+          if (categoryMatch && priceMatch && statusMatch) {
             // Show matching rows
             row.classList.remove('fade-out', 'hidden');
             row.classList.add('fade-in');
@@ -215,16 +248,17 @@
         });
         
         // Show success message with count
-        showFilterMessage(selectedCategory, selectedStatus, visibleCount);
+        showFilterMessage(selectedCategory, selectedStatus, selectedPrice, visibleCount);
         
         // Remove loading state
         document.getElementById('category').classList.remove('loading');
         document.getElementById('status').classList.remove('loading');
+        document.getElementById('price').classList.remove('loading');
       }, 150);
     }
     
     // Function to show filter success message
-    function showFilterMessage(category, status, count) {
+    function showFilterMessage(category, status, price, count) {
       // Remove existing message
       const existingMessage = document.querySelector('.filter-success');
       if (existingMessage) {
@@ -248,10 +282,21 @@
         'active': 'Active',
         'inactive': 'Inactive'
       };
+
+      const priceNames = {
+        'all': 'All Prices',
+        '0-500': '₱0 - ₱500',
+        '501-1000': '₱501 - ₱1,000',
+        '1001-2000': '₱1,001 - ₱2,000',
+        '2001+': '₱2,001+'
+      };
       
       let filterText = `Showing ${count} products`;
       if (category !== 'all') {
         filterText += ` in ${categoryNames[category]}`;
+      }
+      if (price && price !== 'all') {
+        filterText += ` priced ${priceNames[price]}`;
       }
       if (status && status !== 'status') {
         filterText += ` with ${statusNames[status]} status`;
