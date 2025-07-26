@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product | Revaux</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- make sure to change this path -->
+    <link rel="icon" type="image/png" href="../../images/revaux-light.png">
+    <link rel="stylesheet" href="../../css/categories.css">
+    <link rel="stylesheet" href="../../css/product_info.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        #cart {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- temporary header(pretty bad)-->
+    <header class="navbar">
+        <div class="logo">
+            <!-- change the path if the logo isnt working -->
+            <a href="../../index.html" class="logo-link">
+                <img src="../../images/revaux-light.png" class="logo-img" alt="Revaux Logo">
+                Revaux
+            </a>
+        </div>
+        <input type="text" placeholder="Search Here..." class="search-bar">
+        <div class="nav-icons">
+        <span>🔔 Notifications</span>
+        <span>❓ FAQs</span>
+        <span>🤍 Wishlist</span>
+        <a href="../view_cart/view_cart.html" id="cart">🛒 Cart</a>
+        <span>👤 Russo</span>
+        </div>
+    </header>
+
+    <div class="breadcrumb-bar">
+        <a href="../../../index.html" class="breadcrumb-link">Home</a>
+        <span class="breadcrumb-separator">&gt;</span>
+        <a href="../categories/headwear.html" class="breadcrumb-link">Headwear</a>
+        <span class="breadcrumb-separator">&gt;</span>
+        <span class="breadcrumb-current">Product Details</span>
+    </div>
+    <div class="container product-info-container">
+        <main class="product-info-page">
+            <section class="product-details">
+                <!-- LEFT COLUMN: Main image + thumbnails -->
+                <div class="pd-image-column">
+                    <div class="pd-main-image">
+                        <img src="../../images/products/hat1.png" alt="Head Cap">
+                    </div>
+                    <div class="pd-thumbnails">
+                        <button class="thumb active" data-color="Agreen1"><img src="../../images/products/hat1.png" alt=""></button>
+                        <button class="thumb" data-color="Black&Grey1"><img src="../../images/products/hat1-2.png" alt=""></button>
+                        <button class="thumb" data-color="Blue1"><img src="../../images/products/hat1-3.png" alt=""></button>
+                        <button class="thumb" data-color="Brown&Khaki1"><img src="../../images/products/hat1-4.png" alt=""></button>
+                        <button class="thumb more">+2</button>
+                    </div>
+                </div>
+                <!-- RIGHT COLUMN: Info block -->
+                <div class="pd-info-column">
+                    <h1 class="pd-title">
+                        Men Oversize Skull Slouch Beanie Large Skullcap Knit Hat
+                    </h1>
+                    <div class="pd-divider"></div>
+
+                    <div class="pd-pricing">
+                        <p class="pd-price">₱249.99</p>
+                        <p class="pd-discount">–50% <span class="pd-original-price">₱500.00</span></p>
+                    </div>
+
+                    <div class="pd-quantity">
+                        <label>Quantity:</label>
+                        <span>
+                            <button class="qty-btn-minus">–</button>
+                            <input type="text" class="qty-input" value="1" min="1">
+                            <button class="qty-btn-plus">+</button>
+                        </span>
+                    </div>
+
+                    <div class="pd-actions">
+                        <button class="btn buy-now">Buy Now</button>
+                        <button class="btn add-cart">Add to Cart</button>
+                    </div>
+                    
+                    <div class="pd-divider"></div>
+
+                    <div class="pd-details-section">
+                        <h2>Product Details</h2>
+                        <ul>
+                        <li><strong>Origin:</strong> Made in US</li>
+                        <li>
+                            <strong>Colour:</strong>
+                            <span class="pd-color">Agreen1</span>
+                        </li>
+                        <li><strong>Material:</strong> Acrylic stable fiber & Polyester</li>
+                        <li><strong>Care Instructions:</strong> Machine Wash</li>
+                        <li><strong>Closure Type:</strong> Drawstring</li>
+                        </ul>
+                    </div>
+
+                    <div class="pd-divider"></div>
+
+                    <div class="pd-about-section">
+                        <h2>About this Product</h2>
+                        <div class="pd-about-wrapper">
+                            <p class="pd-about-text">
+                                Product Feature: Material: High quality Acrylic staple fiber & polyester. Comfortable and breathable.Slouchy beanie baggy skull cap.<br>
+                                Style: Up-to-date style, suitable for men and women. <br>
+                                Design: Simple and cozy, casual beanie caps for daily used. <br> 
+                                Pattern: We have a ton of hats in a ton of colors, Diversify and latest styles will meet all your need. <br>
+                                Size: One size fits most. be fit for 22.05inch ~23.6inch head size.<br>
+                                Shipment: Men Slouchy Beanie Skullcap Is 100% Brand New , Type "HISSHE" in the search box to find all of our great headwear on Amazon<br>
+                                Occasion: Daily used for men and women. Suitable for Spring/Fall,especially for summer. Easy match for casual dress up. If you are looking for a gift for you boy/Father, lover/Husband, it will be great! Even good for female.Unisex design is excellent for family party/Company outdoor activities.<br>
+                                EASY WASH: The beanies can be hand washed when needed. Dipping the beanies in warm water with mild soap makes it as clean as new! No fluffing!!!<br>
+                                Service and Feedback: We are here to hear your voice. Please feel free to contact us if there is any problem you meet, your true and honest feedback will urge us to improve the quality of our products and provide more reasonable service.
+                            </p>
+                        </div>
+                        <button class="pd-about-toggle">▼ Read More</button>
+                    </div>
+                </div>
+                <div class="pd-zoom-window"></div>
+            </section>
+        </main>
+    </div>
+    <!-- JS -->
+    <script type="module" src="../../scripts/main.js"></script>
+
+</body>
+</html>

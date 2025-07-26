@@ -1,0 +1,179 @@
+@use '../utils/' as u;
+
+.transactions-page {
+  background-color: #F4F8FA
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  margin-left: u.rem(250);
+  margin-top: u.rem(100); // Account for fixed header height
+  width: calc(100% - u.rem(280));
+  min-height: calc(100vh - u.rem(100)); // Full viewport height minus header
+  padding: u.rem(20) 0;
+  margin-right: u.rem(20);
+  
+  & .main-section-container {
+    background-color: #FCFCFC;
+    border-radius: u.rem(20);
+    width: 100%;
+    height: u.rem(500); // Set a specific height instead of 100%
+    display: block;
+    flex: 1; // This will make it grow to fill available space
+
+    & h2 {
+      font-size: u.rem(24);
+      padding: u.rem(20) u.rem(30);
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+
+    & .transactions-card {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-evenly;
+
+      & .card {
+        width: u.rem(210);
+        height: u.rem(100);
+        background-color: #fff;
+        border-radius: u.rem(20);
+        box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.25);
+
+        & .contents {
+          display: flex;
+          align-items: center;
+          justify-content: start;
+          width: 100%;
+          height: 100%;
+          padding-left: u.rem(12);
+
+          & .icon-container {
+            width: u.rem(50);
+            height: u.rem(50);
+            background-color: #F7F7F7;
+            border-radius: u.rem(10);            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            & i {
+              font-size: u.rem(24);
+            }
+          }
+
+          & .text-container {
+            margin-left: u.rem(10);
+
+            & h5 {
+              font-size: u.rem(14);
+              font-weight: 400;
+              margin: 0;
+              padding: u.rem(5) 0;
+            }
+
+            & p {
+              font-size: u.rem(14);
+              color: #737373;
+              margin: 0;
+            }
+          }
+        }
+
+        &--successful {
+          @extend .card;
+
+          & .contents .icon-container {
+            background-color: #E6FFF7;
+
+            & i {
+              color: #10B981;
+            }
+          }
+        }
+
+        &--refunds {
+          @extend .card;
+
+          & .contents .icon-container {
+            background-color: #FFF5F5;
+
+            & i {
+              color: #EF4444;
+            }
+          }
+        }
+
+        &--pending {
+          @extend .card;
+
+          & .contents .icon-container {
+            background-color: #E6EFFE;
+
+            & i {
+              color: #3B82F6;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+  & table {
+    width: calc(100% - u.rem(50));
+    margin: u.rem(25) auto;
+    background-color: #FFFFFF;
+    border-radius: u.rem(10);
+    display: block;
+    height: u.rem(350);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    & thead {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+      position: sticky;
+      top: 0;
+      background-color: #FFFFFF;
+      z-index: 10;
+    }
+
+    & tbody {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    & tr {
+      display: table-row;
+      width: 100%;
+    }
+
+    & th, & td {
+      font-size: u.rem(14);
+      font-weight: 500;
+      text-align: center;
+      padding: u.rem(10);
+      border-bottom: 1px solid #e2e2e2;
+      display: table-cell;
+
+      &:last-child {
+        text-align: right;
+        
+        & i {
+          text-align: right;
+          font-size: u.rem(18);
+        }
+      }
+    }
+
+    & th {
+      font-weight: 500;
+      border-bottom: 1px solid #e2e2e2;
+    }
+  }
+}

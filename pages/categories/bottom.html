@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bottoms | Revaux</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- make sure to change this path -->
+    <link rel="stylesheet" href="../../css/categories.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- temporary header(pretty bad)-->
+    <header class="navbar">
+        <div class="logo">
+            <!-- change the path if the logo isnt working -->
+            <a href="../../index.html" class="logo-link">
+                <img src="../../images/revaux-light.png" class="logo-img" alt="Revaux Logo">
+                Revaux
+            </a>
+        </div>
+        <input type="text" placeholder="Search Here..." class="search-bar">
+        <div class="nav-icons">
+            <span>🔔 Notifications</span>
+            <span>❓ FAQs</span>
+            <span>🤍 Wishlist</span>
+            <span>🛒 Cart</span>
+            <span>👤 Russo</span>
+        </div>
+    </header>
+
+    <div class="breadcrumb-bar">
+        <a href="../../index.html" class="breadcrumb-link">Home</a>
+        <span class="breadcrumb-separator">&gt;</span>
+        <a href="headwear.html" class="breadcrumb-link">Bottoms</a>
+    </div>
+
+    <div class="container">
+        <!-- Scrollbar will appear when theres an overflow (try opening 3 of the categories)-->
+        <aside class="sidebar">
+            <h2>CATEGORY</h2>
+            <div class="category-dropdown">
+                <div class="dropdown-row">
+                    <a class="dropdown-link" href="headwear.html">Headwear</a>
+                    <span class="arrow" tabindex="0" aria-label="Toggle submenu">▶</span>
+                </div>
+                <ul class="submenu">
+                    <li>Caps</li>
+                    <li>Beanies</li>
+                    <li>Outdoors</li>
+                    <li>Formal</li>
+                    <li>Sports</li>
+                    <li>Protection</li>
+                    <li>Cultural</li>
+                </ul>
+            </div>
+            <div class="category-dropdown">
+                <div class="dropdown-row">
+                    <a class="dropdown-link" href="top.html">Tops</a>
+                    <span class="arrow" tabindex="0" aria-label="Toggle submenu">▶</span>
+                </div>
+                <ul class="submenu">
+                    <li>Shirts</li>
+                    <li>Formal</li>
+                    <li>Polos</li>
+                    <li>Hoodies</li>
+                    <li>Sports</li>
+                    <li>Sleeveless</li>
+                    <li>Cultural</li>
+                </ul>
+            </div>
+            <div class="category-dropdown active">
+                <div class="dropdown-row">
+                    <a class="dropdown-link" href="bottom.html">Bottoms</a>
+                    <span class="arrow" tabindex="0" aria-label="Toggle submenu">▶</span>
+                </div>
+                <ul class="submenu">
+                    <li>Jeans</li>
+                    <li>Pants</li>
+                    <li>Shorts</li>
+                    <li>Sleepwear</li>
+                    <li>Sports</li>
+                    <li>Cargo</li>
+                    <li>Cultural</li>
+                </ul>
+            </div>
+            <div class="category-dropdown">
+                <div class="dropdown-row">
+                    <a class="dropdown-link" href="footwear.html">Footwear</a>
+                    <span class="arrow" tabindex="0" aria-label="Toggle submenu">▶</span>
+                </div>
+                <ul class="submenu">
+                    <li>Sports</li>
+                    <li>Formal</li>
+                    <li>Boots</li>
+                    <li>Sandals</li>
+                    <li>Sneakers</li>
+                    <li>Utility</li>
+                    <li>Cultural</li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="products-section">
+            <div class="products-container">
+                <div class="products-header">
+                    <h2>Bottoms</h2>
+                    <div class="custom-dropdown" id="sort-dropdown">
+                        <div class="custom-dropdown-selected" tabindex="0"> 
+                            <span class="sort-label">Sort by: </span>
+                            <span id="sort-selected-text">Default</span>
+                            <span class="custom-arrow">▼</span>
+                        </div>
+                        <ul class="custom-dropdown-list">
+                            <li data-value="default" class="active">Default</li>
+                            <li data-value="price-asc">Price (Low to High)</li>
+                            <li data-value="price-desc">Price (High to Low)</li>
+                            <li data-value="popularity">Popularity</li>
+                            <li data-value="newest">Newest</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="products-grid">
+                    <!-- Sample product -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/bottom1.png" alt="Bottom 1">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Alphabet Print Quick Dry Fit</p>
+                            <div class="product-meta">
+                                <p class="price">₱348.00</p>
+                                <p class="product-sold">32.2k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/bottom2.png" alt="Bottom 2">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Classic Slim Fit Chinos</p>
+                            <div class="product-meta">
+                                <p class="price">₱1,299.00</p>
+                                <p class="product-sold">8.7k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/bottom3.png" alt="Bottom 3">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Urban Stretch Jogger Pants</p>
+                            <div class="product-meta">
+                                <p class="price">₱1,050.00</p>
+                                <p class="product-sold">5.2k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/bottom4.png" alt="Bottom 4">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Denim Cargo Shorts</p>
+                            <div class="product-meta">
+                                <p class="price">₱899.00</p>
+                                <p class="product-sold">3.9k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/hat4.png" alt="Hat 4">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Essential Black Dress Pants</p>
+                            <div class="product-meta">
+                                <p class="price">₱1,499.00</p>
+                                <p class="product-sold">2.1k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/hat4.png" alt="Hat 4">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Relaxed Fit Linen Trousers</p>
+                            <div class="product-meta">
+                                <p class="price">₱1,199.00</p>
+                                <p class="product-sold">1.8k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/hat4.png" alt="Hat 4">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Athletic Mesh Gym Shorts</p>
+                            <div class="product-meta">
+                                <p class="price">₱599.00</p>
+                                <p class="product-sold">4.3k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/hat4.png" alt="Hat 4">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Tapered Fit Khaki Pants</p>
+                            <div class="product-meta">
+                                <p class="price">₱1,350.00</p>
+                                <p class="product-sold">2.7k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/hat4.png" alt="Hat 4">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Classic Blue Denim Jeans</p>
+                            <div class="product-meta">
+                                <p class="price">₱1,099.00</p>
+                                <p class="product-sold">6.8k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/hat4.png" alt="Hat 4">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Drawstring Lounge Pants</p>
+                            <div class="product-meta">
+                                <p class="price">₱799.00</p>
+                                <p class="product-sold">3.2k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/hat4.png" alt="Hat 4">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Slim Fit Office Slacks</p>
+                            <div class="product-meta">
+                                <p class="price">₱1,599.00</p>
+                                <p class="product-sold">1.1k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/images/hat4.png" alt="Hat 4">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">Cotton Pajama Bottoms</p>
+                            <div class="product-meta">
+                                <p class="price">₱499.00</p>
+                                <p class="product-sold">2.9k sold</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repeat for all products -->
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- JS -->
+    <script type="module" src="../../scripts/main.js"></script>
+</body>
+</html>

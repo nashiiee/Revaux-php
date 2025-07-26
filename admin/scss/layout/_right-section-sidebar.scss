@@ -1,0 +1,280 @@
+@use '../utils/' as u;
+
+
+.right-section-sidebar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: u.rem(360);
+  max-width: u.rem(360);
+  
+  // At 1280px and above, maintain 360px width
+  @media (min-width: 1280px) {
+    width: u.rem(306);
+    max-width: u.rem(306);
+  }
+  
+  @include u.breakpoint-down(large) {
+    width: u.rem(280);
+    max-width: u.rem(280);
+  }
+
+  @include u.breakpoint-down(medium) {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    right: auto;
+    top: auto;
+    margin-top: u.rem(20);
+  }
+
+  @include u.breakpoint-down(xsmall) {
+    padding: 0 u.rem(10);
+    display: none;
+  }
+
+  & .profile {
+    width: 100%;
+    height: u.rem(100);
+    display: flex;
+    align-items: center;
+    padding: u.rem(30);
+    justify-content: space-between;
+
+    @include u.breakpoint-down(medium) {
+      padding: u.rem(20);
+      height: u.rem(80);
+    }
+
+    @include u.breakpoint-down(small) {
+      padding: u.rem(15);
+      height: u.rem(70);
+      flex-wrap: wrap;
+      gap: u.rem(10);
+    }
+
+    & .img-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include u.breakpoint-down(small) {
+        flex: 1;
+      }
+
+      & #round {
+        width: u.rem(30);
+        height: u.rem(30);
+        background-color: #D9D9D9;
+        border-radius: 50%;
+        margin-right: u.rem(10);
+
+        @include u.breakpoint-down(small) {
+          width: u.rem(25);
+          height: u.rem(25);
+          margin-right: u.rem(8);
+        }
+      }
+
+      & span {
+        font-size: u.rem(14);
+        color: #737373;
+
+        @include u.breakpoint-down(small) {
+          font-size: u.rem(12);
+        }
+      }
+
+      & i {
+        font-size: u.rem(12);
+        color: #737373;
+        margin-left: u.rem(10);
+
+        @include u.breakpoint-down(small) {
+          font-size: u.rem(10);
+          margin-left: u.rem(8);
+        }
+      }
+    }
+
+    & .icon-container {
+      font-size: u.rem(18);
+      color: #737373;
+
+      @include u.breakpoint-down(small) {
+        font-size: u.rem(16);
+      }
+    }
+  }
+
+  & .top-customers, .recent-orders {
+    width: 100%;
+    padding: u.rem(30);
+
+    @include u.breakpoint-down(medium) {
+      padding: u.rem(20);
+    }
+
+    @include u.breakpoint-down(small) {
+      padding: u.rem(15);
+    }
+
+
+    & .header-container, .orders-header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #D9D9D9;
+      padding: u.rem(10) 0;
+
+      @include u.breakpoint-down(small) {
+        padding: u.rem(8) 0;
+      }
+
+
+      & .top-customer-container, .h2-container {
+
+        & h2 {
+          font-size: u.rem(16);
+          font-weight: 400;
+          margin: 0;
+
+          @include u.breakpoint-down(small) {
+            font-size: u.rem(14);
+          }
+        }
+      }
+
+      & .see-all {
+        font-size: u.rem(10);
+        color: #737373;
+
+        @include u.breakpoint-down(small) {
+          font-size: u.rem(9);
+        }
+      }
+    } 
+
+    & .customers-list, .recent-orders-list {
+      width: 100%;
+      margin-top: u.rem(20);
+      display: flex;
+      flex-direction: column;
+
+      @include u.breakpoint-down(small) {
+        margin-top: u.rem(15);
+      }
+
+      & .customer, .customer-orders-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: u.rem(10) 0;
+        margin-top: u.rem(-8);
+        min-height: u.rem(40);
+
+        @include u.breakpoint-down(small) {
+          padding: u.rem(8) 0;
+          min-height: u.rem(35);
+          flex-wrap: wrap;
+          gap: u.rem(5);
+        }
+
+        & .customer-image-details, .customer-order-image-details {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start; 
+          gap: u.rem(10);
+          flex: 1;
+
+          @include u.breakpoint-down(small) {
+            gap: u.rem(8);
+            flex: 1;
+            min-width: 0;
+          }
+
+          & .customer-image, .order-image {
+            width: u.rem(30);
+            height: u.rem(30);
+            background-color: #D9D9D9;
+            border-radius: 50%;
+            display: block;
+            flex-shrink: 0;
+
+            @include u.breakpoint-down(small) {
+              width: u.rem(25);
+              height: u.rem(25);
+            }
+          }
+
+          // Add a wrapper for name and purchase
+          & .customer-info, .order-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            line-height: 1;
+            min-width: 0;
+            flex: 1;
+
+            @include u.breakpoint-down(small) {
+              overflow: hidden;
+            }
+
+            & .name, .product-name {
+              font-size: u.rem(14);
+              display: block;
+              margin-bottom: u.rem(4);
+              line-height: 1.2;
+              margin: 0;
+              margin-bottom: u.rem(2);
+
+              @include u.breakpoint-down(small) {
+                font-size: u.rem(12);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100%;
+              }
+            }
+
+            & .purchase, .category {
+              font-size: u.rem(10);
+              margin: 0;
+              line-height: 1.2;
+              color: #737373;
+
+              @include u.breakpoint-down(small) {
+                font-size: u.rem(9);
+              }
+            }
+          }
+        }
+
+        .customer-spent, .price { 
+          font-size: u.rem(14);
+          flex-shrink: 0;
+          text-align: right;
+          min-width: u.rem(60);
+
+          @include u.breakpoint-down(small) {
+            font-size: u.rem(12);
+            min-width: u.rem(50);
+          }
+        }
+      }
+    }
+  }
+
+  & .recent-orders {
+    margin-top:u.rem(-30);
+
+    @include u.breakpoint-down(medium) {
+      margin-top: u.rem(-20);
+    }
+
+    @include u.breakpoint-down(small) {
+      margin-top: u.rem(-15);
+    }
+  }
+}
