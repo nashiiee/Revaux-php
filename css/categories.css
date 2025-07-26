@@ -21,6 +21,12 @@ body {
   align-items: center;
 }
 
+#cart{
+  text-decoration: none;
+  color: white;
+}
+
+
 .logo {
   display: flex;
   align-items: center;
