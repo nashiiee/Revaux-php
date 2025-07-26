@@ -18,57 +18,6 @@
   <!-- Font Awesome Free CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- Inline CSS for filter success message -->
-  <style>
-    .filter-success {
-      position: fixed !important;
-      top: 120px !important;
-      right: 30px !important;
-      background: linear-gradient(135deg, #5F3AEC, #7C4DFF) !important;
-      color: white !important;
-      padding: 12px 20px !important;
-      border-radius: 8px !important;
-      font-size: 14px !important;
-      font-weight: 500 !important;
-      box-shadow: 0 4px 20px rgba(95, 58, 236, 0.3) !important;
-      z-index: 9999 !important;
-      opacity: 0 !important;
-      transform: translateX(100%) !important;
-      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-      pointer-events: none !important;
-      max-width: 300px !important;
-      min-width: 200px !important;
-      margin: 0 !important;
-      display: block !important;
-      float: none !important;
-      clear: none !important;
-    }
-    
-    .filter-success.show {
-      opacity: 1 !important;
-      transform: translateX(0) !important;
-      pointer-events: auto !important;
-    }
-    
-    .filter-success::before {
-      content: '✓' !important;
-      margin-right: 8px !important;
-      font-weight: bold !important;
-      font-size: 16px !important;
-      color: #fff !important;
-    }
-
-    @media (max-width: 768px) {
-      .filter-success {
-        right: 10px !important;
-        left: 10px !important;
-        max-width: none !important;
-        text-align: center !important;
-        top: 80px !important;
-      }
-    }
-  </style>
-
 
 </head>
 <body style="background-color: #F4F8FA">
