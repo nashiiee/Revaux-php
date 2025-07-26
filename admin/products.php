@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="../dist/products.css">
   <!-- Font Awesome Free CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<<<<<<< HEAD
 
   <style>
     .filter-success {
@@ -39,6 +40,8 @@
       }
     }
   </style>
+=======
+>>>>>>> e95170b6eb6aed1a4e7b5043e3327fe6b8f16eda
 </head>
 <body style="background-color: #F4F8FA">
   <aside>
@@ -117,19 +120,35 @@
           <div class="category-container options">
             <label for="category">Category</label>
             <select name="category" id="category" class="select-options">
+<<<<<<< HEAD
               <option value="all">All Categories</option>
               <option value="1">Headwear</option>
               <option value="2">Tops</option>
               <option value="3">Bottoms</option>
               <option value="4">Footwear</option>
+=======
+              <option value="all" disabled selected>All</option>
+              <option value="sunglasses">Headwear</option>
+              <option value="eyeglasses">Tops</option>
+              <option value="accessories">Bottoms</option>
+              <option value="accessories">Footwear</option>
+>>>>>>> e95170b6eb6aed1a4e7b5043e3327fe6b8f16eda
             </select>
           </div>
           <div class="status-container options">
             <label for="status">Status</label>
             <select name="status" id="status" class="select-options">
+<<<<<<< HEAD
               <option value="status" selected>All Status</option>
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
+=======
+              <option value="status" disabled selected>Select Status</option>
+              <option value="pending">Pending</option>
+              <option value="processing">Processing</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+>>>>>>> e95170b6eb6aed1a4e7b5043e3327fe6b8f16eda
             </select>
           </div>
           <div class="price-container options">
@@ -172,6 +191,7 @@
       </table>
     </div>
   </main>
+<<<<<<< HEAD
 
 
     
@@ -322,5 +342,7 @@
       }, 150);
     });
   </script>
+=======
+>>>>>>> e95170b6eb6aed1a4e7b5043e3327fe6b8f16eda
 </body>
 </html>
