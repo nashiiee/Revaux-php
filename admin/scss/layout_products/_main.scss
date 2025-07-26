@@ -94,9 +94,7 @@ main {
        background-color: #FFFFFF;
        border-radius: u.rem(10);
        display: block;
-       height: u.rem(400);
-       overflow-y: auto;
-       overflow-x: hidden;
+   
 
       & thead {
         display: table;
@@ -266,73 +264,74 @@ main {
         }
       }
     }
+  }
+}
 
-    // Filter Success Message
-    .filter-success {
-      position: fixed;
-      top: u.rem(20);
-      right: u.rem(20);
-      left: u.rem(20);
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: white;
-      padding: u.rem(12) u.rem(24);
-      border-radius: u.rem(8);
-      font-size: u.rem(14);
-      font-weight: 500;
-      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-      transform: translateX(u.rem(300));
-      transition: transform 0.3s ease-in-out;
-      z-index: 1000;
+// Filter success message styles
+.filter-success {
+  position: fixed;
+  top: u.rem(120);
+  right: u.rem(30);
+  background: linear-gradient(135deg, #5F3AEC, #7C4DFF);
+  color: white;
+  padding: u.rem(12) u.rem(20);
+  border-radius: u.rem(8);
+  font-size: u.rem(14);
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(95, 58, 236, 0.3);
+  z-index: 9999;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+  max-width: u.rem(300);
+  min-width: u.rem(200);
 
-      &.show {
-        transform: translateX(0);
-      }
-    }
+  &.show {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
 
-    // Table Row Animations
-    tbody tr {
-      opacity: 1;
-      transform: translateY(0);
-      transition: all 0.3s ease-in-out;
+  &::before {
+    content: '✓';
+    margin-right: u.rem(8);
+    font-weight: bold;
+    font-size: u.rem(16);
+    color: #fff;
+  }
+}
 
-      &.fade-out {
-        opacity: 0;
-        transform: translateY(u.rem(-10));
-      }
+// Animation keyframes
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
-      &.fade-in {
-        opacity: 1;
-        transform: translateY(0);
-      }
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
 
-      &.hidden {
-        display: none !important;
-      }
-    }
-
-    // Dropdown Loading State
-    .select-options {
-      transition: all 0.2s ease-in-out;
-
-      &.loading {
-        opacity: 0.7;
-        pointer-events: none;
-      }
-
-      &:focus {
-        transform: scale(1.02);
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-      }
-    }
-
-    // Button Hover Effects
-    .filter-container, .add-product-btn {
-      transition: all 0.2s ease-in-out;
-
-      &:hover {
-        transform: translateY(u.rem(-2));
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      }
-    }
+// Responsive design for filter success message
+@media (max-width: 768px) {
+  .filter-success {
+    right: u.rem(10);
+    left: u.rem(10);
+    max-width: none;
+    text-align: center;
+    top: u.rem(80);
   }
 }

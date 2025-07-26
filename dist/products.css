@@ -307,7 +307,6 @@ main .main-section-container table {
   background-color: #FFFFFF;
   border-radius: 0.625rem;
   display: block;
-  height: 25rem;
   overflow-y: auto;
   overflow-x: hidden;
 }

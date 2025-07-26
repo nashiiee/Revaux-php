@@ -17,31 +17,59 @@
   <link rel="stylesheet" href="../dist/products.css">
   <!-- Font Awesome Free CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<<<<<<< HEAD
 
+  <!-- Inline CSS for filter success message -->
   <style>
     .filter-success {
-      position: fixed;
-      top: u.rem(20);
-      right: u.rem(20);
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: white;
-      padding: u.rem(12) u.rem(24);
-      border-radius: u.rem(8);
-      font-size: u.rem(14);
-      font-weight: 500;
-      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-      transform: translateX(u.rem(300));
-      transition: transform 0.3s ease-in-out;
-      z-index: 1000;
+      position: fixed !important;
+      top: 120px !important;
+      right: 30px !important;
+      background: linear-gradient(135deg, #5F3AEC, #7C4DFF) !important;
+      color: white !important;
+      padding: 12px 20px !important;
+      border-radius: 8px !important;
+      font-size: 14px !important;
+      font-weight: 500 !important;
+      box-shadow: 0 4px 20px rgba(95, 58, 236, 0.3) !important;
+      z-index: 9999 !important;
+      opacity: 0 !important;
+      transform: translateX(100%) !important;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+      pointer-events: none !important;
+      max-width: 300px !important;
+      min-width: 200px !important;
+      margin: 0 !important;
+      display: block !important;
+      float: none !important;
+      clear: none !important;
+    }
+    
+    .filter-success.show {
+      opacity: 1 !important;
+      transform: translateX(0) !important;
+      pointer-events: auto !important;
+    }
+    
+    .filter-success::before {
+      content: '✓' !important;
+      margin-right: 8px !important;
+      font-weight: bold !important;
+      font-size: 16px !important;
+      color: #fff !important;
+    }
 
-      &.show {
-        transform: translateX(0);
+    @media (max-width: 768px) {
+      .filter-success {
+        right: 10px !important;
+        left: 10px !important;
+        max-width: none !important;
+        text-align: center !important;
+        top: 80px !important;
       }
     }
   </style>
-=======
->>>>>>> e95170b6eb6aed1a4e7b5043e3327fe6b8f16eda
+
+
 </head>
 <body style="background-color: #F4F8FA">
   <aside>
@@ -120,45 +148,29 @@
           <div class="category-container options">
             <label for="category">Category</label>
             <select name="category" id="category" class="select-options">
-<<<<<<< HEAD
               <option value="all">All Categories</option>
               <option value="1">Headwear</option>
               <option value="2">Tops</option>
               <option value="3">Bottoms</option>
               <option value="4">Footwear</option>
-=======
-              <option value="all" disabled selected>All</option>
-              <option value="sunglasses">Headwear</option>
-              <option value="eyeglasses">Tops</option>
-              <option value="accessories">Bottoms</option>
-              <option value="accessories">Footwear</option>
->>>>>>> e95170b6eb6aed1a4e7b5043e3327fe6b8f16eda
             </select>
           </div>
           <div class="status-container options">
             <label for="status">Status</label>
             <select name="status" id="status" class="select-options">
-<<<<<<< HEAD
               <option value="status" selected>All Status</option>
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
-=======
-              <option value="status" disabled selected>Select Status</option>
-              <option value="pending">Pending</option>
-              <option value="processing">Processing</option>
-              <option value="completed">Completed</option>
-              <option value="cancelled">Cancelled</option>
->>>>>>> e95170b6eb6aed1a4e7b5043e3327fe6b8f16eda
             </select>
           </div>
           <div class="price-container options">
-            <label for="" id="price">Price</label>
-            <select name="category" id="category" class="select-options">
-              <option value="all">Select</option>
-              <option value="sunglasses">Headwear</option>
-              <option value="eyeglasses">Tops</option>
-              <option value="accessories">Bottoms</option>
-              <option value="accessories">Footwear</option>
+            <label for="price">Price</label>
+            <select name="price" id="price" class="select-options">
+              <option value="all">All Prices</option>
+              <option value="0-500">₱0 - ₱500</option>
+              <option value="501-1000">₱501 - ₱1,000</option>
+              <option value="1001-2000">₱1,001 - ₱2,000</option>
+              <option value="2001+">₱2,001+</option>
             </select>
           </div>
         </div>
@@ -191,10 +203,6 @@
       </table>
     </div>
   </main>
-<<<<<<< HEAD
-
-
-    
 
   <script>
     // Category filtering functionality with smooth transitions
@@ -230,15 +238,17 @@
           const categoryCell = row.cells[2]; // Category is the 3rd column (index 2)
           const statusCell = row.cells[5]; // Status is the 6th column (index 5)
           
-          // Check category filter
+          // Check category filter - compare with category_id from database
           const categoryMatch = selectedCategory === 'all' || categoryCell.textContent.trim() === selectedCategory;
           
-          // Check status filter
+          // Check status filter - look inside the span element
           let statusMatch = true;
           if (selectedStatus === 'active') {
-            statusMatch = statusCell.textContent.trim().toLowerCase() === 'active';
+            const statusSpan = statusCell.querySelector('.status-badge');
+            statusMatch = statusSpan && statusSpan.textContent.trim().toLowerCase() === 'active';
           } else if (selectedStatus === 'inactive') {
-            statusMatch = statusCell.textContent.trim().toLowerCase() === 'inactive';
+            const statusSpan = statusCell.querySelector('.status-badge');
+            statusMatch = statusSpan && statusSpan.textContent.trim().toLowerCase() === 'inactive';
           }
           
           if (categoryMatch && statusMatch) {
@@ -342,7 +352,6 @@
       }, 150);
     });
   </script>
-=======
->>>>>>> e95170b6eb6aed1a4e7b5043e3327fe6b8f16eda
+ 
 </body>
 </html>
