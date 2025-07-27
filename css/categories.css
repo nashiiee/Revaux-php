@@ -62,29 +62,73 @@ body {
   cursor: pointer;
 }
 
+/* Breadcrumb*/
+.breadcrumb-bar {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1.2rem 2rem 0.5rem 2rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    color: #222;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.breadcrumb-link {
+    color: #222;
+    text-decoration: none;
+    font-weight: 500;
+    transition: text-decoration 0.2s;
+}
+
+.breadcrumb-link:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-separator {
+    margin: 0 0.5rem;
+    color: #888;
+    font-size: 1.1em;
+}
+
 /* Layout */
 .container {
   display: flex;
   gap: 2rem;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 1.2rem 2rem 0 2rem; /* Reduce top padding, add left/right for alignment */
-  height: 1024px;
-  overflow: hidden;
-  padding-top: 0.5rem;
+  min-height: 100vh;
+  padding-bottom: 2rem;
+
 }
 
 /* Sidebar */
 .sidebar {
   width: 250px;
   max-height: 100%;
-  padding-right: 0.5rem;
   border-right: 1px solid #ddd;
   flex-shrink: 0;
+  padding-right: 10px;
+  max-height: 100vh;
+  box-shadow: inset -2px -3px 4px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  padding-right: 10px; /* prevent text from being cut off */
+    
+  /* Hide scrollbar for Chrome, Edge, Safari */
+  scrollbar-width: none;           /* Firefox */
+  -ms-overflow-style: none;        /* IE 10+ */
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;                   /* Chrome, Safari */
 }
 
 .sidebar h2 {
   margin-bottom: 1rem;
+  padding-top: 8px;
 }
 
 /* Category Dropdowns */
@@ -97,7 +141,6 @@ body {
   align-items: center;
   font-weight: bold;
   font-size: 1.1rem;
-  margin-bottom: 0.2rem;
   cursor: pointer;
   justify-content: space-between;
 }
@@ -107,7 +150,7 @@ body {
   color: inherit;
 }
 .sidebar .dropdown-link:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .sidebar .arrow {
@@ -120,8 +163,20 @@ body {
 .category-dropdown .arrow {
   transition: transform 0.2s;
 }
+
+/* SIDEBAR CATEGORY COLOR CHANGE AT ACTIVE
+.category-dropdown.active .dropdown-link{
+  color: #888;
+} */
+
 .category-dropdown.active .arrow {
   transform: rotate(90deg);
+}
+
+.sidebar .c-divider {
+  height: 1px;
+  background: #ddd;
+  margin: 0rem 0 0rem;
 }
 
 /* Submenu Animation */
@@ -143,6 +198,123 @@ body {
   font-weight: normal;
 }
 
+.submenu li a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  padding: 0.3rem 0;
+}
+
+.submenu li a:hover {
+  text-decoration: none;
+  color: #006eff;
+}
+
+.submenu li.active-sub a {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  color: #006eff;
+  border-radius: 6px;
+}
+
+/* Filters Section */
+.filters-section {
+  margin-top: 10px;
+}
+
+.filters-section .filter-group {
+  margin-bottom: 1rem;
+}
+
+.filters-section label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  padding-bottom: 6px;
+}
+
+
+
+.filters-section .custom-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: grey;
+  cursor: pointer;
+  margin-right: 2px;
+  transition: filter 0.3s ease;
+  pointer-events: auto;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* Custom style */
+  background-color: white;
+  border: 2px solid grey;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.filters-section .custom-checkbox:hover {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  border-color: #444; 
+}
+
+.filters-section .custom-checkbox:checked {
+  accent-color: #5B5B5B;
+  background-color: #5B5B5B;
+  border-color: #5B5B5B;
+}
+
+/* Custom checkmark when checked */
+.filters-section .custom-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.filters-section .sidebar-filters {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.filters-section input.filter_price {
+  border-radius: 8px;
+  width: 80px;
+  text-align: center;
+}
+
+.filters-section input.filter_price::-webkit-outer-spin-button,
+.filters-section input.filter_price::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.filters-section .btn-filter {
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background-color: #979797;
+  color: white;
+  padding: 4px 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.filters-section .btn-filter:hover {
+  background-color: #555;
+  color: white;
+  transition: background-color 0.3s ease;
+}
 /* Products Section */
 .products-section {
   width: fit-content;
@@ -189,8 +361,10 @@ body {
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+  text-decoration: none; /* Remove underline */
+  color: inherit;        /* Inherit color from parent */
 }
 
 .product-card:hover {
@@ -266,7 +440,7 @@ body {
 .product-sold {
   font-weight: normal;
   font-size: 0.8125rem;
-  color: #000;
+  color: #666;
   margin: 0;
   text-align: right;
 }
@@ -315,6 +489,7 @@ body {
   width: 250px;
   font-size: 0.8rem;
   font-family: inherit;
+  padding-top: 10px;
 }
 
 .custom-dropdown-selected {
@@ -389,33 +564,33 @@ body {
   background: #f0f0f0;
 }
 
-.breadcrumb-bar {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 1.2rem 2rem 0.5rem 2rem;
-    font-size: 1.1rem;
+
+/* Pagination */
+.pagination {
     display: flex;
-    align-items: center;
-    background: transparent;
-    color: #222;
-    border-bottom: 1px solid #ddd;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
-.breadcrumb-link {
-    color: #222;
+.page-link {
+    padding: 8px 14px;
+    border: 1px solid #ccc;
     text-decoration: none;
+    color: #333;
     font-weight: 500;
-    transition: text-decoration 0.2s;
+    border-radius: 4px;
+    transition: all 0.2s ease;
 }
 
-.breadcrumb-link:hover {
-    text-decoration: underline;
+.page-link:hover {
+    background-color: #f0f0f0;
 }
 
-.breadcrumb-separator {
-    margin: 0 0.5rem;
-    color: #888;
-    font-size: 1.1em;
+.page-link.active {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
 }
+
