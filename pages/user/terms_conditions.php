@@ -1,3 +1,17 @@
+<?php 
+  // Start session to access user data
+  session_start();
+
+  // Redirect to login if not logged in
+  if (!isset($_SESSION['username'])) {
+      header("Location: ../authentication/login.html");
+      exit();
+  }
+
+  // Include database connection
+  require_once '../../database/database.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,7 +83,7 @@
       <button class="profile-btn">
         <a href="../../pages/user/profile.html" class="cta-link">
           <span class="material-icons-outlined">person</span>
-          <span>User</span>
+          <span><?= htmlspecialchars($_SESSION['username']) ?></span>
         </a>
       </button>
     </div>
@@ -151,19 +165,19 @@
         <div class="footer-section">
             <h4>Company Info</h4>
             <ul>
-                <li><a href="../../pages/user/about_company.html">About Revaux</a></li>
-                <li><a href="../../pages/user/about_company.html">Our Story</a></li>
-                <li><a href="../../pages/user/about_company.html">The Revaux Aesthetic</a></li>
-                <li><a href="../../pages/user/about_company.html">Press & Media</a></li>
+                <li><a href="../../pages/user/about_company.php">About Revaux</a></li>
+                <li><a href="../../pages/user/about_company.php">Our Story</a></li>
+                <li><a href="../../pages/user/about_company.php">The Revaux Aesthetic</a></li>
+                <li><a href="../../pages/user/about_company.php">Press & Media</a></li>
             </ul>
         </div>
         <div class="footer-section">
             <h4>Help & Support</h4>
             <ul>
-                <li><a href="../../pages/user/faqs.html">Frequently Asked Questions</a></li>
-                <li><a href="../../pages/user/faqs.html">Order Assistance</a></li>
-                <li><a href="../../pages/user/faqs.html">Returns & Exchanges</a></li>
-                <li><a href="../../pages/user/faqs.html">Product Information</a></li>
+                <li><a href="../../pages/user/faqs.php">Frequently Asked Questions</a></li>
+                <li><a href="../../pages/user/faqs.php">Order Assistance</a></li>
+                <li><a href="../../pages/user/faqs.php">Returns & Exchanges</a></li>
+                <li><a href="../../pages/user/faqs.php">Product Information</a></li>
             </ul>
         </div>
         <div class="footer-business">
@@ -178,9 +192,9 @@
     <div class="footer-bottom">
         <p>©2024-2025 Revaux All Rights Reserved</p> 
         <div class="footer-links">
-            <a href="../../pages/user/terms_conditions.html">Terms & Conditions</a>
+            <a href="../../pages/user/terms_conditions.php">Terms & Conditions</a>
             <span class="separator">|</span>
-            <a href="../../pages/user/privacy_policy.html">Privacy Policy</a>
+            <a href="../../pages/user/privacy_policy.php">Privacy Policy</a>
         </div> 
     </div>
 </footer>
