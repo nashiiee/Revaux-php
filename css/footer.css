@@ -5,8 +5,10 @@ footer {
   font-family: 'Poppins', sans-serif;
   padding: 10px 0;
   margin-top: auto;
+  width: 100%; 
 }
 
+/* Footer Container */
 .footer-container {
   display: flex;
   justify-content: space-between;
@@ -28,6 +30,12 @@ footer {
   margin-bottom: 10px;
   font-weight: 600;
   text-transform: uppercase;
+}
+
+/* Gaps for Company and Business Section */
+.footer-section {
+  padding-left: 20px;  
+  padding-right: 20px; 
 }
 
 .footer-section ul,
@@ -62,15 +70,31 @@ footer {
   background-color: #111111;
   border-top: 1px solid #777777;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
 }
 
-.footer-bottom p,
-.footer-bottom a {
-  font-size: 16px; /* ✅ Unified font size for paragraph and links */
+/* Footer Copyright */
+.footer-bottom p {
+  font-size: 16px;
   color: #ffffff;
-  margin: 0;
+  margin-bottom: 10px; 
+}
+
+/* Footer Links Section */
+.footer-links {
+  font-size: 16px;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+.footer-bottom a {
+  color: #ffffff;
   text-decoration: none;
   transition: color 0.3s ease;
+  display: inline; 
 }
 
 .footer-bottom a:hover {
@@ -78,66 +102,12 @@ footer {
   color: #777777;
 }
 
+.footer-bottom .separator {
+  color: #ffffff;
+  margin: 0 10px; 
+  font-size: 16px;
+}
+
 .footer-bottom a:not(:last-child) {
   margin-right: 10px;
 }
-
-/* Mobile: 0–767px */
-@media (max-width: 767px) {
-  .footer-container {
-    flex-direction: column;
-    padding: 0 20px;
-  }
-
-  .footer-section,
-  .footer-business {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .footer-bottom {
-    padding: 15px 0;
-  }
-
-  .footer-bottom p,
-  .footer-bottom a {
-    font-size: 14px;
-  }
-}
-
-/* Tablet: 768px–1199px */
-@media (min-width: 768px) and (max-width: 1199px) {
-  .footer-container {
-    padding: 0 30px;
-    gap: 30px;
-  }
-
-  .footer-section,
-  .footer-business {
-    width: 45%;
-  }
-
-  .footer-bottom p,
-  .footer-bottom a {
-    font-size: 15px;
-  }
-}
-
-/* Desktop: 1200px and up */
-@media (min-width: 1200px) {
-  .footer-container {
-    padding: 0 40px;
-    gap: 40px;
-  }
-
-  .footer-section,
-  .footer-business {
-    width: 30%;
-  }
-
-  .footer-bottom p,
-  .footer-bottom a {
-    font-size: 16px;
-  }
-}
-

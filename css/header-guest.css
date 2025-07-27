@@ -1,28 +1,29 @@
 /* Header Styling */
 header {
   display: flex;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: space-between;
   background-color: #111111;
   padding: 0 40px; 
   width: 100%;
   box-sizing: border-box;
-  height: 120px; 
-  gap: 180px;
+  height: 120px;
+  gap: 20px; 
 }
 
 /* Logo and Brand Name Container */
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-left: 30px;
+  gap: 10px; 
+  margin-left: 0; 
   transition: filter 0.3s ease;
+  padding-left: 20px;
 }
 
 .logo {
-  width: 50px;
-  height: 50px;
+  width: 40px; 
+  height: 40px;
   transition: filter 0.3s ease;
 }
 
@@ -44,7 +45,7 @@ header {
 .brand-name {
   color: #FFFFFF;
   font-family: 'Playfair Display', serif;
-  font-size: 30px;
+  font-size: 24px; 
   text-decoration: none;
   display: inline-block;
   align-self: center;
@@ -55,22 +56,25 @@ header {
 .search-bar {
   position: relative;
   display: flex;
+  flex: 1; 
+  gap: 15px; 
+  max-width: 600px; 
+  margin-left: -10px;
 }
 
 .search-bar input {
-  padding: 12px 15px;
+  padding: 8px 12px;
   border: 1px solid #D9D9D9;
   background-color: #D9D9D9;
   color: #111111;
   font-family: 'Poppins', sans-serif;
   border-radius: 5px;
-  width: 700px;
-  font-size: 16px;
+  width: 100%;
+  font-size: 14px;
 }
 
 .search-bar input::placeholder {
   color: #111111;
-  opacity: 1;
 }
 
 /* Search Button Styling */
@@ -86,14 +90,14 @@ header {
 }
 
 .search-btn i {
-  font-size: 22px;
+  font-size: 20px; 
 }
 
 /* CTA (Call to Action) Buttons Container */
 .cta-buttons {
   display: flex;
   align-items: center;
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 /* Download Button Styling */
@@ -101,11 +105,11 @@ header {
   background-color: #A8A8A8;
   color: #FFFFFF;
   border: none;
-  padding: 10px 20px;
-  margin-right: 30px;
-  border-radius: 15px;
+  padding: 8px 16px; 
+  margin-right: 20px; 
+  border-radius: 12px; 
   cursor: pointer;
-  font-size: 17px;
+  font-size: 14px; 
 }
 
 .download-btn:hover {
@@ -113,15 +117,15 @@ header {
   border-color: #777777;
 }
 
-/* Log In Button Styling */
+/* Log In and Sign Up Button Styling */
 .auth-btn {
   color: #FFFFFF;
   text-decoration: none;
   font-family: 'Poppins', sans-serif;
-  margin-left: 10px;
-  font-size: 16px;
-  margin-right: 10px;
-  white-space: nowrap; 
+  margin-left: 8px;
+  font-size: 14px; 
+  margin-right: 8px; 
+  white-space: nowrap;
 }
 
 .auth-btn:hover {
@@ -131,116 +135,6 @@ header {
 /* Separator */
 .separator {
   color: #FFFFFF;
-  margin: 0 10px;
+  margin: 0 8px; 
 }
 
-/* Desktop: ≥1200px */
-@media (min-width: 1200px) {
-  header {
-    padding: 35px 40px;
-    height: 120px;
-    flex-direction: row;
-    gap: 180px;
-  }
-
-  .search-bar input {
-    width: 700px;
-    font-size: 16px;
-  }
-
-  .download-btn {
-    font-size: 17px;
-    padding: 10px 20px;
-  }
-
-  .auth-btn {
-    font-size: 16px;
-  }
-
-  .brand-name {
-    font-size: 30px;
-  }
-}
-
-/* Tablet: 768px–1199px */
-@media (min-width: 768px) and (max-width: 1199px) {
-  header {
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: flex-start;
-    height: auto;
-    padding: 25px;
-    gap: 20px;
-  }
-
-  .logo-container {
-    margin-left: 0;
-    margin-bottom: 10px;
-  }
-
-  .search-bar {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .search-bar input {
-    width: 100%;
-    font-size: 15px;
-  }
-
-  .cta-buttons {
-    width: 100%;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .download-btn,
-  .auth-btn {
-    font-size: 15px;
-    padding: 8px 16px;
-  }
-}
-
-/* Mobile: ≤767px */
-@media (max-width: 767px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    height: auto;
-    padding: 20px;
-  }
-
-  .logo-container {
-    margin-left: 0;
-    margin-bottom: 15px;
-  }
-
-  .search-bar {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-
-  .search-bar input {
-    width: 100%;
-    font-size: 14px;
-  }
-
-  .cta-buttons {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  .download-btn,
-  .auth-btn {
-    width: 100%;
-    text-align: center;
-    margin: 5px 0;
-    font-size: 14px;
-  }
-
-  .separator {
-    display: none;
-  }
-}
