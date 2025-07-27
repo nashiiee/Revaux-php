@@ -45,12 +45,12 @@
           <span>Settings</span>
         </a>
       </button>
-      <button class="logout-btn">
-        <a href="../../pages/guest/index.html" class="cta-link">
-          <span class="material-icons-outlined">exit_to_app</span>
-          <span>Log Out</span>
-        </a>
-      </button>
+      <form action="../../data/users/logout.php" method="POST">
+        <button class="logout-btn">
+            <span class="material-icons-outlined">exit_to_app</span>
+            <span>Log Out</span>
+        </button>
+      </form>
     </div>
     <div class="bottom-buttons">
       <button class="wishlist-btn">
@@ -96,24 +96,19 @@
   <button class="slider-button next" id="nextBtn">&#10095;</button>
 </section>
 
-<script type="module">
-  import { setupImageSlider } from '../../scripts/modules/image_slider.js';
-  setupImageSlider();
-</script>
-
 <section class="section categories">
 <h2 class="section-title">Categories</h2>
     <div class="categories-grid">
-      <a href="../../pages/categories/headwear.html" class="category-card" style="background-image: url('../../images/headwear.png');">
+      <a href="../category.php?category=Headwear" class="category-card" style="background-image: url('../../images/headwear.png');">
         <span>Headwear</span>
       </a>
-      <a href="../../pages/categories/top.html" class="category-card" style="background-image: url('../../images/top.png');">
+      <a href="../category.php?category=Tops" class="category-card" style="background-image: url('../../images/top.png');">
         <span>Top</span>
       </a>
-      <a href="../../pages/categories/bottom.html" class="category-card" style="background-image: url('../../images/bottom.png');">
+      <a href="../category.php?category=Bottoms" class="category-card" style="background-image: url('../../images/bottom.png');">
         <span>Bottom</span>
       </a>
-      <a href="../../pages/categories/footwear.html" class="category-card" style="background-image: url('../../images/footwear.png');">
+      <a href="../category.php?category=Footwear  " class="category-card" style="background-image: url('../../images/footwear.png');">
         <span>Footwear</span>
       </a>
     </div>
@@ -295,6 +290,6 @@
         </div> 
     </div>
 </footer>
-
+<script type="module" src="../../scripts/main.js"></script>
 </body>
 </html>
