@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $insertUser->execute();
 
             $_SESSION['username'] = $username;
-            header("Location: ../../pages/guest/index.html");
+            header("Location: ../../pages/user/homepage.html");
             exit();
         }
     } catch(PDOException $e) {
