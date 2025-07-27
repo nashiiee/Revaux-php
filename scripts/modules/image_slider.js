@@ -3,6 +3,8 @@ export function setupImageSlider() {
   let currentIndex = 0;
   const totalSlides = slides.length;
 
+  if (!slides || totalSlides === 0) return;
+
   function showSlide(index) {
     slides.forEach((slide) => {
       slide.classList.remove('active');
