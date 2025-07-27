@@ -29,7 +29,7 @@
     <div class="links">
       <ul class="nav-links">
         <li class="">
-          <a href="dashboard.html">
+          <a href="index.php">
             <i class="fa-solid fa-house"></i>
             <span>Dashboard</span>
           </a>

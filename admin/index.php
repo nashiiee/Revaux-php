@@ -1,3 +1,19 @@
+<?php
+  include '../revauxDatabase/database.php';
+
+  try {
+      $conn = new PDO("mysql:host=$db_host;dbname=$db_name", $db_username, $db_password);
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+      $stmt = $conn->prepare("SELECT * FROM views");
+      $stmt->execute();
+  } catch (PDOException $e) {
+    header("Location: index.php?error=database_connection_failed");
+    exit();
+  }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
