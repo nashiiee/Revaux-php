@@ -2,77 +2,81 @@
 body, html {
   margin: 0;
   padding: 0;
-  height: 100%; 
-  background-color: #ededed; 
+  height: 100%;
+  background-color: #ededed;
 }
 
 /* Main Content Styling */
 section {
   font-family: 'Poppins', sans-serif;
-  color: #111111; 
-  padding: 20px; 
-  max-width: 1200px; 
-  margin: 0 auto; 
-  text-align: justify; 
-  display: block; 
-  font-size: 16px; 
-  margin-bottom: 20px;; 
-  padding-top: 20px; 
-  padding-bottom: 20px; 
+  color: #111111;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: justify;
+  display: block;
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 /* Title Styling */
 section h1 {
-  text-align: center; 
-  margin-bottom: 20px; 
-  font-size: 34px; 
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 34px;
   font-weight: 700;
-  color: #111111; 
+  color: #111111;
 }
 
 /* Section Title Styling */
 section h2 {
-  text-align: left; 
-  margin-top: 18px; 
-  margin-bottom: -15px; 
-  font-size: 22px; 
-  font-weight: 600; 
+  text-align: left;
+  margin-top: 18px;
+  margin-bottom: -15px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* H3 Styling */
+section h3 {
+  margin-top: 10px;
+  margin-bottom: -10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111111;  
 }
 
 /* Line Divider Styling */
 section .line.text {
   text-align: center;
-  color: #575757; 
-  font-size: 16px; 
+  color: #575757;
+  font-size: 16px;
   margin-top: -10px;
 }
 
 /* Paragraph Styling */
 section p {
-  line-height: 1.6; 
-  margin-bottom: -10px; 
-  font-size: 16px; 
+  line-height: 1.6;
+  margin-top: 10px;
+  font-size: 16px;
 }
 
 /* Link Styling */
 section a {
-  color: #111111; 
-  text-decoration: none; 
+  color: #111111;
+  text-decoration: none;
 }
 
 section a:hover {
-  text-decoration: underline; 
+  text-decoration: underline;
 }
 
 /* List Styling */
 section ul {
-  margin-left: 40px; 
-  list-style-type: disc; 
-  padding-left: 20px; 
-  font-size: 16px; 
+  margin-left: 40px;
+  list-style-type: disc;
+  padding-left: 20px;
+  font-size: 16px;
 }
-
-
-
-
-
