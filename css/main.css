@@ -1,0 +1,244 @@
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #ededed;
+}
+
+/* Image Slider Styles */
+.hero-slider {
+  position: relative;
+  overflow: hidden;
+  height: 80vh; 
+  min-height: 250px;
+  max-height: 450px;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out; 
+}
+
+.slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;  
+  visibility: hidden;  
+  position: absolute;  
+  transition: opacity 1s ease-in-out, visibility 0s linear 1s; 
+  z-index: -1; 
+}
+
+.slide.active {
+  opacity: 1; 
+  visibility: visible;  
+  z-index: 1;  
+  transition: opacity 1s ease-in-out, visibility 0s linear 0s; 
+}
+
+.slide img {
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease; 
+}
+
+.hero-slider .slide img {
+  transition: transform 0.5s ease; 
+}
+
+.hero-slider .slide img:hover {
+  transform: scale(1.03); 
+}
+
+/* Slider Buttons */
+.slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #575757; 
+  border: none;
+  padding: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  background: transparent; 
+  box-shadow: none; 
+  outline: none; 
+  transition: color 0.3s ease; 
+}
+
+.prev {
+  left: 20px;  
+}
+
+.next {
+  right: 20px; 
+}
+
+.slider-button:hover {
+  color: #ffffff; 
+}
+
+/* Line Divider */
+.line.text {
+  text-align: center;
+  color: #575757;
+  font-size: 18px; 
+  margin-top: -20px;
+}
+
+/* Margin Adjustments for Specific Sections */
+
+section.categories {
+  margin-top: -25px; 
+}
+
+section.top-products {
+  margin-top: -55px; 
+}
+
+section.discover-new {
+  margin-top: -55px; 
+}
+
+/* Section Layout */
+.section {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-title {
+  text-align: center;
+  color: #111;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* Categories Section */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 230px);
+  gap: 2rem;
+  justify-items: center; 
+  align-items: center; 
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  margin-bottom: 20px;
+}
+
+.category-card {
+  width: 230px;
+  height: 150px;
+  background-color: #fff;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0.5rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  text-decoration: none; 
+}
+
+.category-card:hover {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+.category-card span {
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 22px;
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.8); 
+}
+
+/* Products Section */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 230px);
+  gap: 1.5rem; 
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box; 
+  margin-bottom: 20px;
+}
+
+.product-card {
+  width: 230px;
+  height: auto; 
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-sizing: border-box; 
+  text-decoration: none;
+}
+
+.product-card:hover {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+.product-image {
+  width: 100%;
+  height: 182px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.product-name {
+  font-size: 1rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin-top: 20px;
+  color: black;
+}
+
+/* Product Meta Information (Price and Sold Count) */
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  margin-top: 0.25rem; 
+}
+
+.price {
+  color: red;
+  font-weight: bold;
+  margin-top: -10px;
+  margin-bottom: -1px;
+}
+
+.product-sold {
+  font-size: 0.8125rem;
+  color: #000;
+  margin-top: -10px;
+  margin-bottom: -1px;
+}
