@@ -1,3 +1,18 @@
+<?php 
+  // Start session to access user data
+session_start();
+
+// Redirect to login if not logged in
+if (!isset($_SESSION['username'])) {
+    header("Location: ../authentication/login.html");
+    exit();
+}
+
+// Include database connection
+require_once '../../database/database.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,10 +29,10 @@
 <!-- Header -->
 <header>
   <div class="logo-container">
-    <a href="../../pages/user/homepage.html" class="logo">
+    <a href="../../pages/user/homepage.php" class="logo">
       <img src="../../images/revaux-light.png" alt="Logo">
     </a>
-    <a href="../../pages/user/homepage.html" class="brand-name">Revaux</a>
+    <a href="../../pages/user/homepage.php" class="brand-name">Revaux</a>
   </div>
   <div class="search-bar">
     <input type="text" placeholder="Search Here">
@@ -40,7 +55,7 @@
         </a>
       </button>
       <button class="settings-btn">
-        <a href="../../pages/user/settings.html" class="cta-link">
+        <a href="../../pages/user/account_management.html" class="cta-link">
           <span class="material-icons-outlined">settings</span>
           <span>Settings</span>
         </a>
@@ -54,21 +69,21 @@
     </div>
     <div class="bottom-buttons">
       <button class="wishlist-btn">
-        <a href="../../pages/user/wishlist.html" class="cta-link">
+        <a href="#" class="cta-link">
           <span class="material-icons-outlined">favorite_border</span>
           <span>Wishlist</span>
         </a>
       </button>
       <button class="cart-btn">
-        <a href="../../pages/user/cart.html" class="cta-link">
+        <a href="../../pages/user/view_cart.html" class="cta-link">
           <span class="material-icons-outlined">shopping_cart</span>
           <span>Cart</span>
         </a>
       </button>
       <button class="profile-btn">
-        <a href="../../pages/user/profile.html" class="cta-link">
+        <a href="#" class="cta-link">
           <span class="material-icons-outlined">person</span>
-          <span>User</span>
+          <span><?= htmlspecialchars($_SESSION['username']) ?></span>
         </a>
       </button>
     </div>
