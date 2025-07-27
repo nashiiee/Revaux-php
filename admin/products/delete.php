@@ -1,5 +1,5 @@
 <?php
-include '../revauxDatabase/database.php';
+include '../../revauxDatabase/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
     try {
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
             if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
                 echo json_encode(['success' => false, 'message' => 'Product not found']);
             } else {
-                header("Location: ../admin/products.php?error=product_not_found");
+                header("Location: ../products.php?error=product_not_found");
             }
             exit();
         }
@@ -40,14 +40,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
             if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
                 echo json_encode(['success' => true, 'message' => 'Product deleted successfully']);
             } else {
-                header("Location: ../admin/products.php?success=product_deleted");
+                header("Location: ../products.php?success=product_deleted");
             }
         } else {
             // Check if this is an AJAX request
             if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
                 echo json_encode(['success' => false, 'message' => 'Failed to delete product']);
             } else {
-                header("Location: ../admin/products.php?error=delete_failed");
+                header("Location: ../products.php?error=delete_failed");
             }
         }
         
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
         if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
             echo json_encode(['success' => false, 'message' => 'Database error occurred']);
         } else {
-            header("Location: ../admin/products.php?error=database_error");
+            header("Location: ../products.php?error=database_error");
         }
     }
 } else {
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
     if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
         echo json_encode(['success' => false, 'message' => 'Invalid request']);
     } else {
-        header("Location: ../admin/products.php?error=invalid_request");
+        header("Location: ../products.php?error=invalid_request");
     }
 }
 ?>

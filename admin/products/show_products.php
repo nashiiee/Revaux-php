@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <a href="./"></a>
-</body>
-</html>
-
 <?php
   include dirname(__DIR__, 2) . '/revauxDatabase/database.php';
   // Connect to the database
@@ -31,50 +19,57 @@
 
     $products = $stmt->fetchAll();
 
+
     foreach($products as $product) {
       echo "<tr>";
       echo "<td class='product-cell'>";
       echo "<div class='product-info'>";
       
-      // Smart image assignment - no duplicates, ignore database image_url
-      $productName = strtolower($product['name']);
-      $productId = $product['id'];
-      
-      // Define available images for each category
-      $imageCategories = [
-        'cap' => ['caps1.svg', 'caps2.svg', 'caps3.svg', 'caps4.svg'],
-        'hat' => ['hat1.svg', 'hat2.svg', 'hat3.svg', 'hat4.svg'], 
-        'eyewear' => ['eyeglass1.svg', 'eyeglass2.svg', 'eyeglass3.svg', 'eyeglass4.svg'],
-        'bandana' => ['bandana1.svg', 'bandana2.svg', 'bandana3.svg', 'bandana4.svg'],
-        'shirt' => ['shirt1.svg', 'shirt2.svg', 'shirt3.svg', 'shirt4.svg'],
-        't-shirt' => ['shirt1.svg', 'shirt2.svg', 'shirt3.svg', 'shirt4.svg'],
-        'polo' => ['polo1.svg', 'polo2.svg', 'polo3.svg', 'polo4.svg'],
-        'sweater' => ['sweater1.svg', 'sweater2.svg', 'sweater3.svg', 'sweater4.svg'],
-        'hoodie' => ['hoodie1.svg', 'hoodie2.svg', 'hoodie3.svg', 'hoodie4.svg'],
-        'jean' => ['jeans1.svg', 'jeans2.svg', 'jeans3.svg', 'jeans4.svg'],
-        'short' => ['shorts1.svg', 'shorts2.svg', 'shorts3.svg', 'shorts4.svg'],
-        'trouser' => ['trouser1.svg', 'trouser2.svg', 'trouser3.svg', 'trouser4.svg'],
-        'cargo' => ['pants1.svg', 'pants2.svg', 'pants3.svg', 'pants4.svg'],
-        'pant' => ['pants1.svg', 'pants2.svg', 'pants3.svg', 'pants4.svg'],
-        'sneaker' => ['sneakers1.svg', 'sneakers2.svg', 'sneakers3.svg', 'sneakers4.svg'],
-        'sandal' => ['sandals1.svg', 'sandals2.svg', 'sandals3.svg', 'sandals4.svg'],
-        'boot' => ['boots1.svg', 'boots2.svg', 'boots3.svg', 'boots4.svg'],
-        'loafer' => ['loafer1.svg', 'loafer2.svg', 'loafer3.svg', 'loafer4.svg']
-      ];
-      
-      // Find matching category and assign unique image
-      $selectedImage = 'shirt1.svg'; // default fallback
-      foreach ($imageCategories as $category => $images) {
-        if (strpos($productName, $category) !== false) {
-          // Use last 4 digits of product ID to select image variant
-          $lastDigits = intval(substr($productId, -4));
-          $imageIndex = $lastDigits % count($images);
-          $selectedImage = $images[$imageIndex];
-          break;
+      // Use the actual uploaded image from database, or fallback to default
+      if (!empty($product['image_url'])) {
+        $imagePath = $product['image_url'];
+      } else {
+        // Fallback to default image system for products without uploaded images
+        $productName = strtolower($product['name']);
+        $productId = $product['id'];
+        
+        // Define available images for each category
+        $imageCategories = [
+          'cap' => ['caps1.svg', 'caps2.svg', 'caps3.svg', 'caps4.svg'],
+          'hat' => ['hat1.svg', 'hat2.svg', 'hat3.svg', 'hat4.svg'], 
+          'eyewear' => ['eyeglass1.svg', 'eyeglass2.svg', 'eyeglass3.svg', 'eyeglass4.svg'],
+          'bandana' => ['bandana1.svg', 'bandana2.svg', 'bandana3.svg', 'bandana4.svg'],
+          'shirt' => ['shirt1.svg', 'shirt2.svg', 'shirt3.svg', 'shirt4.svg'],
+          't-shirt' => ['shirt1.svg', 'shirt2.svg', 'shirt3.svg', 'shirt4.svg'],
+          'polo' => ['polo1.svg', 'polo2.svg', 'polo3.svg', 'polo4.svg'],
+          'sweater' => ['sweater1.svg', 'sweater2.svg', 'sweater3.svg', 'sweater4.svg'],
+          'hoodie' => ['hoodie1.svg', 'hoodie2.svg', 'hoodie3.svg', 'hoodie4.svg'],
+          'jean' => ['jeans1.svg', 'jeans2.svg', 'jeans3.svg', 'jeans4.svg'],
+          'short' => ['shorts1.svg', 'shorts2.svg', 'shorts3.svg', 'shorts4.svg'],
+          'trouser' => ['trouser1.svg', 'trouser2.svg', 'trouser3.svg', 'trouser4.svg'],
+          'cargo' => ['pants1.svg', 'pants2.svg', 'pants3.svg', 'pants4.svg'],
+          'pant' => ['pants1.svg', 'pants2.svg', 'pants3.svg', 'pants4.svg'],
+          'sneaker' => ['sneakers1.svg', 'sneakers2.svg', 'sneakers3.svg', 'sneakers4.svg'],
+          'sandal' => ['sandals1.svg', 'sandals2.svg', 'sandals3.svg', 'sandals4.svg'],
+          'boot' => ['boots1.svg', 'boots2.svg', 'boots3.svg', 'boots4.svg'],
+          'loafer' => ['loafer1.svg', 'loafer2.svg', 'loafer3.svg', 'loafer4.svg']
+        ];
+        
+        // Find matching category and assign unique image
+        $selectedImage = 'shirt1.svg'; // default fallback
+        foreach ($imageCategories as $category => $images) {
+          if (strpos($productName, $category) !== false) {
+            // Use last 4 digits of product ID to select image variant
+            $lastDigits = intval(substr($productId, -4));
+            $imageIndex = $lastDigits % count($images);
+            $selectedImage = $images[$imageIndex];
+            break;
+          }
         }
+        
+        // SVG images need absolute path from web root
+        $imagePath = "../images/" . $selectedImage;
       }
-      
-      $imagePath = "/Revaux-php/admin/images/" . $selectedImage;
       echo "<img src='" . htmlspecialchars($imagePath) . "' alt='Product Image' class='product-image'>";
       echo "<div class='product-details'>";
       echo "<div class='product-name'>" . htmlspecialchars($product['name']) . "</div>";
