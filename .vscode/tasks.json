@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start XAMPP Server",
+			"type": "shell",
+			"command": "sudo /Applications/XAMPP/xamppfiles/bin/httpd -D FOREGROUND",
+			"group": "build",
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}

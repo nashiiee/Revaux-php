@@ -14,6 +14,7 @@ body {
   font-family: "Poppins", sans-serif;
   width: 100%;
   display: flex;
+  font-family: "Poppins", sans-serif;
 }
 
 h1, h2, h3 {
@@ -268,8 +269,8 @@ main .main-section-container .header-filter-products .add-product-container-filt
 main .main-section-container .header-filter-products .add-product-container-filter .filter-container span {
   font-size: 0.875rem;
 }
-main .main-section-container .header-filter-products .add-product-container-filter button {
-  padding: 0.5rem 2.5rem;
+main .main-section-container .header-filter-products .add-product-container-filter .add-product-btn {
+  padding: 0.3125rem 1.25rem;
   background-color: #5F3AEC;
   color: white;
   border: none;
@@ -278,6 +279,17 @@ main .main-section-container .header-filter-products .add-product-container-filt
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+main .main-section-container .header-filter-products .add-product-container-filter .add-product-btn:hover {
+  background-color: #4c2ec7;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(95, 58, 236, 0.3);
+  color: white;
+}
+main .main-section-container .header-filter-products .add-product-container-filter .add-product-btn:visited {
+  color: white;
 }
 main .main-section-container .option-container {
   display: flex;
