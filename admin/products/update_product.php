@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $uploadPath = $uploadDir . $fileName;
             
             if (move_uploaded_file($_FILES['productImage']['tmp_name'], $uploadPath)) {
-                $imageUrl = $fileName;
+                $imageUrl = './images/' . $fileName;
                 $updateImage = true;
             } else {
                 header("Location: edit_product.php?id=" . $productId . "&error=upload_failed");

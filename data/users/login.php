@@ -43,7 +43,7 @@
                 echo "ERROR: " . $e->getMessage();
             }
         ?>
-        <form action="../pages/register.html">
+        <form action="../../pages/authentication/signup.html">
             <button type="submit">Back</button>
         </form>
     </div>

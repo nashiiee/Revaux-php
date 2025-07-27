@@ -1,5 +1,5 @@
 <?php
-include '../revauxDatabase/database.php';
+include '../../revauxDatabase/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
@@ -8,19 +8,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         // Validate required fields
         if (empty($_POST['productName']) || empty($_POST['productPrice']) || empty($_POST['productStock'])) {
-            header("Location: ../admin/insertProducts.html?error=missing_fields");
+            header("Location: ../insertProducts.html?error=missing_fields");
             exit();
         }
         
         // Handle file upload
         $imageUrl = null;
         if (isset($_FILES['productImage']) && $_FILES['productImage']['error'] === 0) {
-            $uploadDir = '../admin/images/';
+            $uploadDir = '../images/';
             $fileExtension = strtolower(pathinfo($_FILES['productImage']['name'], PATHINFO_EXTENSION));
             $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'svg'];
             
             if (!in_array($fileExtension, $allowedExtensions)) {
-                header("Location: ../admin/insertProducts.html?error=invalid_file_type");
+                header("Location: ../insertProducts.html?error=invalid_file_type");
                 exit();
             }
             
@@ -29,9 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $uploadPath = $uploadDir . $fileName;
             
             if (move_uploaded_file($_FILES['productImage']['tmp_name'], $uploadPath)) {
-                $imageUrl = $fileName; // Store just the filename
+                $imageUrl = './images/' . $fileName;
             } else {
-                header("Location: ../admin/insertProducts.html?error=upload_failed");
+                header("Location: ../insertProducts.html?error=upload_failed");
                 exit();
             }
         }
@@ -55,22 +55,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($stmt->execute()) {
             // Redirect back to products page with success message
-            header("Location: ../admin/products.php?success=product_added");
+            header("Location: ../products.php?success=product_added");
             exit();
         } else {
-            header("Location: ../admin/insertProducts.html?error=database_error");
+            header("Location: ../insertProducts.html?error=database_error");
             exit();
         }
         
     } catch (PDOException $e) {
         // Log error (in production, don't show sensitive info)
         error_log("Database error: " . $e->getMessage());
-        header("Location: ../admin/insertProducts.html?error=database_error");
+        header("Location: ../insertProducts.html?error=database_error");
         exit();
     }
 } else {
     // Redirect if not POST request
-    header("Location: ../admin/insertProducts.html");
+    header("Location: ../insertProducts.html");
     exit();
 }
 ?>
