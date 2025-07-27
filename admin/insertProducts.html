@@ -81,7 +81,7 @@
       <h1>Add Products</h1>
     </header>
     <div class="main-section-container">
-      <form action="../data/add_products.php" method="POST" enctype="multipart/form-data">
+      <form action="./products/add_products.php" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label for="productName">Product Name</label>
           <input type="text" id="productName" name="productName" required>
@@ -108,27 +108,6 @@
             <option value="4">Footwear</option>
           </select>
         </div>
-        <!-- <div class="form-group">
-          <label for="productCategory">Product Category</label>
-          <select id="productCategory" name="productCategory" required>
-            <option value="">Select Category</option>
-            <option value="1">Headwear</option>
-            <option value="2">Tops</option>
-            <option value="3">Bottoms</option>
-            <option value="4">Footwear</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="productId">Product ID</label>
-          <input type="text" id="productId" name="productId" required>
-        </div>
-        <div class="form-group">
-          <label for="productStatus">Product Status</label>
-          <select id="productStatus" name="productStatus" required>
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
-          </select>
-        </div> -->
         <input type="submit" value="Add Product" class="submit-btn">
       </form>
     </div>
