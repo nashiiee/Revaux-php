@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../dist/addProducts.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Poppins Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div class="logo">
+      <img src="./images/logo.png" alt="Revaux Logo">
+      <span>Revaux</span>
+    </div>
+    <div class="links">
+      <ul class="nav-links">
+        <li>
+          <a href="dashboard.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="transactions.html">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Transactions</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Sales</span>
+          </a>
+        </li>
+        <li>
+          <a href="products.php">
+            <i class="fa-solid fa-box"></i>
+            <span>Products</span>
+          </a>
+        </li>
+      </ul>
+      <span class="tools-description">Tools</span>
+      <ul class="nav-links">
+        <li>
+          <a href="">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fa-solid fa-circle-question"></i>
+            <span>Help</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fa-solid fa-user-gear"></i>
+            <span>Manage User</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="logout-container">
+      <a href="" class="logout">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </aside>
+  
+  <main class="main">
+    <header>
+      <h1>Add Products</h1>
+    </header>
+    <div class="main-section-container">
+      <form action="./products/add_products.php" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="productName">Product Name</label>
+          <input type="text" id="productName" name="productName" required>
+        </div>
+        <div class="form-group">
+          <label for="productPrice">Product Price</label>
+          <input type="number" id="productPrice" name="productPrice" required>
+        </div>
+        <div class="form-group">
+          <label for="productImage">Product Image</label>
+          <input type="file" id="productImage" name="productImage" accept="image/*" required>
+        </div>
+        <div class="form-group">
+          <label for="productStock">Product Stock</label>
+          <input type="number" id="productStock" name="productStock" required>
+        </div>
+        <div class="form-group">
+          <label for="productCategory">Product Category</label>
+          <select id="productCategory" name="productCategory" required>
+            <option value="" selected disabled>Select Category</option>
+            <option value="1">Headwear</option>
+            <option value="2">Tops</option>
+            <option value="3">Bottoms</option>
+            <option value="4">Footwear</option>
+          </select>
+        </div>
+        <input type="submit" value="Add Product" class="submit-btn">
+      </form>
+    </div>
+  </main>
+</body>
+</html>

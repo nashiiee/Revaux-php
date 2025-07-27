@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   box-sizing: border-box;
   font-size: 100%;
@@ -13,6 +14,7 @@ body {
   font-family: "Poppins", sans-serif;
   width: 100%;
   display: flex;
+  font-family: "Poppins", sans-serif;
 }
 
 h1, h2, h3 {
@@ -267,8 +269,8 @@ main .main-section-container .header-filter-products .add-product-container-filt
 main .main-section-container .header-filter-products .add-product-container-filter .filter-container span {
   font-size: 0.875rem;
 }
-main .main-section-container .header-filter-products .add-product-container-filter button {
-  padding: 0.5rem 2.5rem;
+main .main-section-container .header-filter-products .add-product-container-filter .add-product-btn {
+  padding: 0.3125rem 1.25rem;
   background-color: #5F3AEC;
   color: white;
   border: none;
@@ -277,6 +279,17 @@ main .main-section-container .header-filter-products .add-product-container-filt
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+main .main-section-container .header-filter-products .add-product-container-filter .add-product-btn:hover {
+  background-color: #4c2ec7;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(95, 58, 236, 0.3);
+  color: white;
+}
+main .main-section-container .header-filter-products .add-product-container-filter .add-product-btn:visited {
+  color: white;
 }
 main .main-section-container .option-container {
   display: flex;
@@ -307,9 +320,6 @@ main .main-section-container table {
   background-color: #FFFFFF;
   border-radius: 0.625rem;
   display: block;
-  height: 25rem;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 main .main-section-container table thead {
   display: table;
@@ -428,6 +438,11 @@ main .main-section-container table tbody td.product-cell .product-info .product-
   color: #666;
   line-height: 1.2;
 }
+main .main-section-container table tbody td.action-cell .delete-form {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
 main .main-section-container table tbody td.action-cell .edit-btn, main .main-section-container table tbody td.action-cell .delete-btn {
   padding: 0.375rem 0.75rem;
   border: none;
@@ -480,6 +495,67 @@ main .main-section-container table tbody td .status-badge.inactive {
   color: #721c24;
 }
 
+.filter-success {
+  position: fixed;
+  top: 7.5rem;
+  right: 1.875rem;
+  background: linear-gradient(135deg, #5F3AEC, #7C4DFF);
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(95, 58, 236, 0.3);
+  z-index: 9999;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+  max-width: 18.75rem;
+  min-width: 12.5rem;
+}
+.filter-success.show {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.filter-success::before {
+  content: "✓";
+  margin-right: 0.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #fff;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+@media (max-width: 768px) {
+  .filter-success {
+    right: 0.625rem;
+    left: 0.625rem;
+    max-width: none;
+    text-align: center;
+    top: 5rem;
+  }
+}
 header {
   display: flex;
   align-items: center;

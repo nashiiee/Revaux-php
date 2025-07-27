@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="../dist/products.css">
   <!-- Font Awesome Free CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 </head>
 <body style="background-color: #F4F8FA">
   <aside>
@@ -95,31 +97,29 @@
           <div class="category-container options">
             <label for="category">Category</label>
             <select name="category" id="category" class="select-options">
-              <option value="all" disabled selected>All</option>
-              <option value="sunglasses">Headwear</option>
-              <option value="eyeglasses">Tops</option>
-              <option value="accessories">Bottoms</option>
-              <option value="accessories">Footwear</option>
+              <option value="all">All Categories</option>
+              <option value="1">Headwear</option>
+              <option value="2">Tops</option>
+              <option value="3">Bottoms</option>
+              <option value="4">Footwear</option>
             </select>
           </div>
           <div class="status-container options">
             <label for="status">Status</label>
             <select name="status" id="status" class="select-options">
-              <option value="status" disabled selected>Select Status</option>
-              <option value="pending">Pending</option>
-              <option value="processing">Processing</option>
-              <option value="completed">Completed</option>
-              <option value="cancelled">Cancelled</option>
+              <option value="status" selected>All Status</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
             </select>
           </div>
           <div class="price-container options">
-            <label for="" id="price">Price</label>
-            <select name="category" id="category" class="select-options">
-              <option value="all">Select</option>
-              <option value="sunglasses">Headwear</option>
-              <option value="eyeglasses">Tops</option>
-              <option value="accessories">Bottoms</option>
-              <option value="accessories">Footwear</option>
+            <label for="price">Price</label>
+            <select name="price" id="price" class="select-options">
+              <option value="all">All Prices</option>
+              <option value="0-500">₱0 - ₱500</option>
+              <option value="501-1000">₱501 - ₱1,000</option>
+              <option value="1001-2000">₱1,001 - ₱2,000</option>
+              <option value="2001+">₱2,001+</option>
             </select>
           </div>
         </div>
@@ -128,9 +128,9 @@
             <i class="fa-solid fa-filter"></i>
             <span>Filter</span>
           </div>
-          <button class="add-product-btn">
+          <a class="add-product-btn" href="insertProducts.html">
             <span>Add Product</span>
-          </button>
+          </a>
         </div>
       </div>
       
@@ -152,5 +152,7 @@
       </table>
     </div>
   </main>
+
+  <script src="./js/products.js"></script>
 </body>
 </html>

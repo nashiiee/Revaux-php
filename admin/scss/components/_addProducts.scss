@@ -1,0 +1,112 @@
+@use '../utils/' as u;
+
+header {
+  h1 {
+    margin-left: u.rem(12);
+    font-weight: 500;
+    font-size: u.rem(24);
+    margin-bottom: u.rem(12); // Reset bottom margin
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  margin-left: u.rem(250); // Match the sidebar width
+  margin-top: u.rem(50); // Account for fixed header
+  width: calc(100% - u.rem(280)); // Account for sidebar + padding
+  min-height: calc(100vh - u.rem(100));
+  padding: u.rem(20) 0;
+  margin-right: u.rem(20);
+  
+  .main-section-container {
+    width: 100%;
+    height: auto;
+    display: block;
+    background-color: #ededed; // Changed from black to light background
+    border-radius: u.rem(20);
+    padding: u.rem(30);
+    margin: 0; // Reset any inherited margins
+    box-sizing: border-box; // Ensure padding doesn't affect width
+    
+    // Reset any potential inherited styles
+    margin-left: 0;
+    margin-right: 0;
+    position: relative;
+
+    form {
+      .form-group {
+        margin-bottom: u.rem(20);
+        
+        label {
+          display: block;
+          font-weight: 500;
+          margin-bottom: u.rem(8);
+        }
+        
+        input, select, textarea {
+          width: 100%;
+          padding: u.rem(12);
+          border: 1px solid #ccc;
+          border-radius: u.rem(4);
+          box-sizing: border-box; // Ensure padding doesn't affect width
+        }
+      }
+
+      .form-actions {
+        display: flex;
+        gap: u.rem(15);
+        margin-top: u.rem(30);
+        align-items: center;
+      }
+
+      .submit-btn {
+        background-color: #5F3AEC;
+        color: white;
+        padding: u.rem(10) u.rem(20);
+        border: none;
+        border-radius: u.rem(4);
+        cursor: pointer;
+        font-size: u.rem(16);
+        font-weight: 500;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: #4c2ec7; // Darker shade on hover
+          transform: translateY(-2px); // Subtle lift effect
+          box-shadow: 0 4px 12px rgba(95, 58, 236, 0.3); // Nice shadow
+          color: white; // Ensure text stays white
+        }
+      }
+      
+      .cancel-btn {
+        background-color: #6c757d;
+        color: white;
+        padding: u.rem(10) u.rem(20);
+        border: none;
+        border-radius: u.rem(4);
+        cursor: pointer;
+        font-size: u.rem(16);
+        font-weight: 500;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background-color: #5a6268;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+          color: white;
+          text-decoration: none;
+        }
+      }
+      
+      .current-image {
+        font-size: u.rem(14);
+        color: #666;
+        margin-top: u.rem(8);
+        font-style: italic;
+      }
+    }
+  }
+}
