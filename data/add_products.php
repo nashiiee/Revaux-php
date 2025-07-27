@@ -40,16 +40,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $name = htmlspecialchars(trim($_POST['productName']));
         $price = floatval($_POST['productPrice']);
         $quantity = intval($_POST['productStock']);
+        $categoryId = htmlspecialchars(trim($_POST['productCategory']));
         
         // Insert into database - matching exact schema
-        $sql = "INSERT INTO products (name, price, image_url, quantity) 
-                VALUES (:name, :price, :image_url, :quantity)";
+        $sql = "INSERT INTO products (name, price, image_url, quantity, category_id) 
+                VALUES (:name, :price, :image_url, :quantity, :category_id)";
         
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':price', $price);
         $stmt->bindParam(':image_url', $imageUrl);
         $stmt->bindParam(':quantity', $quantity);
+        $stmt->bindParam(':category_id', $categoryId);
 
         if ($stmt->execute()) {
             // Redirect back to products page with success message
