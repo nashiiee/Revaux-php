@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   box-sizing: border-box;
   font-size: 100%;
@@ -307,9 +308,6 @@ main .main-section-container table {
   background-color: #FFFFFF;
   border-radius: 0.625rem;
   display: block;
-  height: 25rem;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 main .main-section-container table thead {
   display: table;
@@ -480,6 +478,67 @@ main .main-section-container table tbody td .status-badge.inactive {
   color: #721c24;
 }
 
+.filter-success {
+  position: fixed;
+  top: 7.5rem;
+  right: 1.875rem;
+  background: linear-gradient(135deg, #5F3AEC, #7C4DFF);
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(95, 58, 236, 0.3);
+  z-index: 9999;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+  max-width: 18.75rem;
+  min-width: 12.5rem;
+}
+.filter-success.show {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.filter-success::before {
+  content: "✓";
+  margin-right: 0.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #fff;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+@media (max-width: 768px) {
+  .filter-success {
+    right: 0.625rem;
+    left: 0.625rem;
+    max-width: none;
+    text-align: center;
+    top: 5rem;
+  }
+}
 header {
   display: flex;
   align-items: center;

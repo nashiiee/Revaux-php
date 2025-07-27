@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+<?php
+
+  class Cart {
+
+  }
+
+?>
+=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,3 +18,4 @@
   
 </body>
 </html>
+>>>>>>> e95170b6eb6aed1a4e7b5043e3327fe6b8f16eda

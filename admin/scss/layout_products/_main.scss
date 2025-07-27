@@ -94,9 +94,7 @@ main {
        background-color: #FFFFFF;
        border-radius: u.rem(10);
        display: block;
-       height: u.rem(400);
-       overflow-y: auto;
-       overflow-x: hidden;
+   
 
       & thead {
         display: table;
@@ -266,5 +264,74 @@ main {
         }
       }
     }
+  }
+}
+
+// Filter success message styles
+.filter-success {
+  position: fixed;
+  top: u.rem(120);
+  right: u.rem(30);
+  background: linear-gradient(135deg, #5F3AEC, #7C4DFF);
+  color: white;
+  padding: u.rem(12) u.rem(20);
+  border-radius: u.rem(8);
+  font-size: u.rem(14);
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(95, 58, 236, 0.3);
+  z-index: 9999;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+  max-width: u.rem(300);
+  min-width: u.rem(200);
+
+  &.show {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  &::before {
+    content: '✓';
+    margin-right: u.rem(8);
+    font-weight: bold;
+    font-size: u.rem(16);
+    color: #fff;
+  }
+}
+
+// Animation keyframes
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+// Responsive design for filter success message
+@media (max-width: 768px) {
+  .filter-success {
+    right: u.rem(10);
+    left: u.rem(10);
+    max-width: none;
+    text-align: center;
+    top: u.rem(80);
   }
 }
