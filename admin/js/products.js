@@ -1,3 +1,107 @@
+// Check for success/error messages on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const success = urlParams.get('success');
+  const error = urlParams.get('error');
+  
+  if (success) {
+    let message = '';
+    switch(success) {
+      case 'product_deleted':
+        message = 'Product deleted successfully!';
+        break;
+      case 'product_added':
+        message = 'Product added successfully!';
+        break;
+      default:
+        message = 'Operation completed successfully!';
+    }
+    showFilterSuccess(message);
+    // Clear the URL parameter
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+  
+  if (error) {
+    let message = '';
+    switch(error) {
+      case 'product_not_found':
+        message = 'Product not found!';
+        break;
+      case 'delete_failed':
+        message = 'Failed to delete product!';
+        break;
+      case 'database_error':
+        message = 'Database error occurred!';
+        break;
+      case 'invalid_request':
+        message = 'Invalid request!';
+        break;
+      default:
+        message = 'An error occurred!';
+    }
+    alert('Error: ' + message);
+    // Clear the URL parameter
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+
+  // Search functionality
+  const searchInput = document.querySelector('.search');
+  
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase().trim();
+      const tableRows = document.querySelectorAll('tbody tr');
+      
+      tableRows.forEach(row => {
+        const productNameCell = row.cells[0]; // Product name is in the first column
+        const productName = productNameCell.textContent.toLowerCase();
+        
+        if (productName.includes(searchTerm)) {
+          row.style.display = '';
+          row.classList.remove('fade-out');
+        } else {
+          row.style.display = 'none';
+          row.classList.add('fade-out');
+        }
+      });
+      
+      // Show filter success message if search is active
+      if (searchTerm.length > 0) {
+        showFilterSuccess(`Searching for: "${this.value}"`);
+      }
+    });
+  }
+});
+
+// Delete product function
+function deleteProduct(productId) {
+  if (confirm('Are you sure you want to delete this product? This action cannot be undone.')) {
+    fetch('../../data/delete_product.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: 'product_id=' + productId
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        showFilterSuccess('Product deleted successfully!');
+        // Reload the page to refresh the product list
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      } else {
+        alert('Error: ' + data.message);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('An error occurred while deleting the product.');
+    });
+  }
+}
+
 // Category filtering functionality with smooth transitions
 document.getElementById('category').addEventListener('change', function() {
   filterProducts();

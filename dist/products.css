@@ -438,6 +438,11 @@ main .main-section-container table tbody td.product-cell .product-info .product-
   color: #666;
   line-height: 1.2;
 }
+main .main-section-container table tbody td.action-cell .delete-form {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
 main .main-section-container table tbody td.action-cell .edit-btn, main .main-section-container table tbody td.action-cell .delete-btn {
   padding: 0.375rem 0.75rem;
   border: none;

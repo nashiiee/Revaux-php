@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="./"></a>
+</body>
+</html>
+
 <?php
   include dirname(__DIR__, 2) . '/revauxDatabase/database.php';
   // Connect to the database
@@ -99,8 +111,11 @@
       echo "<td>" . htmlspecialchars($product['quantity']) . "</td>";
       echo "<td><span class='status-badge $activeStatusClass'>$activeStatusText</span></td>";
       echo "<td class='action-cell'>";
-      echo "<button class='edit-btn'>Edit</button>";
-      echo "<button class='delete-btn'>Delete</button>";
+      echo "<a href='./products/edit_product.php?id=" . htmlspecialchars($product['id']) . "' class='edit-btn'>Edit</a>";
+      echo "<form class='delete-form' method='POST' action='../data/delete_product.php' onsubmit='return confirm(\"Are you sure you want to delete this product? This action cannot be undone.\")'>";
+      echo "<input type='hidden' name='product_id' value='" . htmlspecialchars($product['id']) . "'>";
+      echo "<button type='submit' class='delete-btn'>Delete</button>";
+      echo "</form>";
       echo "</td>";
       echo "</tr>";
     }

@@ -212,6 +212,13 @@ main {
           }
 
           &.action-cell {
+            
+            & .delete-form {
+              display: inline-block;
+              margin: 0;
+              padding: 0;
+            }
+
             .edit-btn, .delete-btn {
               padding: u.rem(6) u.rem(12);
               border: none;
