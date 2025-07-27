@@ -104,18 +104,18 @@
 
     <!-- Breadcrumb navigation -->
     <div class="breadcrumb-bar">
-        <a href="../../../index.html" class="breadcrumb-link">Home</a>
+        <a href="../../index.html" class="breadcrumb-link">Home</a>
         <span class="breadcrumb-separator">&gt;</span>
 
         <!-- dynamic category link to category.php -->
-        <a href="../categories/category.php?category=<?= urlencode($product['category_name']) ?>" class="breadcrumb-link">
+        <a href="../category.php?category=<?= urlencode($product['category_name']) ?>" class="breadcrumb-link">
             <?= htmlspecialchars($product['category_name']) ?>
         </a>
 
         <!-- dynamic subcategory link (if it exists) -->
         <?php if ($product['subcategory_name']): ?>
             <span class="breadcrumb-separator">&gt;</span>   
-            <a href="../categories/category.php?category=<?= urlencode($product['category_name']) ?>&sub=<?= $product['subcategory_id'] ?>" class="breadcrumb-link">
+            <a href="../category.php?category=<?= urlencode($product['category_name']) ?>&sub=<?= $product['subcategory_id'] ?>" class="breadcrumb-link">
                 <?= htmlspecialchars($product['subcategory_name']) ?>
             </a>
         <?php endif; ?>
@@ -131,11 +131,11 @@
                 <!-- LEFT COLUMN: Main image + thumbnails -->
                 <div class="pd-image-column">
                     <div class="pd-main-image">
-                        <img src="<?= htmlspecialchars($product['image_url']) ?>" alt="<?= htmlspecialchars($defaultColor) ?>">
+                        <img src="../../admin/<?= ltrim($product['image_url'], './') ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                     </div>
                     <div class="pd-thumbnails">
                         <button class="thumb active" data-color="<?= htmlspecialchars($defaultColor) ?>">
-                            <img src="<?= htmlspecialchars($product['image_url']) ?>" alt="<?= htmlspecialchars($product['name'])?>">
+                            <img src="../../admin/<?= ltrim($product['image_url'], './') ?>" alt="<?= htmlspecialchars($defaultColor) ?>">
                         </button>
 
                         <!-- Doesn't go through the loop if the product_id doesn't have any color_variants/not in the product_color_variants table -->
@@ -147,7 +147,7 @@
 
                         <?php foreach (array_slice($variants, 0, $maxVisible) as $variant): ?>
                             <button class="thumb" data-color="<?= htmlspecialchars($variant['color_name']) ?>">
-                                <img src="<?= htmlspecialchars($variant['image_url']) ?>" alt="<?= htmlspecialchars($variant['color_name']) ?>">
+                                <img src="../../admin/<?= ltrim($variant['image_url'], './') ?>" alt="<?= htmlspecialchars($variant['color_name']) ?>">
                             </button>
                         <?php endforeach; ?>
 

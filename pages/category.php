@@ -328,7 +328,7 @@
                         <?php foreach ($products as $product): ?>
                             <a href="user/product_info.php?id=<?= $product['id'] ?>" class="product-card">
                                 <div class="product-image">
-                                    <img src="<?= htmlspecialchars($product['image_url']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                                    <img src="../admin/<?= ltrim($product['image_url'], './') ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                                 </div>
                                 <div class="product-info">
                                     <p class="product-name"><?= htmlspecialchars($product['name']) ?></p>
