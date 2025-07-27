@@ -131,11 +131,11 @@
                 <!-- LEFT COLUMN: Main image + thumbnails -->
                 <div class="pd-image-column">
                     <div class="pd-main-image">
-                        <img src="<?= htmlspecialchars($product['image_url']) ?>" alt="<?= htmlspecialchars($defaultColor) ?>">
+                        <img src="../../admin/<?= ltrim($product['image_url'], './') ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                     </div>
                     <div class="pd-thumbnails">
                         <button class="thumb active" data-color="<?= htmlspecialchars($defaultColor) ?>">
-                            <img src="<?= htmlspecialchars($product['image_url']) ?>" alt="<?= htmlspecialchars($product['name'])?>">
+                            <img src="../../admin/<?= ltrim($product['image_url'], './') ?>" alt="<?= htmlspecialchars($defaultColor) ?>">
                         </button>
 
                         <!-- Doesn't go through the loop if the product_id doesn't have any color_variants/not in the product_color_variants table -->
@@ -147,7 +147,7 @@
 
                         <?php foreach (array_slice($variants, 0, $maxVisible) as $variant): ?>
                             <button class="thumb" data-color="<?= htmlspecialchars($variant['color_name']) ?>">
-                                <img src="<?= htmlspecialchars($variant['image_url']) ?>" alt="<?= htmlspecialchars($variant['color_name']) ?>">
+                                <img src="../../admin/<?= ltrim($variant['image_url'], './') ?>" alt="<?= htmlspecialchars($variant['color_name']) ?>">
                             </button>
                         <?php endforeach; ?>
 
