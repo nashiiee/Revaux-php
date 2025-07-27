@@ -31,7 +31,7 @@
                   $user = $existingUser->fetch(PDO::FETCH_ASSOC);
                   if (password_verify($password, $user['password'])) {
                     $_SESSION['username'] = $username;
-                    header("Location: ../../index.php");
+                    header("Location: ../../pages/user/homepage.html");
                     exit(); 
                 } else {
                   echo "Invalid Credentials";
@@ -43,7 +43,7 @@
                 echo "ERROR: " . $e->getMessage();
             }
         ?>
-        <form action="../../pages/authentication/signup.html">
+        <form action="../../pages/user/homepage.html">
             <button type="submit">Back</button>
         </form>
     </div>
