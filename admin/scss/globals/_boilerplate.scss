@@ -19,3 +19,9 @@ body {
   display: flex;
   font-family: u.$font;
 }
+
+.container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}

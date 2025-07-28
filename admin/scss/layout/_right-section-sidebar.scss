@@ -1,6 +1,5 @@
 @use '../utils/' as u;
 
-
 .right-section-sidebar {
   position: absolute;
   right: 0;
@@ -222,7 +221,7 @@
             }
 
             & .name, .product-name {
-              font-size: u.rem(14);
+              font-size: u.rem(12);
               display: block;
               margin-bottom: u.rem(4);
               line-height: 1.2;
@@ -252,7 +251,7 @@
         }
 
         .customer-spent, .price { 
-          font-size: u.rem(14);
+          font-size: u.rem(10);
           flex-shrink: 0;
           text-align: right;
           min-width: u.rem(60);

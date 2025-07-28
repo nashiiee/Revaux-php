@@ -16,6 +16,12 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+.container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
 h1, h2, h3 {
   font-weight: 700;
   line-height: 1.1;
@@ -231,20 +237,26 @@ main {
   min-height: 100vh;
   margin-left: 15rem;
   position: relative;
+  flex: 1;
+  width: auto;
+  max-width: none;
 }
 @media (min-width: 1280px) {
   main {
     margin-right: 19.125rem;
+    width: calc(100% - 15rem - 19.125rem);
   }
 }
 @media (max-width: 89.99875em) {
   main {
     margin-right: 17.5rem;
+    width: calc(100% - 15rem - 17.5rem);
   }
 }
 @media (max-width: 56.24875em) {
   main {
     margin-right: 0;
+    width: calc(100% - 15rem);
   }
 }
 @media (max-width: 43.74875em) {
@@ -254,6 +266,12 @@ main {
     margin-right: 0;
     padding: 0 0.625rem;
   }
+}
+main .top-selling-products {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 1.25rem 0 0.625rem 1.25rem;
+  color: #333;
 }
 main .dashboard-header {
   padding: 1.875rem 1.25rem 1.25rem 0;
@@ -312,6 +330,7 @@ main .dashboard-cards .card, main .dashboard-cards .card--totalExpense, main .da
   margin-right: 1.25rem;
   margin-top: 1.25rem;
   border-radius: 0.625rem;
+  flex: 1;
 }
 @media (max-width: 56.24875em) {
   main .dashboard-cards .card, main .dashboard-cards .card--totalExpense, main .dashboard-cards .card--revenue {
@@ -389,14 +408,17 @@ main .dashboard-cards .card--totalExpense {
 main .chart-container {
   margin: 1.25rem auto;
   height: 25rem;
-  background-color: rgb(183, 191, 255);
+  background-color: #ffffff;
   width: 100%;
   border-radius: 0.625rem;
+  padding: 1.25rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 @media (max-width: 43.74875em) {
   main .chart-container {
     margin: 0.9375rem auto;
     height: 9.375rem;
+    padding: 0.625rem;
   }
 }
 main table {
@@ -667,7 +689,7 @@ main table .table-image {
   }
 }
 .right-section-sidebar .top-customers .customers-list .customer .customer-image-details .customer-info .name, .right-section-sidebar .top-customers .customers-list .customer .customer-image-details .customer-info .product-name, .right-section-sidebar .top-customers .customers-list .customer .customer-image-details .order-info .name, .right-section-sidebar .top-customers .customers-list .customer .customer-image-details .order-info .product-name, .right-section-sidebar .top-customers .customers-list .customer .customer-order-image-details .customer-info .name, .right-section-sidebar .top-customers .customers-list .customer .customer-order-image-details .customer-info .product-name, .right-section-sidebar .top-customers .customers-list .customer .customer-order-image-details .order-info .name, .right-section-sidebar .top-customers .customers-list .customer .customer-order-image-details .order-info .product-name, .right-section-sidebar .top-customers .customers-list .customer-orders-container .customer-image-details .customer-info .name, .right-section-sidebar .top-customers .customers-list .customer-orders-container .customer-image-details .customer-info .product-name, .right-section-sidebar .top-customers .customers-list .customer-orders-container .customer-image-details .order-info .name, .right-section-sidebar .top-customers .customers-list .customer-orders-container .customer-image-details .order-info .product-name, .right-section-sidebar .top-customers .customers-list .customer-orders-container .customer-order-image-details .customer-info .name, .right-section-sidebar .top-customers .customers-list .customer-orders-container .customer-order-image-details .customer-info .product-name, .right-section-sidebar .top-customers .customers-list .customer-orders-container .customer-order-image-details .order-info .name, .right-section-sidebar .top-customers .customers-list .customer-orders-container .customer-order-image-details .order-info .product-name, .right-section-sidebar .top-customers .recent-orders-list .customer .customer-image-details .customer-info .name, .right-section-sidebar .top-customers .recent-orders-list .customer .customer-image-details .customer-info .product-name, .right-section-sidebar .top-customers .recent-orders-list .customer .customer-image-details .order-info .name, .right-section-sidebar .top-customers .recent-orders-list .customer .customer-image-details .order-info .product-name, .right-section-sidebar .top-customers .recent-orders-list .customer .customer-order-image-details .customer-info .name, .right-section-sidebar .top-customers .recent-orders-list .customer .customer-order-image-details .customer-info .product-name, .right-section-sidebar .top-customers .recent-orders-list .customer .customer-order-image-details .order-info .name, .right-section-sidebar .top-customers .recent-orders-list .customer .customer-order-image-details .order-info .product-name, .right-section-sidebar .top-customers .recent-orders-list .customer-orders-container .customer-image-details .customer-info .name, .right-section-sidebar .top-customers .recent-orders-list .customer-orders-container .customer-image-details .customer-info .product-name, .right-section-sidebar .top-customers .recent-orders-list .customer-orders-container .customer-image-details .order-info .name, .right-section-sidebar .top-customers .recent-orders-list .customer-orders-container .customer-image-details .order-info .product-name, .right-section-sidebar .top-customers .recent-orders-list .customer-orders-container .customer-order-image-details .customer-info .name, .right-section-sidebar .top-customers .recent-orders-list .customer-orders-container .customer-order-image-details .customer-info .product-name, .right-section-sidebar .top-customers .recent-orders-list .customer-orders-container .customer-order-image-details .order-info .name, .right-section-sidebar .top-customers .recent-orders-list .customer-orders-container .customer-order-image-details .order-info .product-name, .right-section-sidebar .recent-orders .customers-list .customer .customer-image-details .customer-info .name, .right-section-sidebar .recent-orders .customers-list .customer .customer-image-details .customer-info .product-name, .right-section-sidebar .recent-orders .customers-list .customer .customer-image-details .order-info .name, .right-section-sidebar .recent-orders .customers-list .customer .customer-image-details .order-info .product-name, .right-section-sidebar .recent-orders .customers-list .customer .customer-order-image-details .customer-info .name, .right-section-sidebar .recent-orders .customers-list .customer .customer-order-image-details .customer-info .product-name, .right-section-sidebar .recent-orders .customers-list .customer .customer-order-image-details .order-info .name, .right-section-sidebar .recent-orders .customers-list .customer .customer-order-image-details .order-info .product-name, .right-section-sidebar .recent-orders .customers-list .customer-orders-container .customer-image-details .customer-info .name, .right-section-sidebar .recent-orders .customers-list .customer-orders-container .customer-image-details .customer-info .product-name, .right-section-sidebar .recent-orders .customers-list .customer-orders-container .customer-image-details .order-info .name, .right-section-sidebar .recent-orders .customers-list .customer-orders-container .customer-image-details .order-info .product-name, .right-section-sidebar .recent-orders .customers-list .customer-orders-container .customer-order-image-details .customer-info .name, .right-section-sidebar .recent-orders .customers-list .customer-orders-container .customer-order-image-details .customer-info .product-name, .right-section-sidebar .recent-orders .customers-list .customer-orders-container .customer-order-image-details .order-info .name, .right-section-sidebar .recent-orders .customers-list .customer-orders-container .customer-order-image-details .order-info .product-name, .right-section-sidebar .recent-orders .recent-orders-list .customer .customer-image-details .customer-info .name, .right-section-sidebar .recent-orders .recent-orders-list .customer .customer-image-details .customer-info .product-name, .right-section-sidebar .recent-orders .recent-orders-list .customer .customer-image-details .order-info .name, .right-section-sidebar .recent-orders .recent-orders-list .customer .customer-image-details .order-info .product-name, .right-section-sidebar .recent-orders .recent-orders-list .customer .customer-order-image-details .customer-info .name, .right-section-sidebar .recent-orders .recent-orders-list .customer .customer-order-image-details .customer-info .product-name, .right-section-sidebar .recent-orders .recent-orders-list .customer .customer-order-image-details .order-info .name, .right-section-sidebar .recent-orders .recent-orders-list .customer .customer-order-image-details .order-info .product-name, .right-section-sidebar .recent-orders .recent-orders-list .customer-orders-container .customer-image-details .customer-info .name, .right-section-sidebar .recent-orders .recent-orders-list .customer-orders-container .customer-image-details .customer-info .product-name, .right-section-sidebar .recent-orders .recent-orders-list .customer-orders-container .customer-image-details .order-info .name, .right-section-sidebar .recent-orders .recent-orders-list .customer-orders-container .customer-image-details .order-info .product-name, .right-section-sidebar .recent-orders .recent-orders-list .customer-orders-container .customer-order-image-details .customer-info .name, .right-section-sidebar .recent-orders .recent-orders-list .customer-orders-container .customer-order-image-details .customer-info .product-name, .right-section-sidebar .recent-orders .recent-orders-list .customer-orders-container .customer-order-image-details .order-info .name, .right-section-sidebar .recent-orders .recent-orders-list .customer-orders-container .customer-order-image-details .order-info .product-name {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   display: block;
   margin-bottom: 0.25rem;
   line-height: 1.2;
@@ -695,7 +717,7 @@ main table .table-image {
   }
 }
 .right-section-sidebar .top-customers .customers-list .customer .customer-spent, .right-section-sidebar .top-customers .customers-list .customer .price, .right-section-sidebar .top-customers .customers-list .customer-orders-container .customer-spent, .right-section-sidebar .top-customers .customers-list .customer-orders-container .price, .right-section-sidebar .top-customers .recent-orders-list .customer .customer-spent, .right-section-sidebar .top-customers .recent-orders-list .customer .price, .right-section-sidebar .top-customers .recent-orders-list .customer-orders-container .customer-spent, .right-section-sidebar .top-customers .recent-orders-list .customer-orders-container .price, .right-section-sidebar .recent-orders .customers-list .customer .customer-spent, .right-section-sidebar .recent-orders .customers-list .customer .price, .right-section-sidebar .recent-orders .customers-list .customer-orders-container .customer-spent, .right-section-sidebar .recent-orders .customers-list .customer-orders-container .price, .right-section-sidebar .recent-orders .recent-orders-list .customer .customer-spent, .right-section-sidebar .recent-orders .recent-orders-list .customer .price, .right-section-sidebar .recent-orders .recent-orders-list .customer-orders-container .customer-spent, .right-section-sidebar .recent-orders .recent-orders-list .customer-orders-container .price {
-  font-size: 0.875rem;
+  font-size: 0.625rem;
   flex-shrink: 0;
   text-align: right;
   min-width: 3.75rem;

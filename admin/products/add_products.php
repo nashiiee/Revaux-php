@@ -41,10 +41,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $price = floatval($_POST['productPrice']);
         $quantity = intval($_POST['productStock']);
         $categoryId = htmlspecialchars(trim($_POST['productCategory']));
+        $subcategoryId = isset($_POST['productSubcategory']) ? htmlspecialchars(trim($_POST['productSubcategory'])) : null;
         
         // Insert into database - matching exact schema
-        $sql = "INSERT INTO products (name, price, image_url, quantity, category_id) 
-                VALUES (:name, :price, :image_url, :quantity, :category_id)";
+        $sql = "INSERT INTO products (name, price, image_url, quantity, category_id, subcategory_id) 
+                VALUES (:name, :price, :image_url, :quantity, :category_id, :subcategory_id)";
         
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':name', $name);
@@ -52,10 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':image_url', $imageUrl);
         $stmt->bindParam(':quantity', $quantity);
         $stmt->bindParam(':category_id', $categoryId);
+        $stmt->bindParam(':subcategory_id', $subcategoryId);
 
         if ($stmt->execute()) {
             // Redirect back to products page with success message
-            header("Location: ../products.php?success=product_added");
+            header("Location: ../products.php");
             exit();
         } else {
             header("Location: ../insertProducts.html?error=database_error");
