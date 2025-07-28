@@ -6,7 +6,7 @@
   <title>View Cart | Revaux</title>
   <link rel="stylesheet" href="../../css/view_cart.css" />
   <link rel="icon" type="image/png" href="../../images/revaux-light.png">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
