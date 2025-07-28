@@ -148,9 +148,22 @@
           <label for="productSubcategory">Product Subcategory</label>
           <select id="productSubcategory" name="productSubcategory">
             <option value="">Select Subcategory (Optional)</option>
-            <option value="1" <?php echo $product['subcategory_id'] == 1 ? 'selected' : ''; ?>>Casual</option>
-            <option value="2" <?php echo $product['subcategory_id'] == 2 ? 'selected' : ''; ?>>Formal</option>
-            <option value="3" <?php echo $product['subcategory_id'] == 3 ? 'selected' : ''; ?>>Sport</option>
+            <option value="1" <?php echo $product['subcategory_id'] == 1 ? 'selected' : ''; ?>>Caps</option>
+            <option value="2" <?php echo $product['subcategory_id'] == 2 ? 'selected' : ''; ?>>Eyewear</option>
+            <option value="3" <?php echo $product['subcategory_id'] == 3 ? 'selected' : ''; ?>>Hats</option>
+            <option value="4" <?php echo $product['subcategory_id'] == 4 ? 'selected' : ''; ?>>Bandanas</option>
+            <option value="5" <?php echo $product['subcategory_id'] == 5 ? 'selected' : ''; ?>>T-shirts</option>
+            <option value="6" <?php echo $product['subcategory_id'] == 6 ? 'selected' : ''; ?>>Polo Shirts</option>
+            <option value="7" <?php echo $product['subcategory_id'] == 7 ? 'selected' : ''; ?>>Sweaters</option>
+            <option value="8" <?php echo $product['subcategory_id'] == 8 ? 'selected' : ''; ?>>Hoodies</option>
+            <option value="9" <?php echo $product['subcategory_id'] == 9 ? 'selected' : ''; ?>>Jeans</option>
+            <option value="10" <?php echo $product['subcategory_id'] == 10 ? 'selected' : ''; ?>>Shorts</option>
+            <option value="11" <?php echo $product['subcategory_id'] == 11 ? 'selected' : ''; ?>>Trousers</option>
+            <option value="12" <?php echo $product['subcategory_id'] == 12 ? 'selected' : ''; ?>>Cargo Pants</option>
+            <option value="13" <?php echo $product['subcategory_id'] == 13 ? 'selected' : ''; ?>>Sneakers</option>
+            <option value="14" <?php echo $product['subcategory_id'] == 14 ? 'selected' : ''; ?>>Sandalsort</option>
+            <option value="15" <?php echo $product['subcategory_id'] == 15 ? 'selected' : ''; ?>>Boots</option>
+            <option value="16" <?php echo $product['subcategory_id'] == 16 ? 'selected' : ''; ?>>Loafers</option>
           </select>
         </div>
         

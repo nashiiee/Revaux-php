@@ -35,7 +35,7 @@
           </a>
         </li>
         <li>
-          <a href="transactions.html">
+          <a href="transactions.php">
             <i class="fa-solid fa-credit-card"></i>
             <span>Transactions</span>
           </a>

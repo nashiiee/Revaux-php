@@ -5,20 +5,25 @@ main {
   flex-direction: column;
   min-height: 100vh;
   margin-left: u.rem(240);
-  position: relative; // Enable absolute positioning for children
-  // background-color: aqua;
-
+  position: relative;
+  flex: 1; // Take remaining space
+  width: auto; // Allow flexible width
+  max-width: none; // Remove any max-width constraints
+  
   // At 1280px and above, ensure space for 306px sidebar
   @media (min-width: 1280px) {
     margin-right: u.rem(306);
+    width: calc(100% - u.rem(240) - u.rem(306)); // Full width minus both sidebars
   }
 
   @include u.breakpoint-down(large) {
     margin-right: u.rem(280); // Space for smaller sidebar
+    width: calc(100% - u.rem(240) - u.rem(280)); // Adjust for smaller right sidebar
   }
 
   @include u.breakpoint-down(medium) {
     margin-right: 0; // No margin when sidebar becomes relative
+    width: calc(100% - u.rem(240)); // Full width minus left sidebar only
   }
 
   @include u.breakpoint-down(small) {
@@ -26,6 +31,14 @@ main {
     margin-left: u.rem(100);
     margin-right: 0;
     padding: 0 u.rem(10);
+  }
+
+
+  & .top-selling-products {
+    font-size: u.rem(16);
+    font-weight: 500;
+    margin: u.rem(20) 0 u.rem(10) u.rem(20);
+    color: #333;
   }
 
   & .dashboard-header {
@@ -83,6 +96,7 @@ main {
       margin-right: u.rem(20);
       margin-top: u.rem(20);
       border-radius: u.rem(10);
+      flex: 1;
 
       @include u.breakpoint-down(medium) {
         width: 100%;
@@ -161,13 +175,16 @@ main {
   & .chart-container {
     margin: u.rem(20) auto;
     height: u.rem(400);
-    background-color: rgb(183, 191, 255);
+    background-color: #ffffff;
     width: 100%;
     border-radius: u.rem(10);
+    padding: u.rem(20);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     @include u.breakpoint-down(small) {
       margin: u.rem(15) auto;
       height: u.rem(150);
+      padding: u.rem(10);
     }
   }
 
