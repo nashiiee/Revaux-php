@@ -1,3 +1,7 @@
+<?php
+  // Include secure authentication check for customer
+  require_once 'auth_check.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

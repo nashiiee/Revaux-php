@@ -1,11 +1,8 @@
 <?php 
     // THIS IS A USER PAGE
-    session_start();
-
-    if (!isset($_SESSION['username'])) {
-        header("Location: ../guest/product_info.php");  // adjust the path if needed
-        exit;
-    }
+    // Include secure authentication check for customer
+    require_once 'auth_check.php';
+    
     //connect to the database
     require_once __DIR__ . '/../../database/database.php';
 

@@ -1,4 +1,7 @@
 <?php
+  // Include secure authentication check for admin
+  require_once 'auth_check.php';
+  
   include '../revauxDatabase/database.php';
 
   try {
@@ -123,7 +126,7 @@
       </ul>
     </div>
     <div class="logout-container">
-      <a href="" class="logout">
+      <a href="../data/users/logout.php" class="logout">
         <i class="fa-solid fa-right-from-bracket"></i>
         <span>Logout</span>
       </a>
@@ -133,7 +136,7 @@
     <input class="search" type="search" placeholder="Search">
     <div class="admin-header-side">
       <div class="image-container"></div>
-      <span>Admin</span>
+      <span><?php echo htmlspecialchars($_SESSION['full_name'] ?? 'Admin'); ?></span>
       <i class="fa-solid fa-chevron-down"></i>
     </div>
   </header>

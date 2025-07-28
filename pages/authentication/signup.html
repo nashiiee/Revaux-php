@@ -20,9 +20,27 @@
 
       <h2>Create an account</h2>
 
+      <!-- Error/Success Message Container -->
+      <div id="message-container" style="display: none; padding: 10px; margin: 10px 0; border-radius: 4px; font-size: 14px;">
+        <span id="message-text"></span>
+      </div>
+
       <form method="POST" action="../../data/users/signup.php" class="signup-form">
-        <label for="email">Mobile Number or Email:</label>
-        <input type="text" id="email" name="email" required>
+        <!-- Account Type Selector -->
+        <label for="account_type">Account Type:</label>
+        <select id="account_type" name="account_type" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+          <option value="customer">Customer Account</option>
+          <option value="admin">Admin Account</option>
+        </select>
+
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
 
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
@@ -32,7 +50,7 @@
         <input type="password" id="password" name="password" required>
         <div id="password-message" class="input-message">• Minimum 8 characters, must include letters and symbols.</div>
 
-        <button type="submit">Sign Up</button>
+        <button type="submit">Create Account</button>
       </form>
 
       <p>Already have an account? <a href="login.html">Log In</a></p>
@@ -56,6 +74,108 @@
       </small>
     </section>
   </main>
+
+  <script>
+    // Message handling for errors and success
+    window.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const error = urlParams.get('error');
+      const success = urlParams.get('success');
+      const messageContainer = document.getElementById('message-container');
+      const messageText = document.getElementById('message-text');
+      
+      if (error) {
+        let errorMessage = '';
+        switch(error) {
+          case 'empty_fields':
+            errorMessage = 'Please fill in all required fields.';
+            break;
+          case 'invalid_email':
+            errorMessage = 'Please enter a valid email address.';
+            break;
+          case 'username_exists':
+            errorMessage = 'Username already exists. Please choose a different one.';
+            break;
+          case 'email_exists':
+            errorMessage = 'Email already exists. Please use a different email.';
+            break;
+          case 'password_weak':
+            errorMessage = 'Password must be at least 8 characters with letters and symbols.';
+            break;
+          case 'database_error':
+            const details = urlParams.get('details');
+            if (details) {
+              errorMessage = 'System error: ' + decodeURIComponent(details);
+            } else {
+              errorMessage = 'System error. Please try again later.';
+            }
+            break;
+          case 'duplicate_entry':
+            errorMessage = 'This username or email already exists. Please try different values.';
+            break;
+          case 'config_error':
+            errorMessage = 'Configuration error. Please contact support.';
+            break;
+          default:
+            errorMessage = 'An error occurred. Please try again.';
+        }
+        
+        messageText.textContent = errorMessage;
+        messageContainer.style.display = 'block';
+        messageContainer.className = 'error-message';
+      } else if (success) {
+        let successMessage = '';
+        switch(success) {
+          case 'account_created':
+            successMessage = 'Account created successfully! You can now log in.';
+            break;
+          case 'admin_created':
+            successMessage = 'Admin account created successfully! You can now log in.';
+            break;
+          default:
+            successMessage = 'Success!';
+        }
+        
+        messageText.textContent = successMessage;
+        messageContainer.style.display = 'block';
+        messageContainer.className = 'success-message';
+      }
+      
+      // Clear URL parameters after displaying message
+      if (window.history.replaceState && (error || success)) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    });
+
+    // Form validation
+    document.querySelector('.signup-form').addEventListener('submit', function(e) {
+      const firstName = document.getElementById('first_name').value.trim();
+      const lastName = document.getElementById('last_name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      
+      if (!firstName || !lastName || !email || !username || !password) {
+        e.preventDefault();
+        showMessage('Please fill in all fields.', 'error');
+        return;
+      }
+      
+      if (password.length < 8) {
+        e.preventDefault();
+        showMessage('Password must be at least 8 characters long.', 'error');
+        return;
+      }
+    });
+
+    function showMessage(message, type) {
+      const messageContainer = document.getElementById('message-container');
+      const messageText = document.getElementById('message-text');
+      messageText.textContent = message;
+      messageContainer.style.display = 'block';
+      messageContainer.className = type === 'error' ? 'error-message' : 'success-message';
+    }
+  </script>
 
 </body>
 </html>
