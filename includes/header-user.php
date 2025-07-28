@@ -17,13 +17,13 @@
     <div class="cta-buttons">
         <div class="top-buttons">
             <button class="notification-btn">
-                <a href="/revaux/pages/user/notifications.html" class="cta-link">
+                <a href="/revaux/pages/user/notifications.php" class="cta-link">
                     <span class="material-icons-outlined">notifications</span>
                     <span>Notifications</span>
                 </a>
             </button>
             <button class="faq-btn">
-                <a href="/revaux/pages/user/faqs.html" class="cta-link">
+                <a href="/revaux/pages/user/faqs.php" class="cta-link">
                     <span class="material-icons-outlined">help_outline</span>
                     <span>FAQs</span>
                 </a>
@@ -49,7 +49,7 @@
                 </a>
             </button>
             <button class="cart-btn">
-                <a href="/revaux/pages/user/view_cart.html" class="cta-link">
+                <a href="/revaux/pages/user/view_cart.php" class="cta-link">
                     <span class="material-icons-outlined">shopping_cart</span>
                     <span>Cart</span>
                 </a>
