@@ -20,11 +20,4 @@
 
   header("Location: ../../index.html");
   exit();
-  // session_start();
-  // $_SESSION = array();
-
-  // session_destroy();
-
-  // header("Location: ../../pages/authentication/login.html");
-  // exit();
 ?>  
