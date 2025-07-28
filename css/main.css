@@ -226,7 +226,7 @@ section.discover-new {
   display: flex;
   justify-content: space-between;
   align-items: center; 
-  margin-top: 0.25rem; 
+  margin-top: 0.2rem; 
 }
 
 .price {
@@ -238,7 +238,7 @@ section.discover-new {
 
 .product-sold {
   font-size: 0.8125rem;
-  color: #000;
+  color: #666;
   margin-top: -10px;
   margin-bottom: -1px;
 }

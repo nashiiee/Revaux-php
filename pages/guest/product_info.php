@@ -75,7 +75,9 @@
     <link rel="icon" type="image/png" href="../../images/revaux-light.png">
     <link rel="stylesheet" href="../../css/categories.css">
     <link rel="stylesheet" href="../../css/product_info.css">
+    <link rel="stylesheet" href="../../css/header-guest.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <!-- to make sure customers can't order more than the stock of products -->
     <script>
@@ -83,24 +85,8 @@
     </script>
 </head>
 <body>
-    <!-- temporary header(pretty bad)-->
-    <header class="navbar">
-        <div class="logo">
-            <!-- change the path if the logo isnt working -->
-            <a href="../../index.html" class="logo-link">
-                <img src="../../images/revaux-light.png" class="logo-img" alt="Revaux Logo">
-                Revaux
-            </a>
-        </div>
-        <input type="text" placeholder="Search Here..." class="search-bar">
-        <div class="nav-icons">
-            <span>🔔 Notifications</span>
-            <span>❓ FAQs</span>
-            <span>🤍 Wishlist</span>
-            <a href="../user/view_cart.html" id="cart">🛒 Cart</a>
-            <span>👤 Russo</span>
-        </div>
-    </header>
+    
+    <?php include '../../includes/header-guest.php'; ?>
 
     <!-- Breadcrumb navigation -->
     <div class="breadcrumb-bar">
