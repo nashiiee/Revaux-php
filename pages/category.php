@@ -163,6 +163,7 @@
         <?php else: ?>
             <link rel="stylesheet" href="../css/header-guest.css">
         <?php endif; ?>
+        <link rel="stylesheet" href="../css/footer.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -264,6 +265,7 @@
             </main>
 
         </div>
+        <?php include '../includes/footer.php'; ?>
         <!-- JS -->
         <script type="module" src="../scripts/main.js"></script>
     </body>

@@ -75,175 +75,184 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title><?= htmlspecialchars($product['name']) ?> | Revaux</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../../images/revaux-light.png">
-    <link rel="stylesheet" href="../../css/categories.css">
-    <link rel="stylesheet" href="../../css/header-user.css">
-    <link rel="stylesheet" href="../../css/product_info.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <!-- to make sure customers can't order more than the stock of products -->
-    <script>
-        const MAX_QUANTITY = <?= (int) $product['quantity'] ?>;
-    </script>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title><?= htmlspecialchars($product['name']) ?> | Revaux</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="../../images/revaux-light.png">
+        <link rel="stylesheet" href="../../css/categories.css">
+        <link rel="stylesheet" href="../../css/header-user.css">
+        <link rel="stylesheet" href="../../css/product_info.css">
+        <link rel="stylesheet" href="../../css/footer.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+        <!-- to make sure customers can't order more than the stock of products -->
+        <script>
+            const MAX_QUANTITY = <?= (int) $product['quantity'] ?>;
+        </script>
+    </head>
+    <body>
 
-    <?php include '../../includes/header-user.php'; ?>
+        <?php include '../../includes/header-user.php'; ?>
 
-    <!-- Breadcrumb navigation -->
-    <div class="breadcrumb-bar">
-        <a href="../../../index.html" class="breadcrumb-link">Home</a>
-        <span class="breadcrumb-separator">&gt;</span>
+        <!-- Breadcrumb navigation -->
+        <div class="breadcrumb-bar">
+            <a href="../../../index.html" class="breadcrumb-link">Home</a>
+            <span class="breadcrumb-separator">&gt;</span>
 
-        <!-- dynamic category link to category.php -->
-        <a href="../category.php?category=<?= urlencode($product['category_name']) ?>" class="breadcrumb-link">
-            <?= htmlspecialchars($product['category_name']) ?>
-        </a>
-
-        <!-- dynamic subcategory link (if it exists) -->
-        <?php if ($product['subcategory_name']): ?>
-            <span class="breadcrumb-separator">&gt;</span>   
-            <a href="../category.php?category=<?= urlencode($product['category_name']) ?>&sub=<?= $product['subcategory_id'] ?>" class="breadcrumb-link">
-                <?= htmlspecialchars($product['subcategory_name']) ?>
+            <!-- dynamic category link to category.php -->
+            <a href="../category.php?category=<?= urlencode($product['category_name']) ?>" class="breadcrumb-link">
+                <?= htmlspecialchars($product['category_name']) ?>
             </a>
-        <?php endif; ?>
 
-        <!-- current product name -->
-        <span class="breadcrumb-separator">&gt;</span>
-        <span class="breadcrumb-current"><?= htmlspecialchars($product['name']) ?></span>
-    </div>
+            <!-- dynamic subcategory link (if it exists) -->
+            <?php if ($product['subcategory_name']): ?>
+                <span class="breadcrumb-separator">&gt;</span>   
+                <a href="../category.php?category=<?= urlencode($product['category_name']) ?>&sub=<?= $product['subcategory_id'] ?>" class="breadcrumb-link">
+                    <?= htmlspecialchars($product['subcategory_name']) ?>
+                </a>
+            <?php endif; ?>
+
+            <!-- current product name -->
+            <span class="breadcrumb-separator">&gt;</span>
+            <span class="breadcrumb-current"><?= htmlspecialchars($product['name']) ?></span>
+        </div>
 
 
-    <div class="container product-info-container">
-        <main class="product-info-page">
-            <section class="product-details">
-                <!-- LEFT COLUMN: Main image + thumbnails -->
-                <div class="pd-image-column">
-                    <div class="pd-main-image">
-                        <img src="../../admin/<?= ltrim($product['image_url'], './') ?>" alt="<?= htmlspecialchars($product['name']) ?>">
-                    </div>
-                    <div class="pd-thumbnails">
-                        <button class="thumb active" data-color="<?= htmlspecialchars($defaultColor) ?>">
-                            <img src="../../admin/<?= ltrim($product['image_url'], './') ?>" alt="<?= htmlspecialchars($defaultColor) ?>">
-                        </button>
-
-                        <!-- Doesn't go through the loop if the product_id doesn't have any color_variants/not in the product_color_variants table -->
-                        <?php
-                            $variantCount = count($variants);
-                            $maxVisible = 6;
-                            $remaining = max(0, $variantCount - $maxVisible);
-                        ?>
-
-                        <?php foreach (array_slice($variants, 0, $maxVisible) as $variant): ?>
-                            <button class="thumb" data-color="<?= htmlspecialchars($variant['color_name']) ?>">
-                                <img src="../../admin/<?= ltrim($variant['image_url'], './') ?>" alt="<?= htmlspecialchars($variant['color_name']) ?>">
+        <div class="container product-info-container">
+            <main class="product-info-page">
+                <section class="product-details">
+                    <!-- LEFT COLUMN: Main image + thumbnails -->
+                    <div class="pd-image-column">
+                        <div class="pd-main-image">
+                            <img src="../../admin/<?= ltrim($product['image_url'], './') ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                        </div>
+                        <div class="pd-thumbnails">
+                            <button class="thumb active" data-color="<?= htmlspecialchars($defaultColor) ?>">
+                                <img src="../../admin/<?= ltrim($product['image_url'], './') ?>" alt="<?= htmlspecialchars($defaultColor) ?>">
                             </button>
-                        <?php endforeach; ?>
 
-                        <?php if ($remaining > 0): ?>
-                            <button class="thumb more">+<?= $remaining ?></button>
-                        <?php endif; ?>
-                    </div>
-                </div>
-                <!-- RIGHT COLUMN: Info block -->
-                <div class="pd-info-column">
-                    <h1 class="pd-title">
-                        <?= htmlspecialchars($product['name']) ?>
-                    </h1>
-                    <div class="pd-divider"></div>
+                            <!-- Doesn't go through the loop if the product_id doesn't have any color_variants/not in the product_color_variants table -->
+                            <?php
+                                $variantCount = count($variants);
+                                $maxVisible = 6;
+                                $remaining = max(0, $variantCount - $maxVisible);
+                            ?>
 
-                    <div class="pd-pricing">
-                        <p class="pd-price">₱<?= number_format($product['price'], 2) ?></p>
-                        <!-- uncomment when discount feature is implemented
-                        <p class="pd-discount">–50% <span class="pd-original-price">₱500.00</span></p>
-                        -->
-                    </div>
+                            <?php foreach (array_slice($variants, 0, $maxVisible) as $variant): ?>
+                                <button class="thumb" data-color="<?= htmlspecialchars($variant['color_name']) ?>">
+                                    <img src="../../admin/<?= ltrim($variant['image_url'], './') ?>" alt="<?= htmlspecialchars($variant['color_name']) ?>">
+                                </button>
+                            <?php endforeach; ?>
 
-                    <form action="../user/view_cart.html" method="post" class="pd-actions-form">
-                        <?php $isOutOfStock = $product['quantity'] <= 0; ?>
-                        <div class="pd-quantity">
-                            <label for="quantity">Quantity:</label>
-                            <span>
-                                <button type="button" class="qty-btn-minus" <?= $isOutOfStock ? 'disabled' : '' ?>>–</button>
-                                <input 
-                                    type="text" 
-                                    class="qty-input" 
-                                    id="quantity"
-                                    value="<?= $isOutOfStock ? '0' : '1' ?>" 
-                                    min="1" 
-                                    <?= $isOutOfStock ? 'disabled' : '' ?>
-                                >
-                                <button type="button" class="qty-btn-plus" <?= $isOutOfStock ? 'disabled' : '' ?>>+</button>
-                            </span>
-
-                            <?php if ($isOutOfStock): ?>
-                                <p class="stock-warning">Out of stock</p>
-                            <?php elseif ($product['quantity'] < 20): ?>
-                                <p class="stock-warning">Only <?= $product['quantity'] ?> left in stock!</p>
+                            <?php if ($remaining > 0): ?>
+                                <button class="thumb more">+<?= $remaining ?></button>
                             <?php endif; ?>
                         </div>
-
-
-                        <div class="pd-sizes">
-                            <label for="selected-size">Size:</label>
-                            <?php if (!empty($sizes)): ?>
-                                <div class="size-options">
-                                    <?php foreach ($sizes as $size): ?>
-                                        <button class="size-btn" type="button"><?= htmlspecialchars($size['label']) ?></button>
-                                    <?php endforeach; ?>
-                                </div>
-                                <input type="hidden" name="selected_size" id="selected-size" required>
-                            <?php else: ?>
-                            <!-- This pops up when the product doesnt have any sizes(insert in product_size table if you want to) -->
-                                <p class="no-sizes">One Size Fits All</p>
-                            <?php endif; ?>
-                        </div>
-
-                        <div class="pd-actions">
-                            <button class="btn buy-now guest-only" type="submit">Buy Now</button>
-                            <button class="btn add-cart guest-only" type="submit">Add to Cart</button>
-                        </div>
-                    </form>
-                    
-                    <div class="pd-divider"></div>
-
-                    <div class="pd-details-section">
-                        <h2>Product Details</h2>
-                        <ul>
-                            <li><strong>Origin:</strong><?= htmlspecialchars($product['origin']) ?></li>
-                            <li>
-                                <strong>Colour:</strong>
-                                <span class="pd-color"><?= htmlspecialchars($defaultColor) ?></span>
-                            </li>
-                            <li><strong>Material:</strong><?= htmlspecialchars($product['material']) ?></li>
-                            <li><strong>Care Instructions:</strong><?= htmlspecialchars($product['care_instructions']) ?></li>
-                            <li><strong>Closure Type:</strong><?= htmlspecialchars($product['closure_type']) ?></li>
-                        </ul>
                     </div>
+                    <!-- RIGHT COLUMN: Info block -->
+                    <div class="pd-info-column">
+                        <h1 class="pd-title">
+                            <?= htmlspecialchars($product['name']) ?>
+                        </h1>
+                        <div class="pd-divider"></div>
 
-                    <div class="pd-divider"></div> 
-
-                    <div class="pd-about-section">
-                        <h2>About this Product</h2>
-                        <div class="pd-about-wrapper">
-                            <p class="pd-about-text">
-                                <?= nl2br(htmlspecialchars($product['extra_description'])) ?>
-                            </p>
+                        <div class="pd-pricing">
+                            <p class="pd-price">₱<?= number_format($product['price'], 2) ?></p>
+                            <!-- uncomment when discount feature is implemented
+                            <p class="pd-discount">–50% <span class="pd-original-price">₱500.00</span></p>
+                            -->
                         </div>
-                        <button class="pd-about-toggle">▼ Read More</button>
+
+                        <form action="../../data/cart.php" method="post" class="pd-actions-form">
+                            <?php $isOutOfStock = $product['quantity'] <= 0; ?>
+                            <div class="pd-quantity">
+                                <label for="quantity">Quantity:</label>
+                                <span>
+                                    <button type="button" class="qty-btn-minus" <?= $isOutOfStock ? 'disabled' : '' ?>>–</button>
+                                    <input 
+                                        type="text" 
+                                        class="qty-input" 
+                                        id="quantity"
+                                        value="<?= $isOutOfStock ? '0' : '1' ?>" 
+                                        min="1" 
+                                        <?= $isOutOfStock ? 'disabled' : '' ?>
+                                    >
+                                    <button type="button" class="qty-btn-plus" <?= $isOutOfStock ? 'disabled' : '' ?>>+</button>
+                                </span>
+
+                                <?php if ($isOutOfStock): ?>
+                                    <p class="stock-warning">Out of stock</p>
+                                <?php elseif ($product['quantity'] < 20): ?>
+                                    <p class="stock-warning">Only <?= $product['quantity'] ?> left in stock!</p>
+                                <?php endif; ?>
+                            </div>
+
+
+                            <div class="pd-sizes">
+                                <label for="selected-size">Size:</label>
+                                <?php if (!empty($sizes)): ?>
+                                    <div class="size-options">
+                                        <?php foreach ($sizes as $size): ?>
+                                            <button class="size-btn" type="button"><?= htmlspecialchars($size['label']) ?></button>
+                                        <?php endforeach; ?>
+                                    </div>
+                                    <input type="hidden" name="selected_size" id="selected-size" required>
+                                <?php else: ?>
+                                <!-- This pops up when the product doesnt have any sizes(insert in product_size table if you want to) -->
+                                    <p class="no-sizes">One Size Fits All</p>
+                                <?php endif; ?>
+                            </div>
+                            <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                            <input type="hidden" name="product_name" value="<?= htmlspecialchars($product['name']) ?>">
+                            <input type="hidden" name="product_price" value="<?= $product['price'] ?>">
+                            <input type="hidden" name="selected_color" value="<?= htmlspecialchars($defaultColor) ?>">
+                            <input type="hidden" name="product_image" value="../../admin/<?= ltrim($product['image_url'], './') ?>">
+                            <input type="hidden" name="quantity" id="hidden-quantity" value="1">
+                            <div class="pd-actions">
+                                <button class="btn buy-now" type="submit">Buy Now</button>
+                                <button class="btn add-cart" type="submit">Add to Cart</button>
+                            </div>
+                        </form>
+                        
+                        <div class="pd-divider"></div>
+
+                        <div class="pd-details-section">
+                            <h2>Product Details</h2>
+                            <ul>
+                                <li><strong>Origin:</strong><?= htmlspecialchars($product['origin']) ?></li>
+                                <li>
+                                    <strong>Colour:</strong>
+                                    <span class="pd-color"><?= htmlspecialchars($defaultColor) ?></span>
+                                </li>
+                                <li><strong>Material:</strong><?= htmlspecialchars($product['material']) ?></li>
+                                <li><strong>Care Instructions:</strong><?= htmlspecialchars($product['care_instructions']) ?></li>
+                                <li><strong>Closure Type:</strong><?= htmlspecialchars($product['closure_type']) ?></li>
+                            </ul>
+                        </div>
+
+                        <div class="pd-divider"></div> 
+
+                        <div class="pd-about-section">
+                            <h2>About this Product</h2>
+                            <div class="pd-about-wrapper">
+                                <p class="pd-about-text">
+                                    <?= nl2br(htmlspecialchars($product['extra_description'])) ?>
+                                </p>
+                            </div>
+                            <button class="pd-about-toggle">▼ Read More</button>
+                        </div>
                     </div>
-                </div>
-                <div class="pd-zoom-window"></div>
-            </section>
-        </main>
-    </div>
-    <!-- JS -->
-    <script type="module" src="../../scripts/main.js"></script>
-                
-</body>
+                    <div class="pd-zoom-window"></div>
+                </section>
+            </main>
+        </div>
+        <!-- Footer -->
+        <?php include '../../includes/footer.php'; ?>
+        <!-- Cart feedback message -->
+        <div class="cart-feedback" id="cart-feedback"></div>
+        <!-- JS -->
+        <script type="module" src="../../scripts/main.js"></script>         
+    </body>
 </html>

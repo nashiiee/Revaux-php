@@ -11,106 +11,6 @@ body {
   color: #111111;
 }
 
-/* Top Bar */
-.top-bar {
-  background-color: #111111;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20px;
-}
-
-.header-container {
-  width: 100%;
-  max-width: 1200px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.logo {
-  width: 40px;
-  height: 40px;
-}
-.brand-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 28px;
-  color: #FFFFFF;
-}
-
-.search-bar {
-  background-color: #FFFFFF;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  padding: 6px 15px;
-  width: 450px;
-  height: 40px;
-}
-.search-bar input {
-  border: none;
-  outline: none;
-  background: transparent;
-  font-size: 14px;
-  width: 100%;
-}
-.search-icon {
-  color: #5B5B5B;
-  font-size: 20px;
-  margin-left: 8px;
-}
-
-.nav-section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 6px;
-}
-
-.nav-top {
-  display: flex;
-  gap: 125px;
-}
-
-.nav-bottom {
-  display: flex;
-  gap: 100px; 
-}
-
-.icon-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #FFFFFF;
-  text-decoration: none;
-  font-size: 13px;
-  position: relative;
-}
-.icon-group .material-icons {
-  font-size: 22px;
-}
-.notification-icon .icon-badge {
-  position: absolute;
-  top: -5px;
-  right: 15px;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 11px;
-  font-weight: bold;
-}
-
 /* Cart Layout */
 .cart-container {
   display: flex;
@@ -128,30 +28,21 @@ body {
 
 /* Cart Header */
 .cart-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #FFFFFF;
-  padding: 20px;
-  border-radius: 8px;
-  font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* This will push delete button to right if content is spaced */
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    font-weight: 600;
 }
 
-.select-all-col {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  gap: 18px;
+.select-all-controls { /* New wrapper for header elements */
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between checkbox, label, and delete button */
 }
 
-.select-all-col label {
-  cursor: pointer;
-}
-
-.cart-header .col {
-  flex: 1;
-  text-align: center;
-}
 .select-all-btn {
   display: flex;
   align-items: center;
@@ -177,15 +68,44 @@ body {
   border-radius: 3px;
 }
 
+.remove-selected-controls {
+  justify-content: flex-end;
+  margin-right: 45px;
+}
+
+.remove-selected-header-btn {
+  background: none;
+  border: none;
+  color: #dc3545; /* Red color for delete icon/text */
+  font-weight: 600;
+  cursor: pointer;
+  display: flex; /* To align icon and text */
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: color 0.2s ease;
+}
+.remove-selected-header-btn:hover {
+    color: #ff0000; /* Darker red on hover */
+}
+
+.remove-selected-header-btn .material-icons-outlined {
+    font-size: 24px; /* Adjust icon size */
+}
 /* Category Box */
 .cart-category-box {
-  background-color: #FFFFFF;
-  border-radius: 8px;
-  padding: 10px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  border: 1px solid #D0D0D0;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #D0D0D0;
+    
+    /* ADD THIS MIN-HEIGHT PROPERTY */
+    min-height: 672px; /* Calculated: (5 * (100px item-img + 2*12px padding + 2*1px border)) + (4 * 10px gap) */
+    
+    /* ADD/ADJUST THESE PADDING/GAP PROPERTIES */
+    gap: 0; /* No explicit gap here if children handle margin-bottom */
 }
 .cart-category {
   font-weight: 600;
@@ -200,16 +120,40 @@ body {
 
 /* Cart Item */
 .cart-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
-  border-top: 1px solid #D0D0D0;
+    display: grid; /* Use grid for more explicit column control */
+    grid-template-columns: auto 100px 2fr 1fr 1fr 0.8fr auto; /* Checkbox | Image | Name/Details | Unit Price | Quantity | Total | Remove */
+    align-items: center;
+    padding: 12px 20px;
+    transition: background-color 0.3s ease;
+    gap: 15px; /* Gap between columns */
+    border: none;
+    border-radius: 4px; /* Optional: adds rounded corners to individual items */
+    margin: 0; /* Add horizontal margin if desired, or set to 0 */
 }
 
+.cart-item:hover {
+    background-color: #ededed;
+}
+/*
+.cart-item:not(:last-child) {
+    margin-bottom: 10px;  Creates the gap between items 
+}*/
+
+/* NEW: Style for the empty cart message to center it vertically */
+.cart-empty-message {
+    padding: 2rem; /* Keep existing padding */
+    text-align: center; /* Keep existing text alignment */
+    color: #555; /* Keep existing color */
+    flex-grow: 1; /* Allow it to take up available space */
+    display: flex; /* Use flexbox to center content */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    min-height: 600px; /* roughly the min height, adjust as needed */
+}
 .checkbox-wrapper {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .custom-checkbox {
@@ -274,80 +218,112 @@ body {
 }
 
 .item-img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 6px;
+    width: 100px; /* Fixed width */
+    height: 100px; /* Fixed height */
+    object-fit: cover;
+    border-radius: 6px;
 }
+
+.item-details { 
+    text-align: center; 
+}
+
 .item-name {
-  flex: 1;
-  text-align: center;
+    text-align: center;
+    font-weight: 600;
 }
+.item-name span {
+    font-weight: normal;
+    color: #555;
+}
+
 .item-price,
 .total-price {
-  flex: 1;
-  text-align: center;
+    text-align: center; /* Keep price centered */
+    font-weight: 600;
 }
 .quantity-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column-reverse; 
+    align-items: center;
+    gap: 5px; 
 }
 
+/*.quantity-selector { */
+
+/* --- Quantity Controls: Match product_info.css --- */
 .quantity-selector {
   display: flex;
+  gap: 0.5rem;
   border: none;
   border-radius: 4px;
-  overflow: hidden;
-  transition: background-color 0.3s ease;
-}
-
-.quantity-selector:hover {
-  background-color: #ededed;
-}
-
-.quantity-selector button {
+  overflow: visible;
   background: none;
+  transition: background 0.3s ease;
+}
+
+.quantity-selector .qty-btn-minus,
+.quantity-selector .qty-btn-plus {
+  width: 30px;
+  height: 30px;
+  background: #d9d9d9;
   border: none;
-  width: 31px;
-  height: 31px;
-  padding: 4px 10px;
+  border-radius: 4px;
+  color: #333;
   cursor: pointer;
-  font-size: 20px;
-  font-weight: normal;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: background 0.3s ease, color 0.3s ease;
+  padding: 0;
 }
 
-.quantity-selector input {
-  font-size: 16px;
+.quantity-selector .qty-btn-minus:hover,
+.quantity-selector .qty-btn-plus:hover {
+  background: #888;
+  color: #fff;
+}
+
+.quantity-selector .qty-btn-minus:disabled,
+.quantity-selector .qty-btn-plus:disabled {
+  background-color: #bfbfbf;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.quantity-selector .qty-input {
+  width: 40px;
+  font-size: 1.1rem;
   text-align: center;
-  width: 31px;
-  height: 31px;
-  border: none;
+  border: 0;
+  height: 30px;
+  background: none;
 }
 
-.quantity-selector input:focus {
+.quantity-selector .qty-input:focus {
   outline: none;
 }
 
-.stock-warning {
-  font-size: 12px;
-  color: red;
-  margin-top: 4px;
+.stock-warning-message {
+    color: #dc3545; /* Bootstrap danger red */
+    font-size: 0.8em;
+    white-space: nowrap; /* Prevent breaking on new line */
+    display: none; /* Hidden by default */
 }
 
 .delete-btn {
-  background: none;
-  border: none;
-  color: #ff0000;
-  font-weight: bold;
-  cursor: pointer;
-  flex: 1;
-  text-align: center;
+    background: none;
+    border: none;
+    color: #c82333;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: color 0.2s ease;
 }
 
 .delete-btn:hover {
-  color: #cc0000;
+    color: #ff0000;
 }
 
 /* Summary */
