@@ -10,58 +10,6 @@ body {
   background: #ededed;
 }
 
-/* Navbar */
-.navbar {
-  background: #111111;
-  opacity: 0.88;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  align-items: center;
-}
-
-#cart{
-  text-decoration: none;
-  color: white;
-}
-
-
-.logo {
-  display: flex;
-  align-items: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-}
-
-.logo a {
-    font-family: inherit;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: inherit;         
-}
-
-.logo-img {
-    width: 71px;
-    height: 71px;
-    object-fit: contain;
-}
-
-
-.search-bar {
-  width: 300px;
-  padding: 0.5rem;
-  border-radius: 5px;
-  border: none;
-}
-
-.nav-icons span {
-  margin-left: 20px;
-  cursor: pointer;
-}
-
 /* Breadcrumb*/
 .breadcrumb-bar {
     width: 100%;

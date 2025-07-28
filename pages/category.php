@@ -1,4 +1,10 @@
 <?php
+    session_start();
+    if (isset($_SESSION['username'])) {
+            include '../includes/header-user.php';  // Adjust path later if needed
+        } else {
+            include '../includes/header-guest.php';
+    }
     // Connect to database
     require_once __DIR__ . '/../database/database.php';
 
@@ -145,237 +151,121 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Headwear | Revaux</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- make sure to change this path if it doesnt work -->
-    <link rel="icon" type="image/png" href="../images/revaux-light.png">
-    <link rel="stylesheet" href="../css/categories.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <!-- temporary header(pretty bad)-->
-    <header class="navbar">
-        <div class="logo">
-            <!-- change the path if the logo isnt working -->
-            <a href="../index.html" class="logo-link">
-                <img src="../images/revaux-light.png" class="logo-img" alt="Revaux Logo">
-                Revaux
-            </a>
-        </div>
-        <input type="text" placeholder="Search Here..." class="search-bar">
-        <div class="nav-icons">
-        <span>🔔 Notifications</span>
-        <span>❓ FAQs</span>
-        <span>🤍 Wishlist</span>
-        <span>🛒 Cart</span>
-        <span>👤 Russo</span>
-        </div>
-    </header>
-
-    <div class="breadcrumb-bar">
-        <a href="../../index.html" class="breadcrumb-link">Home</a>
-        <span class="breadcrumb-separator">&gt;</span>
-        <a href="category.php?category=<?= urlencode($categoryName) ?>&sort=<?= urlencode($sortOption) ?>" class="breadcrumb-link"><?= htmlspecialchars($categoryName) ?></a>
-
-        <?php if ($subcategoryName): ?>
-            <span class="breadcrumb-separator">&gt;</span>
-            <a href="category.php?category=<?= urlencode($categoryName) ?>&sub=<?= $subcategoryId ?>&sort=<?= urlencode($sortOption) ?>" class="breadcrumb-link"><?= htmlspecialchars($subcategoryName) ?></a>
+    <head>
+        <meta charset="UTF-8">
+        <title>Headwear | Revaux</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- make sure to change this path if it doesnt work -->
+        <link rel="icon" type="image/png" href="../images/revaux-light.png">
+        <link rel="stylesheet" href="../css/categories.css">
+        <?php if (isset($_SESSION['username'])): ?>
+            <link rel="stylesheet" href="../css/header-user.css">
+        <?php else: ?>
+            <link rel="stylesheet" href="../css/header-guest.css">
         <?php endif; ?>
-    </div>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="breadcrumb-bar">
+            <a href="../../index.html" class="breadcrumb-link">Home</a>
+            <span class="breadcrumb-separator">&gt;</span>
+            <a href="category.php?category=<?= urlencode($categoryName) ?>&sort=<?= urlencode($sortOption) ?>" class="breadcrumb-link"><?= htmlspecialchars($categoryName) ?></a>
 
-    
-    <div class="container">        
-        <aside class="sidebar">
-            <h2>CATEGORY</h2>
-            <div class="category-dropdown" data-category="Headwear">
-                <div class="dropdown-row">
-                    <a class="dropdown-link" href="category.php?category=Headwear">Headwear</a>
-                    <span class="arrow" tabindex="0" aria-label="Toggle submenu">▶</span>
-                </div>
-                <ul class="submenu">
-                    <li class="<?= ($subcategoryId == 1 ? 'active-sub' : '') ?>"><a href="category.php?category=Headwear&sub=1">Caps</a></li> <!-- Use actual subcategory ID -->
-                    <li class="<?= ($subcategoryId == 2 ? 'active-sub' : '') ?>"><a href="category.php?category=Headwear&sub=2">Eyewear</a></li>
-                    <li class="<?= ($subcategoryId == 3 ? 'active-sub' : '') ?>"><a href="category.php?category=Headwear&sub=3">Hats</a></li>
-                    <li class="<?= ($subcategoryId == 4 ? 'active-sub' : '') ?>"><a href="category.php?category=Headwear&sub=4">Bandanas</a></li>
-                </ul>
-            </div>
-            <div class="category-dropdown" data-category="Tops">
-                <div class="dropdown-row">
-                    <a class="dropdown-link" href="category.php?category=Tops">Tops</a>
-                    <span class="arrow" tabindex="0" aria-label="Toggle submenu">▶</span>
-                </div>
-                <ul class="submenu">
-                    <li class="<?= ($subcategoryId == 5 ? 'active-sub' : '') ?>"><a href="category.php?category=Tops&sub=5">T-shirts</a></li>
-                    <li class="<?= ($subcategoryId == 6 ? 'active-sub' : '') ?>"><a href="category.php?category=Tops&sub=6">Polo Shirts</a></li>
-                    <li class="<?= ($subcategoryId == 7 ? 'active-sub' : '') ?>"><a href="category.php?category=Tops&sub=7">Sweaters</a></li>
-                    <li class="<?= ($subcategoryId == 8 ? 'active-sub' : '') ?>"><a href="category.php?category=Tops&sub=8">Hoodies</a></li>
-                </ul>
-            </div>
-            <div class="category-dropdown" data-category="Bottoms">
-                <div class="dropdown-row">
-                    <a class="dropdown-link" href="category.php?category=Bottoms">Bottoms</a>
-                    <span class="arrow" tabindex="0" aria-label="Toggle submenu">▶</span>
-                </div>
-                <ul class="submenu">
-                    <li class="<?= ($subcategoryId == 9 ? 'active-sub' : '') ?>"><a href="category.php?category=Bottoms&sub=9">Jeans</a></li>
-                    <li class="<?= ($subcategoryId == 10 ? 'active-sub' : '') ?>"><a href="category.php?category=Bottoms&sub=10">Shorts</a></li>
-                    <li class="<?= ($subcategoryId == 11 ? 'active-sub' : '') ?>"><a href="category.php?category=Bottoms&sub=11">Trousers</a></li>
-                    <li class="<?= ($subcategoryId == 12 ? 'active-sub' : '') ?>"><a href="category.php?category=Bottoms&sub=12">Cargo Pants</a></li>
-                </ul>
-            </div>
-            <div class="category-dropdown" data-category="Footwear">
-                <div class="dropdown-row">
-                    <a class="dropdown-link" href="category.php?category=Footwear">Footwear</a>
-                    <span class="arrow" tabindex="0" aria-label="Toggle submenu">▶</span>
-                </div>
-                <ul class="submenu">
-                    <li class="<?= ($subcategoryId == 13 ? 'active-sub' : '') ?>"><a href="category.php?category=Footwear&sub=13">Sneakers</a></li>
-                    <li class="<?= ($subcategoryId == 14 ? 'active-sub' : '') ?>"><a href="category.php?category=Footwear&sub=14">Sandals</a></li>
-                    <li class="<?= ($subcategoryId == 15 ? 'active-sub' : '') ?>"><a href="category.php?category=Footwear&sub=15">Boots</a></li>
-                    <li class="<?= ($subcategoryId == 16 ? 'active-sub' : '') ?>"><a href="category.php?category=Footwear&sub=16">Loafers</a></li>
-                </ul>
-            </div>
-            <div class="c-divider"></div>
+            <?php if ($subcategoryName): ?>
+                <span class="breadcrumb-separator">&gt;</span>
+                <a href="category.php?category=<?= urlencode($categoryName) ?>&sub=<?= $subcategoryId ?>&sort=<?= urlencode($sortOption) ?>" class="breadcrumb-link"><?= htmlspecialchars($subcategoryName) ?></a>
+            <?php endif; ?>
+        </div>
 
-            <form method="GET" action="category.php">
-                <input type="hidden" name="category" value="<?= htmlspecialchars($categoryName) ?>">
-                <?php if ($subcategoryId): ?>
-                    <input type="hidden" name="sub" value="<?= $subcategoryId ?>">
-                <?php endif; ?>
-                <input type="hidden" name="sort" value="<?= htmlspecialchars($sortOption) ?>">
-                <div class="filters-section">
-                    <h2>FILTERS</h2>
+        
+        <div class="container">        
+            <?php
+                $isSearch = false; // Not a search page
+                include '../includes/sidebar_filters.php';
+            ?>
 
-                    <!-- Size Filter -->
-                    <div class="filter-group">
-                        <label>Size:</label>
-                        <?php
-                        $sizeStmt = $conn->query("SELECT id, label FROM sizes");
-                        $sizes = $sizeStmt->fetchAll();
-                        foreach ($sizes as $size):
-                        ?>
-                        <div class="sidebar-filters">
-                            <input type="checkbox" class="custom-checkbox"name="size[]" value="<?= $size['id'] ?>" <?= in_array($size['id'], $_GET['size'] ?? []) ? 'checked' : '' ?>>
-                            <?= htmlspecialchars($size['label']) ?>
+            <main class="products-section">
+                <div class="products-container">
+                    <div class="products-header">
+                        <h2><?= htmlspecialchars($subcategoryName ?? $categoryName) ?></h2>
+                        <!-- Custom Sort dropdown -->
+                        <div class="custom-dropdown" id="sort-dropdown">
+                            <div class="custom-dropdown-selected" tabindex="0"> 
+                                <span class="sort-label">Sort by: </span>
+                                <span id="sort-selected-text">Default</span>
+                                <span class="custom-arrow">▼</span>
+                            </div>
+                            <ul class="custom-dropdown-list">
+                                <li data-value="default" class="active">Default</li>
+                                <li data-value="price-asc">Price (Low to High)</li>
+                                <li data-value="price-desc">Price (High to Low)</li>
+                                <li data-value="popularity">Popularity</li>
+                                <li data-value="newest">Newest</li>
+                            </ul>
                         </div>
-                        <?php endforeach; ?>
-                    </div>
-                    <!-- Color Filter -->
-                    <div class="filter-group">
-                        <label>Color:</label>
-                        <?php
-                        $colorStmt = $conn->query("SELECT id, name FROM colors");
-                        $colors = $colorStmt->fetchAll();
-                        foreach ($colors as $color):
-                        ?>
-                        <div class="sidebar-filters">
-                            <input type="checkbox" class="custom-checkbox" name="color[]" value="<?= $color['id'] ?>" <?= in_array($color['id'], $_GET['color'] ?? []) ? 'checked' : '' ?>>
-                            <?= htmlspecialchars($color['name']) ?>
-                        </div>
-                        <?php endforeach; ?>
                     </div>
 
-                    <!-- Price Filter -->
-                    <div class="filter-group">
-                        <label>Price Range:</label>
-                        <input type="number" class="filter_price" name="min_price" placeholder="Min" value="<?= htmlspecialchars($_GET['min_price'] ?? '') ?>"> -
-                        <input type="number" class="filter_price" name="max_price" placeholder="Max" value="<?= htmlspecialchars($_GET['max_price'] ?? '') ?>">
-                    </div>
-
-                    <!-- Stock Checkbox -->
-                    <div class="filter-group">
-                        <label>In Stock Only</label>
-                        <input type="checkbox" class="custom-checkbox"name="in_stock" value="1" <?= isset($_GET['in_stock']) ? 'checked' : '' ?>>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <div class="filter-group">
-                        <button class="btn-filter"type="submit">Apply</button>
-                    </div>
-                </div>
-            </form>
-        </aside>
-
-
-        <main class="products-section">
-            <div class="products-container">
-                <div class="products-header">
-                    <h2><?= htmlspecialchars($subcategoryName ?? $categoryName) ?></h2>
-                    <!-- Custom Sort dropdown -->
-                    <div class="custom-dropdown" id="sort-dropdown">
-                        <div class="custom-dropdown-selected" tabindex="0"> 
-                            <span class="sort-label">Sort by: </span>
-                            <span id="sort-selected-text">Default</span>
-                            <span class="custom-arrow">▼</span>
-                        </div>
-                        <ul class="custom-dropdown-list">
-                            <li data-value="default" class="active">Default</li>
-                            <li data-value="price-asc">Price (Low to High)</li>
-                            <li data-value="price-desc">Price (High to Low)</li>
-                            <li data-value="popularity">Popularity</li>
-                            <li data-value="newest">Newest</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="products-grid">
-                    <?php if (empty($products)): ?>
-                        <p>No products found.</p>
-                    <?php else: ?>
-                        <?php foreach ($products as $product): ?>
-                            <a href="user/product_info.php?id=<?= $product['id'] ?>" class="product-card">
-                                <div class="product-image">
-                                    <img src="../admin/<?= ltrim($product['image_url'], './') ?>" alt="<?= htmlspecialchars($product['name']) ?>">
-                                </div>
-                                <div class="product-info">
-                                    <p class="product-name"><?= htmlspecialchars($product['name']) ?></p>
-                                    <div class="product-meta">
-                                        <p class="price">₱<?= number_format($product['price'], 2) ?></p>
-                                        <p class="product-sold"><?= $product['sold_count'] ?> sold</p>
+                    <div class="products-grid">
+                        <?php if (empty($products)): ?>
+                            <p>No products found.</p>
+                        <?php else: ?>
+                            <?php
+                                $isLoggedIn = isset($_SESSION['username']);
+                                $productPage = $isLoggedIn ? 'user/product_info.php' : 'guest/product_info.php';
+                            ?>
+                            <?php foreach ($products as $product): ?>
+                                <a href="<?= $productPage ?>?id=<?= $product['id'] ?>" class="product-card">
+                                    <div class="product-image">
+                                        <img src="../admin/<?= ltrim($product['image_url'], './') ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                                     </div>
-                                </div>
+                                    <div class="product-info">
+                                        <p class="product-name"><?= htmlspecialchars($product['name']) ?></p>
+                                        <div class="product-meta">
+                                            <p class="price">₱<?= number_format($product['price'], 2) ?></p>
+                                            <p class="product-sold"><?= $product['sold_count'] ?> sold</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
+                    <?php if ($totalPages > 1): ?>
+                    <div class="pagination">
+                        <?php
+                            // Preserve filters in pagination links
+                            $baseUrl = strtok($_SERVER["REQUEST_URI"], '?');
+                            $queryParams = $_GET;
+                        ?>
+
+                        <!-- Previous Button -->
+                        <?php if ($currentPage > 1): ?>
+                            <?php $queryParams['page'] = $currentPage - 1; ?>
+                            <a class="page-link" href="<?= $baseUrl . '?' . http_build_query($queryParams) ?>">&laquo; Prev</a>
+                        <?php endif; ?>
+
+                        <!-- Numbered Pages -->
+                        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                            <?php $queryParams['page'] = $i; ?>
+                            <a class="page-link <?= $i == $currentPage ? 'active' : '' ?>" href="<?= $baseUrl . '?' . http_build_query($queryParams) ?>">
+                                <?= $i ?>
                             </a>
-                        <?php endforeach; ?>
+                        <?php endfor; ?>
+
+                        <!-- Next Button -->
+                        <?php if ($currentPage < $totalPages): ?>
+                            <?php $queryParams['page'] = $currentPage + 1; ?>
+                            <a class="page-link" href="<?= $baseUrl . '?' . http_build_query($queryParams) ?>">Next &raquo;</a>
+                        <?php endif; ?>
+                    </div>
                     <?php endif; ?>
                 </div>
-                <?php if ($totalPages > 1): ?>
-                <div class="pagination">
-                    <?php
-                        // Preserve filters in pagination links
-                        $baseUrl = strtok($_SERVER["REQUEST_URI"], '?');
-                        $queryParams = $_GET;
-                    ?>
+            </main>
 
-                    <!-- Previous Button -->
-                    <?php if ($currentPage > 1): ?>
-                        <?php $queryParams['page'] = $currentPage - 1; ?>
-                        <a class="page-link" href="<?= $baseUrl . '?' . http_build_query($queryParams) ?>">&laquo; Prev</a>
-                    <?php endif; ?>
-
-                    <!-- Numbered Pages -->
-                    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                        <?php $queryParams['page'] = $i; ?>
-                        <a class="page-link <?= $i == $currentPage ? 'active' : '' ?>" href="<?= $baseUrl . '?' . http_build_query($queryParams) ?>">
-                            <?= $i ?>
-                        </a>
-                    <?php endfor; ?>
-
-                    <!-- Next Button -->
-                    <?php if ($currentPage < $totalPages): ?>
-                        <?php $queryParams['page'] = $currentPage + 1; ?>
-                        <a class="page-link" href="<?= $baseUrl . '?' . http_build_query($queryParams) ?>">Next &raquo;</a>
-                    <?php endif; ?>
-                </div>
-                <?php endif; ?>
-            </div>
-        </main>
-
-    </div>
-    <!-- JS -->
-    <script type="module" src="../scripts/main.js"></script>
-</body>
+        </div>
+        <!-- JS -->
+        <script type="module" src="../scripts/main.js"></script>
+    </body>
 </html>
 

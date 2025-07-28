@@ -15,256 +15,195 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<title>Revaux</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
-<link rel="stylesheet" href="../../css/header-user.css" />
-<link rel="stylesheet" href="../../css/main.css" />
-<link rel="stylesheet" href="../../css/footer.css" />
+  <head>
+  <meta charset="UTF-8" />
+  <title>Revaux</title>
+  <link rel="icon" type="image/png" href="../../images/revaux-light.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+  <link rel="stylesheet" href="../../css/header-user.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/footer.css">
 </head>
-<body>
+  <body>
+    <!-- Header -->
+     <?php include '../../includes/header-user.php'; ?>
 
-<!-- Header -->
-<header>
-  <div class="logo-container">
-    <a href="../../pages/user/homepage.php" class="logo">
-      <img src="../../images/revaux-light.png" alt="Logo">
-    </a>
-    <a href="../../pages/user/homepage.php" class="brand-name">Revaux</a>
-  </div>
-  <div class="search-bar">
-    <input type="text" placeholder="Search Here">
-    <button type="submit" class="search-btn">
-      <span class="material-icons-outlined">search</span>
-    </button>
-  </div>
-  <div class="cta-buttons">
-    <div class="top-buttons">
-      <button class="notification-btn">
-        <a href="../../pages/user/notifications.html" class="cta-link">
-          <span class="material-icons-outlined">notifications</span>
-          <span>Notifications</span>
+    <!-- Main -->
+    <section class="hero-slider">
+      <div class="slider-container">
+        <a href="https://example.com/page1" class="slide active">
+          <img src="../../images/auth.png" alt="Headwear Model">
         </a>
-      </button>
-      <button class="faq-btn">
-        <a href="../../pages/user/faqs.html" class="cta-link">
-          <span class="material-icons-outlined">help_outline</span>
-          <span>FAQs</span>
+        <a href="https://example.com/page2" class="slide">
+          <img src="../../images/auth2.png" alt="Top Model">
         </a>
-      </button>
-      <button class="settings-btn">
-        <a href="../../pages/user/account_management.html" class="cta-link">
-          <span class="material-icons-outlined">settings</span>
-          <span>Settings</span>
+        <a href="https://example.com/page3" class="slide">
+          <img src="../../images/auth3.png" alt="Bottom Model">
         </a>
-      </button>
-      <form action="../../data/users/logout.php" method="POST">
-        <button class="logout-btn">
-            <span class="material-icons-outlined">exit_to_app</span>
-            <span>Log Out</span>
-        </button>
-      </form>
-    </div>
-    <div class="bottom-buttons">
-      <button class="wishlist-btn">
-        <a href="#" class="cta-link">
-          <span class="material-icons-outlined">favorite_border</span>
-          <span>Wishlist</span>
+        <a href="https://example.com/page4" class="slide">
+          <img src="../../images/auth4.png" alt="Footwear Model">
         </a>
-      </button>
-      <button class="cart-btn">
-        <a href="../../pages/user/view_cart.html" class="cta-link">
-          <span class="material-icons-outlined">shopping_cart</span>
-          <span>Cart</span>
-        </a>
-      </button>
-      <button class="profile-btn">
-        <a href="#" class="cta-link">
-          <span class="material-icons-outlined">person</span>
-          <span><?= htmlspecialchars($_SESSION['username']) ?></span>
-        </a>
-      </button>
-    </div>
-  </div>
-</header>
+      </div>
 
-<!-- Main -->
-<section class="hero-slider">
-  <div class="slider-container">
-    <a href="https://example.com/page1" class="slide active">
-      <img src="../../images/auth.png" alt="Headwear Model">
-    </a>
-    <a href="https://example.com/page2" class="slide">
-      <img src="../../images/auth2.png" alt="Top Model">
-    </a>
-    <a href="https://example.com/page3" class="slide">
-      <img src="../../images/auth3.png" alt="Bottom Model">
-    </a>
-    <a href="https://example.com/page4" class="slide">
-      <img src="../../images/auth4.png" alt="Footwear Model">
-    </a>
-  </div>
+      <button class="slider-button prev" id="prevBtn">&#10094;</button>
+      <button class="slider-button next" id="nextBtn">&#10095;</button>
+    </section>
 
-  <button class="slider-button prev" id="prevBtn">&#10094;</button>
-  <button class="slider-button next" id="nextBtn">&#10095;</button>
-</section>
-
-<section class="section categories">
-<h2 class="section-title">Categories</h2>
-    <div class="categories-grid">
-      <a href="../category.php?category=Headwear" class="category-card" style="background-image: url('../../images/headwear.png');">
-        <span>Headwear</span>
-      </a>
-      <a href="../category.php?category=Tops" class="category-card" style="background-image: url('../../images/top.png');">
-        <span>Top</span>
-      </a>
-      <a href="../category.php?category=Bottoms" class="category-card" style="background-image: url('../../images/bottom.png');">
-        <span>Bottom</span>
-      </a>
-      <a href="../category.php?category=Footwear  " class="category-card" style="background-image: url('../../images/footwear.png');">
-        <span>Footwear</span>
-      </a>
-    </div>
-</section>
-
-<p class="line text">─────────────────────────────────────────────────────────────────────────────────</p>
-
-<section class="section top-products">
-    <h2 class="section-title">Top Products</h2>
-    <div class="products-grid">
-      <a href="../../pages/products/mens-baseball-hat.html" class="product-card">
-        <div class="product-image"><img src="../../images/facebook-icon.png" alt="Hat"></div>
-        <div class="product-info">
-          <p class="product-name">Men's Baseball Hat</p>
-          <div class="product-meta">
-            <p class="price">₱260.00</p>
-            <p class="product-sold">100k sold</p>
-          </div>
+    <section class="section categories">
+    <h2 class="section-title">Categories</h2>
+        <div class="categories-grid">
+          <a href="../category.php?category=Headwear" class="category-card" style="background-image: url('../../images/headwear.png');">
+            <span>Headwear</span>
+          </a>
+          <a href="../category.php?category=Tops" class="category-card" style="background-image: url('../../images/top.png');">
+            <span>Top</span>
+          </a>
+          <a href="../category.php?category=Bottoms" class="category-card" style="background-image: url('../../images/bottom.png');">
+            <span>Bottom</span>
+          </a>
+          <a href="../category.php?category=Footwear  " class="category-card" style="background-image: url('../../images/footwear.png');">
+            <span>Footwear</span>
+          </a>
         </div>
-      </a>
-      <a href="../../pages/products/running-shoes.html" class="product-card">
-        <div class="product-image"><img src="images/product2.jpg" alt="Shoes"></div>
-        <div class="product-info">
-          <p class="product-name">Running Shoes</p>
-          <div class="product-meta">
-            <p class="price">₱1,200.00</p>
-            <p class="product-sold">50k sold</p>
-          </div>
-        </div>
-      </a>
-      <a href="../../pages/products/casual-shirt.html" class="product-card">
-        <div class="product-image"><img src="images/product3.jpg" alt="Shirt"></div>
-        <div class="product-info">
-          <p class="product-name">Casual Shirt</p>
-          <div class="product-meta">
-            <p class="price">₱450.00</p>
-            <p class="product-sold">30k sold</p>
-          </div>
-        </div>
-      </a>
-      <a href="../../pages/products/mens-fedora-hat.html" class="product-card">
-        <div class="product-image"><img src="images/product4.jpg" alt="Hat"></div>
-        <div class="product-info">
-          <p class="product-name">Men's Fedora Hat</p>
-          <div class="product-meta">
-            <p class="price">₱350.00</p>
-            <p class="product-sold">80k sold</p>
-          </div>
-        </div>
-      </a>
-    </div>
-</section>
+    </section>
 
-<p class="line text">──────────────────────────────────────────────────────────────────────────────</p>
+    <p class="line text">─────────────────────────────────────────────────────────────────────────────────</p>
 
-<section class="section discover-new">
-    <h2 class="section-title">Discover Something New</h2>
-    <div class="products-grid">
-        <a href="../pages/products/streetwear-fit-hoodie.html" class="product-card">
-            <div class="product-image"><img src="../images/products/eyeglass1.png" alt="New Look"></div>
+    <section class="section top-products">
+        <h2 class="section-title">Top Products</h2>
+        <div class="products-grid">
+          <a href="../../pages/products/mens-baseball-hat.html" class="product-card">
+            <div class="product-image"><img src="../../images/facebook-icon.png" alt="Hat"></div>
             <div class="product-info">
-                <p class="product-name">Streetwear Fit Hoodie</p>
-                <div class="product-meta">
-                    <p class="price">₱1,895.00</p>
-                    <p class="product-sold">12k sold</p>
-                </div>
+              <p class="product-name">Men's Baseball Hat</p>
+              <div class="product-meta">
+                <p class="price">₱260.00</p>
+                <p class="product-sold">100k sold</p>
+              </div>
             </div>
-        </a>
-        <a href="../pages/products/modern-sneakers.html" class="product-card">
-            <div class="product-image"><img src="../images/products/eyeglass2.png" alt="Sneakers"></div>
+          </a>
+          <a href="../../pages/products/running-shoes.html" class="product-card">
+            <div class="product-image"><img src="images/product2.jpg" alt="Shoes"></div>
             <div class="product-info">
-                <p class="product-name">Modern Sneakers</p>
-                <div class="product-meta">
-                    <p class="price">₱2,200.00</p>
-                    <p class="product-sold">15k sold</p>
-                </div>
+              <p class="product-name">Running Shoes</p>
+              <div class="product-meta">
+                <p class="price">₱1,200.00</p>
+                <p class="product-sold">50k sold</p>
+              </div>
             </div>
-        </a>
-        <a href="../pages/products/graphic-tshirt.html" class="product-card">
-            <div class="product-image"><img src="../images/products/eyeglass3.png" alt="T-shirt"></div>
+          </a>
+          <a href="../../pages/products/casual-shirt.html" class="product-card">
+            <div class="product-image"><img src="images/product3.jpg" alt="Shirt"></div>
             <div class="product-info">
-                <p class="product-name">Graphic T-shirt</p>
-                <div class="product-meta">
-                    <p class="price">₱799.00</p>
-                    <p class="product-sold">20k sold</p>
-                </div>
+              <p class="product-name">Casual Shirt</p>
+              <div class="product-meta">
+                <p class="price">₱450.00</p>
+                <p class="product-sold">30k sold</p>
+              </div>
             </div>
-        </a>
-        <a href="../pages/products/denim-jacket.html" class="product-card">
-            <div class="product-image"><img src="../images/products/eyeglass4.png" alt="Jacket"></div>
+          </a>
+          <a href="../../pages/products/mens-fedora-hat.html" class="product-card">
+            <div class="product-image"><img src="images/product4.jpg" alt="Hat"></div>
             <div class="product-info">
-                <p class="product-name">Denim Jacket</p>
-                <div class="product-meta">
-                    <p class="price">₱1,250.00</p>
-                    <p class="product-sold">25k sold</p>
-                </div>
+              <p class="product-name">Men's Fedora Hat</p>
+              <div class="product-meta">
+                <p class="price">₱350.00</p>
+                <p class="product-sold">80k sold</p>
+              </div>
             </div>
-        </a>
+          </a>
+        </div>
+    </section>
 
-        <a href="../pages/products/streetwear-fit-hoodie.html" class="product-card">
-            <div class="product-image"><img src="../images/products/eyeglass1.png" alt="New Look"></div>
-            <div class="product-info">
-                <p class="product-name">Streetwear Fit Hoodie</p>
-                <div class="product-meta">
-                    <p class="price">₱1,895.00</p>
-                    <p class="product-sold">12k sold</p>
+    <p class="line text">──────────────────────────────────────────────────────────────────────────────</p>
+
+    <section class="section discover-new">
+        <h2 class="section-title">Discover Something New</h2>
+        <div class="products-grid">
+            <a href="../pages/products/streetwear-fit-hoodie.html" class="product-card">
+                <div class="product-image"><img src="../images/products/eyeglass1.png" alt="New Look"></div>
+                <div class="product-info">
+                    <p class="product-name">Streetwear Fit Hoodie</p>
+                    <div class="product-meta">
+                        <p class="price">₱1,895.00</p>
+                        <p class="product-sold">12k sold</p>
+                    </div>
                 </div>
-            </div>
-        </a>
-        <a href="../pages/products/modern-sneakers.html" class="product-card">
-            <div class="product-image"><img src="../images/products/eyeglass2.png" alt="Sneakers"></div>
-            <div class="product-info">
-                <p class="product-name">Modern Sneakers</p>
-                <div class="product-meta">
-                    <p class="price">₱2,200.00</p>
-                    <p class="product-sold">15k sold</p>
+            </a>
+            <a href="../pages/products/modern-sneakers.html" class="product-card">
+                <div class="product-image"><img src="../images/products/eyeglass2.png" alt="Sneakers"></div>
+                <div class="product-info">
+                    <p class="product-name">Modern Sneakers</p>
+                    <div class="product-meta">
+                        <p class="price">₱2,200.00</p>
+                        <p class="product-sold">15k sold</p>
+                    </div>
                 </div>
-            </div>
-        </a>
-        <a href="../pages/products/graphic-tshirt.html" class="product-card">
-            <div class="product-image"><img src="../images/products/eyeglass3.png" alt="T-shirt"></div>
-            <div class="product-info">
-                <p class="product-name">Graphic T-shirt</p>
-                <div class="product-meta">
-                    <p class="price">₱799.00</p>
-                    <p class="product-sold">20k sold</p>
+            </a>
+            <a href="../pages/products/graphic-tshirt.html" class="product-card">
+                <div class="product-image"><img src="../images/products/eyeglass3.png" alt="T-shirt"></div>
+                <div class="product-info">
+                    <p class="product-name">Graphic T-shirt</p>
+                    <div class="product-meta">
+                        <p class="price">₱799.00</p>
+                        <p class="product-sold">20k sold</p>
+                    </div>
                 </div>
-            </div>
-        </a>
-        <a href="../pages/products/denim-jacket.html" class="product-card">
-            <div class="product-image"><img src="../images/products/eyeglass4.png" alt="Jacket"></div>
-            <div class="product-info">
-                <p class="product-name">Denim Jacket</p>
-                <div class="product-meta">
-                    <p class="price">₱1,250.00</p>
-                    <p class="product-sold">25k sold</p>
+            </a>
+            <a href="../pages/products/denim-jacket.html" class="product-card">
+                <div class="product-image"><img src="../images/products/eyeglass4.png" alt="Jacket"></div>
+                <div class="product-info">
+                    <p class="product-name">Denim Jacket</p>
+                    <div class="product-meta">
+                        <p class="price">₱1,250.00</p>
+                        <p class="product-sold">25k sold</p>
+                    </div>
                 </div>
-            </div>
-        </a>
-    </div>
-</section>
+            </a>
+
+            <a href="../pages/products/streetwear-fit-hoodie.html" class="product-card">
+                <div class="product-image"><img src="../images/products/eyeglass1.png" alt="New Look"></div>
+                <div class="product-info">
+                    <p class="product-name">Streetwear Fit Hoodie</p>
+                    <div class="product-meta">
+                        <p class="price">₱1,895.00</p>
+                        <p class="product-sold">12k sold</p>
+                    </div>
+                </div>
+            </a>
+            <a href="../pages/products/modern-sneakers.html" class="product-card">
+                <div class="product-image"><img src="../images/products/eyeglass2.png" alt="Sneakers"></div>
+                <div class="product-info">
+                    <p class="product-name">Modern Sneakers</p>
+                    <div class="product-meta">
+                        <p class="price">₱2,200.00</p>
+                        <p class="product-sold">15k sold</p>
+                    </div>
+                </div>
+            </a>
+            <a href="../pages/products/graphic-tshirt.html" class="product-card">
+                <div class="product-image"><img src="../images/products/eyeglass3.png" alt="T-shirt"></div>
+                <div class="product-info">
+                    <p class="product-name">Graphic T-shirt</p>
+                    <div class="product-meta">
+                        <p class="price">₱799.00</p>
+                        <p class="product-sold">20k sold</p>
+                    </div>
+                </div>
+            </a>
+            <a href="../pages/products/denim-jacket.html" class="product-card">
+                <div class="product-image"><img src="../images/products/eyeglass4.png" alt="Jacket"></div>
+                <div class="product-info">
+                    <p class="product-name">Denim Jacket</p>
+                    <div class="product-meta">
+                        <p class="price">₱1,250.00</p>
+                        <p class="product-sold">25k sold</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
 
 <!-- Footer -->
 <footer>
