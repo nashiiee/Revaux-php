@@ -10,6 +10,7 @@ import { setupSizeToggle } from "./modules/size_toggle.js";
 import { setupGuestRedirects } from "./modules/guest_redirects.js";
 import { setupCartSubmission } from "./modules/cart_submission.js";
 import { setupCartPage } from "./modules/cart_page.js";
+import { setupStatusMessageFade } from "./modules/status_msg_fade.js";
 
 document.addEventListener('DOMContentLoaded', () => {
   setupCategoryDropdown();// Category dropdown for product filtering
@@ -24,4 +25,5 @@ document.addEventListener('DOMContentLoaded', () => {
   setupGuestRedirects();// Redirects for guest users
   setupCartSubmission();  // Cart submission handling
   setupCartPage();// Cart page features (quantity AJAX, select all, etc)
+  setupStatusMessageFade(); // Status message fade effect
 });

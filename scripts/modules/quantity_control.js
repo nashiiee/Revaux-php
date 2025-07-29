@@ -11,6 +11,12 @@ export function setupQuantityControl() {
     const minusBtn = document.querySelector('.qty-btn-minus');
     const plusBtn = document.querySelector('.qty-btn-plus');
     const qtyInput = document.querySelector('.qty-input');
+
+    if (!minusBtn || !plusBtn || !qtyInput) {
+        console.log('quantity_control.js: Quantity control elements not found on this page. Skipping setup.');
+        return; // Exit the function gracefully if elements are missing
+    }
+
     const minQty = 1;
     const maxQty = typeof MAX_QUANTITY !== 'undefined' ? MAX_QUANTITY : 99;
     let holdTimeout;
