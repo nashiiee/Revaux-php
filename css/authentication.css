@@ -255,3 +255,23 @@ small a:hover {
     text-decoration: underline;
 }
 
+/* Error and Success Message Styles */
+.error-message {
+    background-color: #ffe6e6;
+    border: 1px solid #ff9999;
+    color: #cc0000;
+}
+
+.success-message {
+    background-color: #e6ffe6;
+    border: 1px solid #99ff99;
+    color: #006600;
+}
+
+#error-message {
+    text-align: center;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+

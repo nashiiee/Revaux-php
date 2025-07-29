@@ -1,12 +1,6 @@
 <?php 
-  // Start session to access user data
-  session_start();
-
-  // Redirect to login if not logged in
-  if (!isset($_SESSION['username'])) {
-      header("Location: ../authentication/login.html");
-      exit();
-  }
+  // Include secure authentication check
+  require_once 'auth_check.php';
 
   // Include database connection
   require_once '../../database/database.php';

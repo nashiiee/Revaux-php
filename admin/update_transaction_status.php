@@ -1,4 +1,7 @@
 <?php
+// Include secure authentication check for admin
+require_once 'auth_check.php';
+
 header('Content-Type: application/json');
 include '../revauxDatabase/database.php';
 

@@ -1,4 +1,7 @@
 <?php
+  // Include secure authentication check for admin
+  require_once 'auth_check.php';
+  
   include '../revauxDatabase/database.php';
 
   try {
@@ -260,7 +263,7 @@ WHERE
         </ul>
       </div>
       <div class="logout-container">
-        <a href="" class="logout">
+        <a href="../data/users/logout.php" class="logout">
           <i class="fa-solid fa-right-from-bracket"></i>
           <span>Logout</span>
         </a>
@@ -269,7 +272,7 @@ WHERE
 
     <main>
       <div class="dashboard-header">
-        <h1>Welcome Back, Admin!</h1>
+        <h1>Welcome Back, <?php echo htmlspecialchars($_SESSION['full_name'] ?? 'Admin'); ?>!</h1>
         <p>Here&#39;s what happening with your store today</p>
       </div>
       <div class="dashboard-cards">

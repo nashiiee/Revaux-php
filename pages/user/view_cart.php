@@ -1,4 +1,7 @@
-<?php 
+<?php
+  // Include secure authentication check for customer
+  require_once 'auth_check.php';
+  
 session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: ../authentication/login.html");

@@ -20,6 +20,11 @@
 
       <h2>Welcome Back, Gentleman</h2>
 
+      <!-- Error/Success Message Container -->
+      <div id="error-message" style="display: none; padding: 10px; margin: 10px 0; border-radius: 4px; font-size: 14px;">
+        <span id="error-text"></span>
+      </div>
+
       <form method="POST" action="../../data/users/login.php" class="login-form">
         <label for="username">Email or Username:</label>
         <input type="text" id="username" name="username" required>
@@ -55,6 +60,91 @@
       </small>
     </section>
   </main>
+
+  <script>
+    // Enhanced error and message handling
+    window.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const error = urlParams.get('error');
+      const message = urlParams.get('message');
+      const errorMessageDiv = document.getElementById('error-message');
+      const errorText = document.getElementById('error-text');
+      
+      if (error) {
+        let messageText = '';
+        switch(error) {
+          case 'invalid_credentials':
+            messageText = 'Invalid username or password. Please try again.';
+            break;
+          case 'user_not_found':
+            messageText = 'No account found with this username or email.';
+            break;
+          case 'database_error':
+            const details = urlParams.get('details');
+            if (details) {
+              messageText = 'System error: ' + decodeURIComponent(details);
+            } else {
+              messageText = 'System error. Please try again later.';
+            }
+            break;
+          case 'access_denied':
+            messageText = 'Access denied. Please log in to continue.';
+            break;
+          case 'session_expired':
+            messageText = 'Your session has expired. Please log in again.';
+            break;
+          case 'too_many_attempts':
+            messageText = 'Too many login attempts. Please wait 15 minutes before trying again.';
+            break;
+          case 'empty_fields':
+            messageText = 'Please fill in all required fields.';
+            break;
+          case 'config_error':
+            messageText = 'Configuration error. Please contact support.';
+            break;
+          default:
+            messageText = 'An error occurred. Please try again.';
+        }
+        
+        errorText.textContent = messageText;
+        errorMessageDiv.style.display = 'block';
+        errorMessageDiv.className = 'error-message';
+      } else if (message) {
+        let messageText = '';
+        switch(message) {
+          case 'logged_out':
+            messageText = 'You have been successfully logged out.';
+            break;
+          default:
+            messageText = message;
+        }
+        
+        errorText.textContent = messageText;
+        errorMessageDiv.style.display = 'block';
+        errorMessageDiv.className = 'success-message';
+      }
+      
+      // Clear URL parameters after displaying message
+      if (window.history.replaceState && (error || message)) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    });
+    
+    // Form validation
+    document.querySelector('.login-form').addEventListener('submit', function(e) {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      
+      if (!username || !password) {
+        e.preventDefault();
+        const errorMessageDiv = document.getElementById('error-message');
+        const errorText = document.getElementById('error-text');
+        errorText.textContent = 'Please fill in all fields.';
+        errorMessageDiv.style.display = 'block';
+        errorMessageDiv.className = 'error-message';
+      }
+    });
+  </script>
 
 </body>
 </html>
