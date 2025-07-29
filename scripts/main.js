@@ -8,16 +8,22 @@ import { setupQuantityControl } from "./modules/quantity_control.js";
 import { setupPaymentToggle } from "./modules/payment_toggle.js";
 import { setupSizeToggle } from "./modules/size_toggle.js";
 import { setupGuestRedirects } from "./modules/guest_redirects.js";
+import { setupCartSubmission } from "./modules/cart_submission.js";
+import { setupCartPage } from "./modules/cart_page.js";
+import { setupStatusMessageFade } from "./modules/status_msg_fade.js";
 
 document.addEventListener('DOMContentLoaded', () => {
-  setupCategoryDropdown();   // Category sidebar toggles (Headwear, Tops, Bottoms, Footwear) + Sidecategories (for category pages and search results)
-  setupSortDropdown();       // Custom sorting dropdown
-  setupImageGallery();       // Main image & thumbnail switching (product_info page)
-  setupImageSlider();        // Image Slider for home page with automatic transition and button controls
-  setupZoomPane();           // Zoom pane hover effect on product main image (used in product_info page)
-  setupAboutToggle();        // See more / See less for product description with fade effect
-  setupQuantityControl();    // Quantity +/- with press-and-hold effect (product_info + view_cart page)
-  setupPaymentToggle();      // Payment method selection toggle(Cash on Delivery or E-wallet in payment page)
-  setupSizeToggle();         // Used in product_info if size buttons exist
-  setupGuestRedirects();     // Used for specific buttons on guest pages.
+  setupCategoryDropdown();// Category dropdown for product filtering
+  setupSortDropdown();// Sort dropdown for product sorting 
+  setupImageGallery();// Image gallery for product images in product_info
+  setupImageSlider();// Image slider for product images in homepage and index
+  setupZoomPane();// Zoom pane for product images in product_info
+  setupAboutToggle();// About section toggle
+  setupQuantityControl();// Quantity control for cart items + product info
+  setupPaymentToggle();// Payment method toggle for checkout
+  setupSizeToggle();// Size selection for products
+  setupGuestRedirects();// Redirects for guest users
+  setupCartSubmission();  // Cart submission handling
+  setupCartPage();// Cart page features (quantity AJAX, select all, etc)
+  setupStatusMessageFade(); // Status message fade effect
 });

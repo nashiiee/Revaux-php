@@ -29,7 +29,7 @@
                 </a>
             </button>
             <button class="settings-btn">
-                <a href="/revaux-php/pages/user/account_management.html" class="cta-link">
+                <a href="/revaux/pages/user/account_management.php" class="cta-link">
                     <span class="material-icons-outlined">settings</span>
                     <span>Settings</span>
                 </a>

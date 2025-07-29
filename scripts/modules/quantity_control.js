@@ -1,28 +1,37 @@
 // JS for the quantity input
+// setupQuantityControl: supports single or multiple quantity controls
+// selectorOrElement: a selector string or an Element or NodeList (default: product_info page)
+// options: { maxQty, minQty, onChange }
+// Original single-control quantity logic for product_info page only
 export function setupQuantityControl() {
+    if (document.querySelector('.cart-category-box')) {
+        console.log('quantity_control.js: Cart page detected. Skipping setupQuantityControl to avoid conflict.');
+        return; // Exit the function if on the cart page
+    }
     const minusBtn = document.querySelector('.qty-btn-minus');
     const plusBtn = document.querySelector('.qty-btn-plus');
     const qtyInput = document.querySelector('.qty-input');
-    const stockWarning = document.getElementById('stock-warning');
+
+    if (!minusBtn || !plusBtn || !qtyInput) {
+        console.log('quantity_control.js: Quantity control elements not found on this page. Skipping setup.');
+        return; // Exit the function gracefully if elements are missing
+    }
+
     const minQty = 1;
-
-    // Get max from JS variable
     const maxQty = typeof MAX_QUANTITY !== 'undefined' ? MAX_QUANTITY : 99;
-
-    if (!minusBtn || !plusBtn || !qtyInput) return;
-
     let holdTimeout;
     let holdInterval;
-    let holdSpeed = 300; // initial repeat speed in ms
-    let speedStep = 25;  // how much faster each step gets
-    let minSpeed = 50;   // fastest allowed speed
+    let holdSpeed = 300;
+    let speedStep = 25;
+    let minSpeed = 50;
+    let hasHeld = false;
 
-    function updateMinusBtnState() {
+    function updateBtnState() {
         const currentValue = parseInt(qtyInput.value);
         minusBtn.disabled = currentValue <= minQty;
         plusBtn.disabled = currentValue >= maxQty;
-
-        // Show warning only when stock is 20 or less
+        // Stock warning
+        const stockWarning = document.getElementById('stock-warning');
         if (stockWarning) {
             if (maxQty <= 20) {
                 stockWarning.textContent = `Only ${maxQty} left!`;
@@ -39,51 +48,45 @@ export function setupQuantityControl() {
         let newValue = currentValue + amount;
         if (newValue < minQty) newValue = minQty;
         if (newValue > maxQty) newValue = maxQty;
-        qtyInput.value = newValue;
-        updateMinusBtnState();
+        if (newValue !== currentValue) {
+            qtyInput.value = newValue;
+            const hidden = document.getElementById('hidden-quantity');
+            if (hidden) hidden.value = newValue;
+            updateBtnState();
+        }
     }
 
     function startHold(amount) {
-        // First click
         changeQty(amount);
-
-        // Wait 0.5s before repeating
+        hasHeld = false;
         holdTimeout = setTimeout(() => {
+            hasHeld = true;
             let speed = holdSpeed;
             function repeat() {
+                const currentValue = parseInt(qtyInput.value);
+                if ((amount < 0 && currentValue <= minQty) || (amount > 0 && currentValue >= maxQty)) {
+                    return;
+                }
                 changeQty(amount);
                 speed = Math.max(minSpeed, speed - speedStep);
                 holdInterval = setTimeout(repeat, speed);
             }
             repeat();
-        }, 500); // <-- this is the delay before auto increment starts(adjustable)
+        }, 500);
     }
-
     function stopHold() {
         clearTimeout(holdTimeout);
         clearTimeout(holdInterval);
     }
 
-    // Button events
     minusBtn.addEventListener('mousedown', () => startHold(-1));
     plusBtn.addEventListener('mousedown', () => startHold(1));
+    minusBtn.addEventListener('touchstart', (e) => { e.preventDefault(); startHold(-1); }, { passive: false });
+    plusBtn.addEventListener('touchstart', (e) => { e.preventDefault(); startHold(1); }, { passive: false });
     document.addEventListener('mouseup', stopHold);
     document.addEventListener('mouseleave', stopHold);
-
-    // Touch support
-    minusBtn.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        startHold(-1);
-    }, { passive: false });
-
-    plusBtn.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        startHold(1);
-    }, { passive: false });
-
     document.addEventListener('touchend', stopHold);
 
-    // Manual input validation
     qtyInput.addEventListener('blur', () => {
         let value = parseInt(qtyInput.value);
         if (isNaN(value) || value < minQty) {
@@ -92,79 +95,10 @@ export function setupQuantityControl() {
             value = maxQty;
         }
         qtyInput.value = value;
-        updateMinusBtnState();
+        const hidden = document.getElementById('hidden-quantity');
+        if (hidden) hidden.value = value;
+        updateBtnState();
     });
 
-    updateMinusBtnState();
-
-    // Disable Buy Now and Add to Cart if stock is 0
-    const buyNowBtn = document.querySelector('.buy-now');
-    const addCartBtn = document.querySelector('.add-cart');
-
-    if (maxQty <= 0) {
-        if (buyNowBtn) {
-            buyNowBtn.disabled = true;
-            buyNowBtn.classList.add('disabled');
-            buyNowBtn.textContent = 'Out of Stock';
-        }
-
-        if (addCartBtn) {
-            addCartBtn.disabled = true;
-            addCartBtn.classList.add('disabled');
-            addCartBtn.textContent = 'Out of Stock';
-        }
-    }
-
-    // Prevent Enter from submitting unless stock is available and size is selected(if available from the database)
-    const form = document.querySelector('.pd-actions-form');
-    const sizeInput = document.getElementById('selected-size');
-    const sizeButtons = document.querySelectorAll('.size-btn');
-
-    if (form) {
-        form.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter') {
-                const isSubmitBtn = e.target.closest('button[type="submit"]');
-                const stockAvailable = maxQty > 0;
-                const sizeRequired = sizeButtons.length > 0;
-                const sizeSelected = sizeInput && sizeInput.value.trim() !== '';
-
-                const allowSubmit = stockAvailable && (!sizeRequired || sizeSelected);
-
-                if (!isSubmitBtn && !allowSubmit) {
-                    e.preventDefault();
-                }
-            }
-        });
-    }
-
-    // Block Buy/Add if size not selected or stock is 0
-    function preventInvalidSubmission(e) {
-        const stockAvailable = maxQty > 0;
-        const sizeRequired = sizeButtons.length > 0;
-        const sizeSelected = sizeInput && sizeInput.value.trim() !== '';
-
-        const allowSubmit = stockAvailable && (!sizeRequired || sizeSelected);
-
-        if (!allowSubmit) {
-            e.preventDefault();
-
-            // Flash warning class on button
-            e.target.classList.add('shake-error');
-            setTimeout(() => e.target.classList.remove('shake-error'), 600);
-
-            // Optional: show native tooltip
-            e.target.title = !stockAvailable
-                ? 'Out of Stock'
-                : !sizeSelected
-                    ? 'Please select a size'
-                    : '';
-        }
-    }
-
-    if (buyNowBtn) {
-        buyNowBtn.addEventListener('click', preventInvalidSubmission);
-    }
-    if (addCartBtn) {
-        addCartBtn.addEventListener('click', preventInvalidSubmission);
-    }
+    updateBtnState();
 }
