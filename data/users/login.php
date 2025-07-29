@@ -28,17 +28,6 @@ if (!$db_included) {
     exit();
 }
 
-// Rate limiting (basic protection against brute force)
-if (!isset($_SESSION['login_attempts'])) {
-    $_SESSION['login_attempts'] = 0;
-    $_SESSION['last_attempt'] = 0;
-}
-
-// Check if too many attempts
-if ($_SESSION['login_attempts'] >= 5 && (time() - $_SESSION['last_attempt']) < 900) { // 15 min lockout
-    header("Location: ../../pages/authentication/login.html?error=too_many_attempts");
-    exit();
-}
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Validate input
@@ -65,7 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Verify admin password
             if (password_verify($password, $admin['password'])) {
                 // Reset login attempts
-                $_SESSION['login_attempts'] = 0;
                 
                 // Set admin session variables
                 $_SESSION['user_id'] = $admin['id'];
@@ -82,9 +70,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 header("Location: ../../admin/index.php");
                 exit(); 
             } else {
-                // Invalid admin password
-                $_SESSION['login_attempts']++;
-                $_SESSION['last_attempt'] = time();
                 header("Location: ../../pages/authentication/login.html?error=invalid_credentials");
                 exit();
             }
@@ -100,7 +85,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 // Verify customer password
                 if (password_verify($password, $customer['password'])) {
                     // Reset login attempts
-                    $_SESSION['login_attempts'] = 0;
                     
                     // Set customer session variables
                     $_SESSION['user_id'] = $customer['id'];
@@ -129,15 +113,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     exit(); 
                 } else {
                     // Invalid customer password
-                    $_SESSION['login_attempts']++;
-                    $_SESSION['last_attempt'] = time();
                     header("Location: ../../pages/authentication/login.html?error=invalid_credentials");
                     exit();
                 }
             } else {
                 // No user found
-                $_SESSION['login_attempts']++;
-                $_SESSION['last_attempt'] = time();
                 header("Location: ../../pages/authentication/login.html?error=user_not_found");
                 exit();
             }
