@@ -16,7 +16,7 @@
     </form>
     <div class="cta-buttons">
         <button class="download-btn">Download</button>
-        <a href="/wrevaux/pages/authentication/login.html" class="auth-btn">LOG IN</a>
+        <a href="/revaux/pages/authentication/login.html" class="auth-btn">LOG IN</a>
         <span class="separator">|</span>
         <a href="/revaux/pages/authentication/signup.html" class="auth-btn">SIGN UP</a>
     </div>
