@@ -2,51 +2,46 @@
   // Include secure authentication check for customer
   require_once 'auth_check.php';
   
-session_start();
-if (!isset($_SESSION['username'])) {
-    header("Location: ../authentication/login.html");
-    exit;
-}
-require_once __DIR__ . '/../../database/database.php';
+  require_once __DIR__ . '/../../database/database.php';
 
-// Get customer id
-$stmt = $conn->prepare('SELECT id FROM customers WHERE username = ?');
-$stmt->execute([$_SESSION['username']]);
-$customer = $stmt->fetch();
-if (!$customer) {
-    die('Customer not found.');
-}
-$customer_id = $customer['id'];
+  // Get customer id
+  $stmt = $conn->prepare('SELECT id FROM customers WHERE username = ?');
+  $stmt->execute([$_SESSION['username']]);
+  $customer = $stmt->fetch();
+  if (!$customer) {
+      die('Customer not found.');
+  }
+  $customer_id = $customer['id'];
 
-// Get cart id
-$stmt = $conn->prepare('SELECT id FROM carts WHERE customer_id = ?');
-$stmt->execute([$customer_id]);
-$cart = $stmt->fetch();
-$cart_id = $cart ? $cart['id'] : null;
+  // Get cart id
+  $stmt = $conn->prepare('SELECT id FROM carts WHERE customer_id = ?');
+  $stmt->execute([$customer_id]);
+  $cart = $stmt->fetch();
+  $cart_id = $cart ? $cart['id'] : null;
 
-$cart_items = [];
-if ($cart_id) {
-    // Fetch cart items with product, color, size info
-    $stmt = $conn->prepare('SELECT ci.*, p.name AS product_name, p.price, p.image_url, p.quantity AS stock,
-               c.name AS color_name, s.label AS size_label
-        FROM cart_items ci
-        JOIN products p ON ci.product_id = p.id
-        LEFT JOIN colors c ON ci.color_id = c.id
-        LEFT JOIN sizes s ON ci.size_id = s.id
-        WHERE ci.cart_id = ?
-    ');
-    $stmt->execute([$cart_id]);
-    $cart_items = $stmt->fetchAll();
-}
+  $cart_items = [];
+  if ($cart_id) {
+      // Fetch cart items with product, color, size info
+      $stmt = $conn->prepare('SELECT ci.*, p.name AS product_name, p.price, p.image_url, p.quantity AS stock,
+                c.name AS color_name, s.label AS size_label
+          FROM cart_items ci
+          JOIN products p ON ci.product_id = p.id
+          LEFT JOIN colors c ON ci.color_id = c.id
+          LEFT JOIN sizes s ON ci.size_id = s.id
+          WHERE ci.cart_id = ?
+      ');
+      $stmt->execute([$cart_id]);
+      $cart_items = $stmt->fetchAll();
+  }
 
 
-$cart_total = 0;
-$cart_count = 0;
-foreach ($cart_items as $item) {
-    $cart_total += $item['price'] * $item['quantity'];
-    $cart_count += $item['quantity'];
-}
-$shipping_fee = $cart_total > 0 ? 138.00 : 0.00;
+  $cart_total = 0;
+  $cart_count = 0;
+  foreach ($cart_items as $item) {
+      $cart_total += $item['price'] * $item['quantity'];
+      $cart_count += $item['quantity'];
+  }
+  $shipping_fee = $cart_total > 0 ? 138.00 : 0.00;
 
 
 ?>
