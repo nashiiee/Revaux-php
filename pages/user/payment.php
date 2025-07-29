@@ -1,3 +1,16 @@
+<?php 
+  session_start();
+  // Redirect to login if not logged in
+  if (!isset($_SESSION['username'])) {
+      header("Location: ../authentication/login.html");
+      exit();
+  }
+
+  require_once '../../database/database.php';
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,51 +19,14 @@
   <title>Payment | Revaux</title>
   <link rel="icon" type="image/png" href="../../images/revaux-light.png" />
   <link rel="stylesheet" href="../../css/payment.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/header-user.css">
+  <link rel="stylesheet" href="../../css/footer.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
 </head>
 <body>
 
-  <!-- Top Bar -->
-  <header class="top-bar">
-    <div class="header-container">
-      <div class="logo-container">
-        <img src="../../images/revaux-light.png" alt="Logo" class="logo" />
-        <span class="brand-name">Revaux</span>
-      </div>
-      <div class="search-bar">
-        <input type="text" placeholder="Search Here" />
-        <span class="material-icons search-icon">search</span>
-      </div>
-      <div class="nav-section">
-        <div class="nav-top">
-          <a href="#" class="icon-group notification-icon">
-            <span class="material-icons">notifications</span>
-            <span class="icon-text">Notifications</span>
-            <span class="icon-badge">2</span>
-          </a>
-          <a href="#" class="icon-group">
-            <span class="material-icons">help_outline</span>
-            <span class="icon-text">FAQs</span>
-          </a>
-        </div>
-        <div class="nav-bottom">
-          <a href="#" class="icon-group">
-            <span class="material-icons">favorite_border</span>
-            <span class="icon-text">Wishlist</span>
-          </a>
-          <a href="#" class="icon-group">
-            <span class="material-icons">shopping_cart</span>
-            <span class="icon-text">Cart</span>
-          </a>
-          <a href="#" class="icon-group">
-            <span class="material-icons">person_outline</span>
-            <span class="icon-text">Russo</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
+  <?php include '../../includes/header-user.php'; ?>
 
   <!-- Cart Section -->
   <main class="cart-container">
@@ -176,6 +152,7 @@
 
     <button class="checkout-btn" style="margin-top: 16px;">Place Order Now</button>
   </aside>
+  <?php include '../../includes/footer.php'; ?>
   <!-- JS -->
   <script type="module" src="../../scripts/main.js"></script>
 </body>
