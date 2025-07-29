@@ -113,91 +113,49 @@
     <p class="line text">──────────────────────────────────────────────────────────────────────────────</p>
 
     <section class="section discover-new">
-        <h2 class="section-title">Discover Something New</h2>
-        <div class="products-grid">
-            <a href="../pages/products/streetwear-fit-hoodie.html" class="product-card">
-                <div class="product-image"><img src="../images/products/eyeglass1.png" alt="New Look"></div>
-                <div class="product-info">
-                    <p class="product-name">Streetwear Fit Hoodie</p>
-                    <div class="product-meta">
-                        <p class="price">₱1,895.00</p>
-                        <p class="product-sold">12k sold</p>
-                    </div>
-                </div>
-            </a>
-            <a href="../pages/products/modern-sneakers.html" class="product-card">
-                <div class="product-image"><img src="../images/products/eyeglass2.png" alt="Sneakers"></div>
-                <div class="product-info">
-                    <p class="product-name">Modern Sneakers</p>
-                    <div class="product-meta">
-                        <p class="price">₱2,200.00</p>
-                        <p class="product-sold">15k sold</p>
-                    </div>
-                </div>
-            </a>
-            <a href="../pages/products/graphic-tshirt.html" class="product-card">
-                <div class="product-image"><img src="../images/products/eyeglass3.png" alt="T-shirt"></div>
-                <div class="product-info">
-                    <p class="product-name">Graphic T-shirt</p>
-                    <div class="product-meta">
-                        <p class="price">₱799.00</p>
-                        <p class="product-sold">20k sold</p>
-                    </div>
-                </div>
-            </a>
-            <a href="../pages/products/denim-jacket.html" class="product-card">
-                <div class="product-image"><img src="../images/products/eyeglass4.png" alt="Jacket"></div>
-                <div class="product-info">
-                    <p class="product-name">Denim Jacket</p>
-                    <div class="product-meta">
-                        <p class="price">₱1,250.00</p>
-                        <p class="product-sold">25k sold</p>
-                    </div>
-                </div>
-            </a>
+          <h2 class="section-title">Discover Something New</h2>
+          <div class="products-grid">
+              <?php
+                  // Check login state to decide product page destination
+                  $isLoggedIn = isset($_SESSION['username']);
+                  $productPage = $isLoggedIn ? '../../pages/user/product_info.php' : '../../pages/guest/product_info.php';
 
-            <a href="../pages/products/streetwear-fit-hoodie.html" class="product-card">
-                <div class="product-image"><img src="../images/products/eyeglass1.png" alt="New Look"></div>
-                <div class="product-info">
-                    <p class="product-name">Streetwear Fit Hoodie</p>
-                    <div class="product-meta">
-                        <p class="price">₱1,895.00</p>
-                        <p class="product-sold">12k sold</p>
-                    </div>
-                </div>
-            </a>
-            <a href="../pages/products/modern-sneakers.html" class="product-card">
-                <div class="product-image"><img src="../images/products/eyeglass2.png" alt="Sneakers"></div>
-                <div class="product-info">
-                    <p class="product-name">Modern Sneakers</p>
-                    <div class="product-meta">
-                        <p class="price">₱2,200.00</p>
-                        <p class="product-sold">15k sold</p>
-                    </div>
-                </div>
-            </a>
-            <a href="../pages/products/graphic-tshirt.html" class="product-card">
-                <div class="product-image"><img src="../images/products/eyeglass3.png" alt="T-shirt"></div>
-                <div class="product-info">
-                    <p class="product-name">Graphic T-shirt</p>
-                    <div class="product-meta">
-                        <p class="price">₱799.00</p>
-                        <p class="product-sold">20k sold</p>
-                    </div>
-                </div>
-            </a>
-            <a href="../pages/products/denim-jacket.html" class="product-card">
-                <div class="product-image"><img src="../images/products/eyeglass4.png" alt="Jacket"></div>
-                <div class="product-info">
-                    <p class="product-name">Denim Jacket</p>
-                    <div class="product-meta">
-                        <p class="price">₱1,250.00</p>
-                        <p class="product-sold">25k sold</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </section>
+                  // Fetch 8 random products
+                  $stmt = $conn->query("
+                      SELECT 
+                          p.id, p.name, p.price, p.image_url,
+                          IFNULL(psc.sold_count, 0) AS sold_count
+                      FROM products p
+                      LEFT JOIN product_sold_counts psc ON p.id = psc.product_id
+                      ORDER BY RAND()
+                      LIMIT 8
+                  ");
+
+                  while ($product = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                      $id = $product['id'];
+                      $name = htmlspecialchars($product['name']);
+                      $price = number_format($product['price'], 2);
+                      $sold = $product['sold_count'];
+                      $image = '../../admin/' . ltrim($product['image_url'], './');
+
+                      echo '
+                          <a href="' . $productPage . '?id=' . $id . '" class="product-card">
+                              <div class="product-image">
+                                  <img src="' . $image . '" alt="' . $name . '">
+                              </div>
+                              <div class="product-info">
+                                  <p class="product-name">' . $name . '</p>
+                                  <div class="product-meta">
+                                      <p class="price">₱' . $price . '</p>
+                                      <p class="product-sold">' . $sold . ' sold</p>
+                                  </div>
+                              </div>
+                          </a>
+                      ';
+                  }
+              ?>
+          </div>
+      </section>
     <?php include '../../includes/footer.php'; ?>
   <script type="module" src="../../scripts/main.js"></script>
   </body>

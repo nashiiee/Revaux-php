@@ -1,10 +1,5 @@
 <?php 
-  session_start();
-  // Redirect to login if not logged in
-  if (!isset($_SESSION['username'])) {
-      header("Location: ../authentication/login.html");
-      exit();
-  }
+  require_once './auth_check.php'; // Include secure authentication check for user
 
   require_once '../../database/database.php';
 
@@ -23,6 +18,7 @@
   <link rel="stylesheet" href="../../css/footer.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
 <body>
 
@@ -154,6 +150,6 @@
   </aside>
   <?php include '../../includes/footer.php'; ?>
   <!-- JS -->
-  <script type="module" src="../../scripts/main.js"></script>
+  <script type="module" src="../../scripts/main.js"></script> 
 </body>
 </html>
