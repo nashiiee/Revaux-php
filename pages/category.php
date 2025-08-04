@@ -156,7 +156,7 @@
         <title>Headwear | Revaux</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- make sure to change this path if it doesnt work -->
-        <link rel="icon" type="image/png" href="../images/revaux-light.png">
+        <link rel="icon" type="image/png" href="revaux/images/revaux-light.png">
         <link rel="stylesheet" href="../css/categories.css">
         <?php if (isset($_SESSION['username'])): ?>
             <link rel="stylesheet" href="../css/header-user.css">
