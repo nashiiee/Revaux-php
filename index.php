@@ -66,46 +66,57 @@
 <section class="section top-products">
   <h2 class="section-title">Top Products</h2>
   <div class="products-grid">
-    <a href="pages/products/mens-baseball-hat.html" class="product-card">
-      <div class="product-image"><img src="images/facebook-icon.png" alt="Hat"></div>
-      <div class="product-info">
-        <p class="product-name">Men's Baseball Hat</p>
-        <div class="product-meta">
-          <p class="price">₱260.00</p>
-          <p class="product-sold">100k sold</p>
-        </div>
-      </div>
-    </a>
-    <a href="pages/products/running-shoes.html" class="product-card">
-      <div class="product-image"><img src="images/product2.jpg" alt="Shoes"></div>
-      <div class="product-info">
-        <p class="product-name">Running Shoes</p>
-        <div class="product-meta">
-          <p class="price">₱1,200.00</p>
-          <p class="product-sold">50k sold</p>
-        </div>
-      </div>
-    </a>
-    <a href="pages/products/casual-shirt.html" class="product-card">
-      <div class="product-image"><img src="images/product3.jpg" alt="Shirt"></div>
-      <div class="product-info">
-        <p class="product-name">Casual Shirt</p>
-        <div class="product-meta">
-          <p class="price">₱450.00</p>
-          <p class="product-sold">30k sold</p>
-        </div>
-      </div>
-    </a>
-    <a href="pages/products/mens-fedora-hat.html" class="product-card">
-      <div class="product-image"><img src="images/product4.jpg" alt="Hat"></div>
-      <div class="product-info">
-        <p class="product-name">Men's Fedora Hat</p>
-        <div class="product-meta">
-          <p class="price">₱350.00</p>
-          <p class="product-sold">80k sold</p>
-        </div>
-      </div>
-    </a>
+    <?php
+      // Check if user is logged in to route them to the right product page
+      $productPage = isset($_SESSION['username']) 
+        ? './pages/user/product_info.php' 
+        : './pages/guest/product_info.php';
+
+      // Get top 4 selling products
+      $stmt = $conn->query("SELECT 
+          p.id, p.name, p.price, p.image_url,
+          IFNULL(psc.sold_count, 0) AS sold_count
+        FROM products p
+        LEFT JOIN (
+          SELECT
+              oi.product_id,
+              IFNULL(SUM(oi.quantity), 0) AS sold_count
+          FROM
+              order_items oi
+          JOIN
+              orders o ON oi.order_id = o.id
+          WHERE
+              o.payment_status = 'Paid' AND o.status = 'Delivered'
+          GROUP BY
+              oi.product_id
+        ) psc ON p.id = psc.product_id
+        ORDER BY sold_count DESC
+        LIMIT 4
+      ");
+
+      while ($product = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $id = $product['id'];
+        $name = htmlspecialchars($product['name']);
+        $price = number_format($product['price'], 2);
+        $sold = $product['sold_count'];
+        $image = './admin/' . ltrim($product['image_url'], './');
+
+        echo '
+          <a href="' . $productPage . '?id=' . $id . '" class="product-card">
+            <div class="product-image">
+              <img src="' . $image . '" alt="' . $name . '">
+            </div>
+            <div class="product-info">
+              <p class="product-name">' . $name . '</p>
+              <div class="product-meta">
+                <p class="price">₱' . $price . '</p>
+                <p class="product-sold">' . $sold . ' sold</p>
+              </div>
+            </div>
+          </a>
+        ';
+      }
+    ?>
   </div>
 </section>
 
@@ -114,87 +125,56 @@
 <section class="section discover-new">
     <h2 class="section-title">Discover Something New</h2>
     <div class="products-grid">
-        <a href="pages/products/streetwear-fit-hoodie.html" class="product-card">
-            <div class="product-image"><img src="../images/products/eyeglass1.png" alt="New Look"></div>
-            <div class="product-info">
-                <p class="product-name">Streetwear Fit Hoodie</p>
-                <div class="product-meta">
-                    <p class="price">₱1,895.00</p>
-                    <p class="product-sold">12k sold</p>
-                </div>
-            </div>
-        </a>
-        <a href="pages/products/modern-sneakers.html" class="product-card">
-            <div class="product-image"><img src="../images/products/eyeglass2.png" alt="Sneakers"></div>
-            <div class="product-info">
-                <p class="product-name">Modern Sneakers</p>
-                <div class="product-meta">
-                    <p class="price">₱2,200.00</p>
-                    <p class="product-sold">15k sold</p>
-                </div>
-            </div>
-        </a>
-        <a href="pages/products/graphic-tshirt.html" class="product-card">
-            <div class="product-image"><img src="../images/products/eyeglass3.png" alt="T-shirt"></div>
-            <div class="product-info">
-                <p class="product-name">Graphic T-shirt</p>
-                <div class="product-meta">
-                    <p class="price">₱799.00</p>
-                    <p class="product-sold">20k sold</p>
-                </div>
-            </div>
-        </a>
-        <a href="pages/products/denim-jacket.html" class="product-card">
-            <div class="product-image"><img src="../images/products/eyeglass4.png" alt="Jacket"></div>
-            <div class="product-info">
-                <p class="product-name">Denim Jacket</p>
-                <div class="product-meta">
-                    <p class="price">₱1,250.00</p>
-                    <p class="product-sold">25k sold</p>
-                </div>
-            </div>
-        </a>
+        <?php
+            // Check login state to decide product page destination
+            $isLoggedIn = isset($_SESSION['username']);
+            $productPage = $isLoggedIn ? './pages/user/product_info.php' : './pages/guest/product_info.php';
 
-        <a href="pages/products/streetwear-fit-hoodie.html" class="product-card">
-            <div class="product-image"><img src="../images/products/eyeglass1.png" alt="New Look"></div>
-            <div class="product-info">
-                <p class="product-name">Streetwear Fit Hoodie</p>
-                <div class="product-meta">
-                    <p class="price">₱1,895.00</p>
-                    <p class="product-sold">12k sold</p>
-                </div>
-            </div>
-        </a>
-        <a href="pages/products/modern-sneakers.html" class="product-card">
-            <div class="product-image"><img src="../images/products/eyeglass2.png" alt="Sneakers"></div>
-            <div class="product-info">
-                <p class="product-name">Modern Sneakers</p>
-                <div class="product-meta">
-                    <p class="price">₱2,200.00</p>
-                    <p class="product-sold">15k sold</p>
-                </div>
-            </div>
-        </a>
-        <a href="pages/products/graphic-tshirt.html" class="product-card">
-            <div class="product-image"><img src="../images/products/eyeglass3.png" alt="T-shirt"></div>
-            <div class="product-info">
-                <p class="product-name">Graphic T-shirt</p>
-                <div class="product-meta">
-                    <p class="price">₱799.00</p>
-                    <p class="product-sold">20k sold</p>
-                </div>
-            </div>
-        </a>
-        <a href="pages/products/denim-jacket.html" class="product-card">
-            <div class="product-image"><img src="../images/products/eyeglass4.png" alt="Jacket"></div>
-            <div class="product-info">
-                <p class="product-name">Denim Jacket</p>
-                <div class="product-meta">
-                    <p class="price">₱1,250.00</p>
-                    <p class="product-sold">25k sold</p>
-                </div>
-            </div>
-        </a>
+            // Fetch 8 random products
+            $stmt = $conn->query("SELECT 
+                    p.id, p.name, p.price, p.image_url,
+                    IFNULL(psc.sold_count, 0) AS sold_count
+                FROM products p
+                LEFT JOIN (
+                    SELECT
+                        oi.product_id,
+                        IFNULL(SUM(oi.quantity), 0) AS sold_count
+                    FROM
+                        order_items oi
+                    JOIN
+                        orders o ON oi.order_id = o.id
+                    WHERE
+                        o.payment_status = 'Paid' AND o.status = 'Delivered'
+                    GROUP BY
+                        oi.product_id
+                ) psc ON p.id = psc.product_id
+                ORDER BY RAND()
+                LIMIT 8
+            ");
+
+            while ($product = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $id = $product['id'];
+                $name = htmlspecialchars($product['name']);
+                $price = number_format($product['price'], 2);
+                $sold = $product['sold_count'];
+                $image = './admin/' . ltrim($product['image_url'], './');
+
+                echo '
+                    <a href="' . $productPage . '?id=' . $id . '" class="product-card">
+                        <div class="product-image">
+                            <img src="' . $image . '" alt="' . $name . '">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-name">' . $name . '</p>
+                            <div class="product-meta">
+                                <p class="price">₱' . $price . '</p>
+                                <p class="product-sold">' . $sold . ' sold</p>
+                            </div>
+                        </div>
+                    </a>
+                ';
+            }
+        ?>
     </div>
 </section>
 
