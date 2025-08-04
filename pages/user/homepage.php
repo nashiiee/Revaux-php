@@ -74,12 +74,23 @@
             : '../../pages/guest/product_info.php';
 
           // Get top 4 selling products
-          $stmt = $conn->query("
-            SELECT 
+          $stmt = $conn->query("SELECT 
               p.id, p.name, p.price, p.image_url,
               IFNULL(psc.sold_count, 0) AS sold_count
             FROM products p
-            LEFT JOIN product_sold_counts psc ON p.id = psc.product_id
+            LEFT JOIN (
+              SELECT
+                  oi.product_id,
+                  IFNULL(SUM(oi.quantity), 0) AS sold_count
+              FROM
+                  order_items oi
+              JOIN
+                  orders o ON oi.order_id = o.id
+              WHERE
+                  o.payment_status = 'Paid' AND o.status = 'Delivered'
+              GROUP BY
+                  oi.product_id
+            ) psc ON p.id = psc.product_id
             ORDER BY sold_count DESC
             LIMIT 4
           ");
@@ -122,12 +133,23 @@
                   $productPage = $isLoggedIn ? '../../pages/user/product_info.php' : '../../pages/guest/product_info.php';
 
                   // Fetch 8 random products
-                  $stmt = $conn->query("
-                      SELECT 
+                  $stmt = $conn->query("SELECT 
                           p.id, p.name, p.price, p.image_url,
                           IFNULL(psc.sold_count, 0) AS sold_count
                       FROM products p
-                      LEFT JOIN product_sold_counts psc ON p.id = psc.product_id
+                      LEFT JOIN (
+                          SELECT
+                              oi.product_id,
+                              IFNULL(SUM(oi.quantity), 0) AS sold_count
+                          FROM
+                              order_items oi
+                          JOIN
+                              orders o ON oi.order_id = o.id
+                          WHERE
+                              o.payment_status = 'Paid' AND o.status = 'Delivered'
+                          GROUP BY
+                              oi.product_id
+                      ) psc ON p.id = psc.product_id
                       ORDER BY RAND()
                       LIMIT 8
                   ");

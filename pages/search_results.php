@@ -27,7 +27,19 @@
         FROM products p
         JOIN categories c ON p.category_id = c.id
         LEFT JOIN subcategories sc ON p.subcategory_id = sc.id
-        LEFT JOIN product_sold_counts psc ON p.id = psc.product_id
+        LEFT JOIN (
+            SELECT
+                oi.product_id,
+                IFNULL(SUM(oi.quantity), 0) AS sold_count
+            FROM
+                order_items oi
+            JOIN
+                orders o ON oi.order_id = o.id
+            WHERE
+                o.payment_status = 'Paid' AND o.status = 'Delivered'
+            GROUP BY
+                oi.product_id
+        ) psc ON p.id = psc.product_id
         WHERE p.name LIKE :search";
 
     $countQuery = "SELECT COUNT(*) FROM products p WHERE p.name LIKE :search";
