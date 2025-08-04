@@ -1,9 +1,9 @@
 <header>
     <div class="logo-container">
-        <a href="/revaux/pages/guest/index.html" class="logo">
+        <a href="/revaux/index.php" class="logo">
             <img src="/revaux/images/revaux-light.png" alt="Revaux">
         </a>
-        <a href="/revaux/pages/guest/index.html" class="brand-name">Revaux</a>
+        <a href="/revaux/index.php" class="brand-name">Revaux</a>
     </div>
     <?php
         $searchValue = isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '';

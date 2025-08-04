@@ -96,14 +96,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $insertUser->bindParam(':password', $hashedPassword);
             $insertUser->bindParam(':fullname', $fullname);
         } else {
-            // For customers, insert into first_name, last_name, and fullname columns
-            $insertUser = $conn->prepare("INSERT INTO customers (username, email, password, first_name, last_name, fullname) VALUES (:username, :email, :password, :first_name, :last_name, :fullname)");
+            // For customers, insert into first_name, last_name columns
+            $insertUser = $conn->prepare("INSERT INTO customers (username, email, password, first_name, last_name) VALUES (:username, :email, :password, :first_name, :last_name)");
             $insertUser->bindParam(':username', $username);
             $insertUser->bindParam(':email', $email);
             $insertUser->bindParam(':password', $hashedPassword);
             $insertUser->bindParam(':first_name', $first_name);
             $insertUser->bindParam(':last_name', $last_name);
-            $insertUser->bindParam(':fullname', $fullname);
         }
         
         $insertUser->execute();
