@@ -29,10 +29,10 @@ export function setupCartPage() {
 
     // --- Shared function for updating order summary ---
     function updateSummary() {
-        let total = 0, count = 0;
+        let total = 0, checkedCount = 0; // Use a new variable for the checked items
         // Select only checked cart items for summary calculation
         const checkedCartItems = document.querySelectorAll('.cart-item-checkbox:checked');
-
+        
         // Get references to summary elements ONCE at the top of the function
         const subtotalTextElement = document.querySelector('.summary-item:first-of-type span:first-of-type');
         const subtotalValueElement = document.querySelector('.summary-item:first-of-type span:nth-of-type(2)');
@@ -41,8 +41,12 @@ export function setupCartPage() {
         const finalTotalValueElement = document.querySelector('.summary-item.total span:nth-of-type(2)');
         const checkoutBtn = document.querySelector('.checkout-btn');
 
+        // Get references for the select all label and the cart count span
+        const selectAllLabel = document.getElementById('select-all-label');
+        const cartItemCountSpan = document.getElementById('cart-item-count');
+
         // Check if there are ANY cart items at all (checked or unchecked) to display "Your cart is empty."
-        const allExistingCartItems = document.querySelectorAll('.cart-item'); //
+        const allExistingCartItems = document.querySelectorAll('.cart-item');
 
         if (allExistingCartItems.length === 0) { // If absolutely no items are in the DOM
             if (subtotalValueElement) subtotalValueElement.textContent = '₱0.00';
@@ -55,10 +59,14 @@ export function setupCartPage() {
             if (selectAllCheckbox) selectAllCheckbox.checked = false;
             if (checkoutBtn) checkoutBtn.disabled = true;
 
-            // The cartCategoryBox.innerHTML line is removed because PHP already renders the <p>
             if (cartEmptyMessage) {
-                cartEmptyMessage.style.display = 'flex'; // Or 'block', depending on your exact centering needs
+                cartEmptyMessage.style.display = 'flex';
             }
+            
+            // Also update the Select All count to 0
+            if (cartItemCountSpan) cartItemCountSpan.textContent = '0';
+            if (selectAllLabel) selectAllLabel.textContent = 'Select All (0 items)';
+            
             return;
         } else {
             // Hide the "Your cart is empty" message if there are items
@@ -68,36 +76,44 @@ export function setupCartPage() {
         }
 
         // Loop through only the CHECKED items for calculation
-        checkedCartItems.forEach(checkbox => { //
-            // Get the parent .cart-item element from the checkbox
-            const it = checkbox.closest('.cart-item'); //
-            if (it) { // Ensure the parent item exists
-                const q = +it.querySelector('.qty-input').value; //
-                const p = parseFloat(it.querySelector('.item-price').textContent.replace(/[^\d.]/g, '')); //
-                total += q * p; //
-                count += q; //
+        checkedCartItems.forEach(checkbox => {
+            const it = checkbox.closest('.cart-item');
+            if (it) {
+                const q = +it.querySelector('.qty-input').value;
+                const p = parseFloat(it.querySelector('.item-price').textContent.replace(/[^\d.]/g, ''));
+                total += q * p;
+                checkedCount += q; // Use checkedCount for the summary
             }
         });
 
-        const shippingFee = total > 0 ? 138.00 : 0.00; //
+        const shippingFee = total > 0 ? 138.00 : 0.00;
 
         // Update elements only if they exist
-        if (subtotalValueElement) { //
-            subtotalValueElement.textContent = '₱' + total.toLocaleString(undefined, { minimumFractionDigits: 2 }); //
+        if (subtotalValueElement) {
+            subtotalValueElement.textContent = '₱' + total.toLocaleString(undefined, { minimumFractionDigits: 2 });
         }
         if (subtotalTextElement) { // Update the label to reflect the current item count
-            subtotalTextElement.textContent = `Order total (${count} Items):`; //
+            subtotalTextElement.textContent = `Order total (${checkedCount} Items):`;
         }
-        if (shippingFeeValueElement) { //
-            shippingFeeValueElement.textContent = '₱' + shippingFee.toLocaleString(undefined, { minimumFractionDigits: 2 }); //
+        if (shippingFeeValueElement) {
+            shippingFeeValueElement.textContent = '₱' + shippingFee.toLocaleString(undefined, { minimumFractionDigits: 2 });
         }
-        if (finalTotalValueElement) { //
-            finalTotalValueElement.textContent = '₱' + (total + shippingFee).toLocaleString(undefined, { minimumFractionDigits: 2 }); //
+        if (finalTotalValueElement) {
+            finalTotalValueElement.textContent = '₱' + (total + shippingFee).toLocaleString(undefined, { minimumFractionDigits: 2 });
         }
         
         // Enable/disable checkout button based on whether *any* items are checked
-        if (checkoutBtn) { //
-            checkoutBtn.disabled = checkedCartItems.length === 0; //
+        if (checkoutBtn) {
+            checkoutBtn.disabled = checkedCartItems.length === 0;
+        }
+
+        // Get the total number of ALL items and update the 'Select All' label
+        const totalItemsInCart = document.querySelectorAll('.cart-item').length;
+        if (cartItemCountSpan) {
+            cartItemCountSpan.textContent = totalItemsInCart;
+        }
+        if (selectAllLabel) {
+            selectAllLabel.textContent = `Select All (${totalItemsInCart} items)`;
         }
     }
 

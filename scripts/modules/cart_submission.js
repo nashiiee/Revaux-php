@@ -1,12 +1,12 @@
 export function setupCartSubmission() {
     const form = document.querySelector('.pd-actions-form');
     const addToCartBtn = form?.querySelector('.add-cart');
-    const feedbackBox = document.createElement('div');
 
-    if (!form || !addToCartBtn) return;
+    // Get the existing notification element from the page.
+    // We are no longer creating a new one.
+    const feedbackBox = document.querySelector('.cart-feedback');
 
-    feedbackBox.className = 'cart-feedback';
-    document.body.appendChild(feedbackBox);
+    if (!form || !addToCartBtn || !feedbackBox) return;
 
     addToCartBtn.addEventListener('click', function (e) {
         e.preventDefault();

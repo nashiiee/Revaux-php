@@ -111,8 +111,8 @@ WHERE
 
 
 
-      $totalQuantityCurrent = $totalQuantityCurrent->fetch(PDO::FETCH_ASSOC);
-      $totalQuantityPrevious = $totalQuantityPrevious->fetch(PDO::FETCH_ASSOC);
+      $totalQuantityCurrentData = $totalQuantityCurrent->fetch(PDO::FETCH_ASSOC);
+      $totalQuantityPreviousData = $totalQuantityPrevious->fetch(PDO::FETCH_ASSOC);
 
 
 
@@ -140,13 +140,14 @@ WHERE
       }
       
       // Format revenue for display
-      $formattedCurrentRevenue = number_format($currentRevenue / 1000, 2) . 'K';
+      // CHANGED: Logic to display full number if less than 1000, to prevent "0.50K".
+      $formattedCurrentRevenue = ($currentRevenue >= 1000) ? number_format($currentRevenue / 1000, 2) . 'K' : number_format($currentRevenue, 2);
       $formattedPercentage = $percentageSign . number_format($percentageChange, 1) . '%';
       
       // Extract quantity values
-      $currentQuantity = $totalQuantityCurrent['total_quantity_current'] ?? 0;
-      $previousQuantity = $totalQuantityPrevious['total_quantity_previous'] ?? 0;
-      
+      $currentQuantity = $totalQuantityCurrentData['total_quantity_current'] ?? 0;
+      $previousQuantity = $totalQuantityPreviousData['total_quantity_previous'] ?? 0;
+
       // Calculate percentage change for quantity
       $quantityPercentageChange = 0;
       $quantityPercentageSign = '';

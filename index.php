@@ -8,7 +8,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Revaux</title>
-    <link rel="icon" type="image/png" href="../../images/revaux-light.png">
+    <link rel="icon" type="image/png" href="./images/revaux-light.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
     <link rel="stylesheet" href="css/header-guest.css" />

@@ -172,8 +172,13 @@
                         <?php if (empty($products)): ?>
                             <p>No products found.</p>
                         <?php else: ?>
+                            <?php
+                                // Determine the correct product page based on login status
+                                $isLoggedIn = isset($_SESSION['username']);
+                                $productPage = $isLoggedIn ? './user/product_info.php' : './guest/product_info.php';
+                            ?>
                             <?php foreach ($products as $product): ?>
-                                <a href="user/product_info.php?id=<?= $product['id'] ?>" class="product-card">
+                                <a href="<?= $productPage ?>?id=<?= $product['id'] ?>" class="product-card">
                                     <div class="product-image">
                                         <img src="../admin/<?= ltrim($product['image_url'], './') ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                                     </div>

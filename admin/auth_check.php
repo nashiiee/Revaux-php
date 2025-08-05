@@ -24,11 +24,11 @@ if (isset($_SESSION['login_time']) && (time() - $_SESSION['login_time'] > 7200))
 }
 
 // Update last activity
-$_SESSION['last_activity'] = time();
+//$_SESSION['last_activity'] = time();
 
 // Regenerate session ID periodically for security (every 30 minutes)
-if (!isset($_SESSION['last_regeneration']) || (time() - $_SESSION['last_regeneration']) > 1800) {
-    session_regenerate_id(true);
-    $_SESSION['last_regeneration'] = time();
-}
+//if (!isset($_SESSION['last_regeneration']) || (time() - $_SESSION['last_regeneration']) > 1800) {
+//    session_regenerate_id(true);
+//    $_SESSION['last_regeneration'] = time();
+//}
 ?>

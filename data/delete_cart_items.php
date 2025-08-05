@@ -12,6 +12,13 @@
 
     $response = ['success' => false, 'msg' => ''];
 
+    // key change: check if the $conn object was created.
+    if (!isset($conn)) {
+        $response['msg'] = 'Database connection could not be established.';
+        echo json_encode($response);
+        exit();
+    }
+    
     if (!isLoggedIn()) {
         http_response_code(401);
         $response['msg'] = 'Unauthorized: Please log in to modify your cart.';
@@ -21,7 +28,7 @@
     
     $username = $_SESSION['username'];
 
-    // --- Retrieve customer_id from the database using the username ---
+    // --- The rest of your code remains the same ---
     try {
         $stmt_customer = $conn->prepare('SELECT id FROM customers WHERE username = ?');
         $stmt_customer->execute([$username]);
@@ -32,14 +39,13 @@
             echo json_encode($response);
             exit();
         }
-        $customer_id = $customer['id']; // This is the actual integer customer_id
+        $customer_id = $customer['id'];
     } catch (PDOException $e) {
         $response['msg'] = 'Database error: Could not retrieve customer information.';
         error_log("Customer lookup PDO error: " . $e->getMessage());
         echo json_encode($response);
         exit();
     }
-    // --- End customer_id retrieval ---
 
 
     $input = file_get_contents('php://input');
@@ -66,9 +72,8 @@
         exit();
     }
 
-    // Now, use the retrieved $customer_id (integer) to query the carts table
     $stmt_cart = $conn->prepare('SELECT id FROM carts WHERE customer_id = ?');
-    $stmt_cart->execute([$customer_id]); // <-- FIX IS HERE: Use $customer_id instead of $username
+    $stmt_cart->execute([$customer_id]);
     $user_cart = $stmt_cart->fetch(PDO::FETCH_ASSOC);
 
     if (!$user_cart) {
@@ -108,4 +113,5 @@
     }
 
     echo json_encode($response);
+
 ?>

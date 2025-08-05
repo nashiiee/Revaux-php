@@ -73,7 +73,7 @@
             <div class="checkbox-wrapper">
               <input type="checkbox" class="custom-checkbox" id="select-all">
             </div>
-            <label for="select-all">Select All (<?= $cart_count ?> items)</label>
+            <label id="select-all-label" for="select-all">Select All (<span id="cart-item-count"><?= $cart_count ?></span> items)</label>
           </div>  
           <div class="remove-selected-controls">
             <button id="remove-selected-btn" class="remove-selected-header-btn" style="display: none;">
